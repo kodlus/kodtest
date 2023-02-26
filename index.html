@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="swe">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBH Nordica hemsida remix</title>
+    <!-- Reset CSS -->
+    <link rel="stylesheet" href="styles/reset.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/b0e386ccd8.js" crossorigin="anonymous"></script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__container">
+        <!-- Row 1 -->
+        <div class="header__row-1">
+          <!-- Nav -->
+          <button id="header__nav-button" class="header__nav-button button">
+            menu
+          </button>
+
+          <nav id="header__nav" class="header__nav is-hidden">
+            <ul class="nav__links">
+              <li class="nav__link"><a href="#">För hemmet</a></li>
+              <li class="nav__link"><a href="#">Matlagning</a></li>
+              <li class="nav__link"><a href="#">Styling & Wellness</a></li>
+              <li class="nav__link"><a href="#">Retur & Reklamation</a></li>
+              <li class="nav__link"><a href="#">Kontakta oss</a></li>
+            </ul>
+          </nav>
+
+          <!-- Logo -->
+          <div class="header__logo">
+            <a href="#"><img src="images/logos/OBH_Nordica1 (2).png" alt="OBH Nordica logo"></a>
+          </div>
+
+          <!-- Shopping cart -->
+          <div class="header__shopping-cart">
+            <button id="shopping-cart__button" class="shopping-cart__button button"><i class="fa-solid fa-cart-shopping button"></i></button>
+          </div>
+
+          <div id="shopping-cart" class="shopping-cart is-hidden">
+            <div class="shopping-cart__header">
+              <h3 class="shopping-cart__title">Din varukorg</h3>
+              <button id="shopping-cart__close-button" class="shopping-cart__close-button"><p>Stäng</p><span>X</span></button>
+            </div>
+
+            <div class="shopping-cart__body">
+              <p>Du har inte lagt några varor i varukorgen ännu. </p>
+            </div>
+
+            <div class="shopping-cart__summary">
+              <div class="summary__content">
+                <p>Din varukorg</p>
+                0,00 SEK
+              </div>
+              <div class="summary__discount">
+                <p>Rabatt</p>
+                <p>-0,00 SEK</p>
+              </div>
+              <div class="summary__total-sum">
+                <p>Totalt</p>
+                <p>0,00 SEK</p>
+              </div>
+              <button class="summary__button">Gå till kassan</button>
+            </div>
+      
+          </div> <!-- End of shopping cart -->
+
+        </div><!-- End of row-1 -->
+      
+        <!-- Row 2 -->
+        <div class="header__row-2">
+          <!-- Search bar -->
+          <div class="header__search-bar">
+            <input type="search" name="search-bar" id="search-bar__input" class="search-bar__input">
+            <button class="search-bar__button"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+        </div> <!-- End of row 2 -->
+
+        <!-- Row 3 -->
+        <div class="header__row-3">
+          <!-- Information banner -->
+          <div class="header__information-banner">
+            <p> Fri frakt över 500kr</p>
+            <p class="is-hidden">30 dagar öppet köp</p> 
+            <p class="is-hidden"> Prova hemma 100 dagar</p>
+            <p>Fria returer</p>
+          </div>
+        </div> <!-- End of row 3 -->
+      </div> <!-- End of header container -->
+    </header>
+
+    <main>
+      <h1 class="page-title">Februari rea</h1>
+
+      <section class="campaign-section">
+        <h3 class="campaign__tagline">
+          Fira kärlekens månad med oss! <br>
+          Just nu får du 20% rabatt på utvald sortiment när du använder koden FEBSALE i kassan.
+        </h3>
+
+        <!-- Campaign carousel -->
+        <div class="campaign__carousel">
+          <div class="carousel__container">
+            <div class="carousel__product-card">
+              <img src="images/pictures/products/beverages/2373/2373_Webformat.jpg" alt="" class="product-card__image">
+              <div class="product-card__description"> 
+                <h3 class="description__product-name">Silence Force+</h3>
+                <h3 class="description__tag-line">
+                  Tystlåten dammsugare med påse
+                </h3>
+              </div>
+              <p class="product-card__price">2999 SEK</p>
+              <div class="product-card__rating">
+                ⭐⭐⭐⭐⭐ <!-- Ändra till SVG -->
+                <span class="rating__number">4.1</span>
+                <span class="rating__reviews">(15)</span>
+              </div>
+              <button class="product-card__button">Lägg i varukorgen</button>
+            </div> <!-- End of carousel product card -->
+
+            <div class="carousel__product-card">
+              <img src="images/pictures/products/beverages/2329/2329_Webformat.jpg" alt="" class="product-card__image">
+              <div class="product-card__description"> 
+                <h3 class="description__product-name">Silence Force+</h3>
+                <h3 class="description__tag-line">
+                  Tystlåten dammsugare med påse
+                </h3>
+              </div>
+              <p class="product-card__price">1999 SEK</p>
+              <div class="product-card__rating">
+                ⭐⭐⭐⭐⭐ <!-- Ändra till SVG -->
+                <span class="rating__number">4.1</span>
+                <span class="rating__reviews">(15)</span>
+              </div>
+              <button class="product-card__button">Lägg i varukorgen</button>
+            </div> <!-- End of carousel product card -->
+
+            <div class="carousel__product-card ">
+              <img src="images/pictures/products/beverages/2420/2420_Webformat.jpg" alt="" class="product-card__image">
+              <div class="product-card__description"> 
+                <h3 class="description__product-name">Silence Force+</h3>
+                <h3 class="description__tag-line">
+                  Tystlåten dammsugare med påse
+                </h3>
+              </div>
+              <p class="product-card__price">4999 SEK</p>
+              <div class="product-card__rating">
+                ⭐⭐⭐⭐⭐ <!-- Ändra till SVG -->
+                <span class="rating__number">4.1</span>
+                <span class="rating__reviews">(15)</span>
+              </div>
+              <button class="product-card__button">Lägg i varukorgen</button>
+            </div> <!-- End of carousel product card -->
+          </div> <!-- End of carousel container-->
+          <div class="carousel__indicator">
+            <button id="indicator__previous-button" class="indicator__previous-button">prev</button>
+            <span id="indicator__number" class="indicator__number"> 1 / 6 </span>
+            <button id="indicator__next-button" class="indicator__next-button">next</button>
+          </div> <!-- End of Carousel indicator -->
+        </div> <!-- End of campaign carousel -->
+      </section> <!-- End of campaign section -->
+
+    </main>
+    
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,358 @@
+/*==============================================================================
+NOTES
+==============================================================================*/
+
+/*==============================================================================
+VARIABLES
+==============================================================================*/
+/*=============================================
+Colors
+==============================================*/
+
+/*=============================================
+Length
+==============================================*/
+:root {
+  --headerHeight: 165px;
+}
+
+/*==============================================================================
+GENERAL
+==============================================================================*/
+/*=============================================
+Reset
+==============================================*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: var(--headerHeight) auto;
+}
+
+/*==============================================================================
+TYPOGRAPHY
+==============================================================================*/
+/*=============================================
+Header
+==============================================*/
+
+/*====================================
+Shopping cart
+=====================================*/
+.shopping-cart__title {
+  font-size: 1.2rem;
+}
+
+.shopping-cart__close-button {
+  font-size: .875rem;
+  font-weight: 700;
+}
+
+.shopping-cart__body,
+.summary__content,
+.summary__discount,
+.summary__total-sum {
+  font-size: 1rem;
+}
+
+/*====================================
+Information banner
+=====================================*/
+.header__information-banner > a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.9rem;
+}
+
+/*=============================================
+Main
+==============================================*/
+.page-title {
+  margin-bottom: 0.375em;
+}
+/*====================================
+Campaign section
+=====================================*/
+.campaign__tagline {
+  line-height: 1.5;
+}
+
+/*==============================================================================
+LAYOUT
+==============================================================================*/
+/*=========================================================
+HEADER
+=========================================================*/
+.header {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+}
+
+.header__container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+  background-color: green;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+ /*  height: var(--headerHeight); */
+
+}
+
+/*====================================
+Header row 1
+=====================================*/
+.header__row-1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+}
+
+/*=======================
+Navigation
+=======================*/
+.header__nav-button {
+  grid-column: 1 / 2;
+  justify-self: center;
+  align-self: center;
+  font-size: 1.4rem;
+}
+.header__nav {
+  display: block;
+  font-size: 1.4rem;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  padding: 10px;
+  background: orange;
+
+}
+
+.header__nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header__nav li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+.header__nav a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.header__nav a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/*=======================
+Logo
+=======================*/
+.header__logo {
+  width: 50px;
+  margin: 0;
+  padding: 0;
+  grid-column: 2 / 3;
+  justify-self: center;
+  align-self: center;
+}
+
+/*=======================
+Shopping cart
+=======================*/
+.header__shopping-cart {
+  font-size: 1.4rem;
+  justify-self: center;
+  align-self: center;
+}
+
+.shopping-cart {
+  position: relative;
+  display: block;
+  font-size: 1.4rem;
+  position: absolute;
+  top: -10px; /* samma värde som gap */
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background: orange;
+}
+
+.shopping-cart__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: antiquewhite;
+}
+
+.shopping-cart__title {
+  padding-left: 1em;
+}
+
+.shopping-cart__close-button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.2em 1.6em; /* Bestämmer headerns höjd */
+  text-transform: uppercase;
+  width: 33%;
+  background: black;
+  color: white;
+  border: none;
+}
+
+.shopping-cart__close-button span {
+  font-size: 1.1rem;
+}
+
+.shopping-cart__body {
+ padding: 1em;
+ overflow-y: scroll;
+ min-height: 100vh; /* annars krånglar JS-lösningen */
+}
+
+.shopping-cart__summary {
+  background-color: blanchedalmond;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 1em;
+}
+
+.summary__content,
+.summary__discount,
+.summary__total-sum {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary__content {
+  margin-bottom: 0.2em;
+}
+
+.summary__button {
+  width: 100%;
+}
+/*====================================
+Header row 2
+=====================================*/
+.header__row-2 {
+  display: flex;
+  justify-content: center;
+}
+
+/*=======================
+Search bar
+=======================*/
+.header__search-bar {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  margin: 0 auto;
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+  justify-content: center;
+  align-self: center;
+}
+
+.search-bar__input {
+  /* width: 80%; */
+}
+
+.search-bar__button {
+  width: 40px;
+}
+
+/*====================================
+Header row 3
+=====================================*/
+.header__row-3 {
+  display: flex;
+}
+
+/*=======================
+Information banner
+=======================*/
+.header__information-banner {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  background-color: gainsboro;
+  padding: .5em;
+}
+
+/*=========================================================
+MAIN
+=========================================================*/
+main {
+  grid-row: 2 / 3;
+  padding-top: 2em;
+  background-color: brown;
+  text-align: center;
+}
+
+/*====================================
+CAMPAIGN SECTION
+=====================================*/
+.campaign__tagline {
+  background-color: aqua;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
+
+/*=======================
+Campaign carousel
+=======================*/
+.carousel__container {
+  display: flex;
+  overflow-x: hide;
+}
+.carousel__product-card {
+  background-color: chocolate;
+  width: 85%;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0.7em;
+}
+
+.product-card__image {
+/*   margin: 0 auto; */
+margin-bottom: 0.8em;
+border: 1px solid grey;
+}
+
+/*==============================================================================
+MEDIA QUERY
+==============================================================================*/
+@media (max-width: 500px) {
+  .header__information-banner a:nth-child(3),
+.header__information-banner a:nth-child(4) {
+  display: none;
+  }
+}
+
+
+/*==============================================================================
+UTILITY
+==============================================================================*/
+.is-hidden {
+  display: none;
+}
+
