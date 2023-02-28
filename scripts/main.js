@@ -12,6 +12,8 @@ const shoppingCartDiv = document.querySelector(".header__shopping-cart");
 const closeButton = document.querySelector("#shopping-cart__close-button")
 
 
+
+
 /*=========================================================
 Functions
 =========================================================*/
@@ -36,9 +38,12 @@ Navigation
 =========================================================*/
 /* Toggle the navigation on or off */
 navButton.addEventListener("click", (e) => {
-    contentToggle(headerNav, shoppingCart);
-  
-  
+    let ClosestBtn = e.target;
+    if (closeButton) {
+          contentToggle(headerNav, shoppingCart);
+    console.log("clicked")
+    }
+
 });
 
 /*=========================================================
@@ -67,6 +72,21 @@ closeButton.addEventListener("click", () => {
   shoppingCart.classList.add("is-hidden");
 })
 
+/*=========================================================
+Hide information banner on scroll //MÅSTE SES ÖVER
+https://www.w3schools.com/howto/howto_js_navbar_hide_scroll.asp
+=========================================================*/
+/* let previousScrollPosition = window.pageYOffset;
+window.onscroll = function () {
+  const informationBanner = document.getElementById("header__information-banner");
+  let currentScrollPosition = window.pageYOffset;
+  if (previousScrollPosition > currentScrollPosition) {
+    informationBanner.style.visibility = "flex";
+  } else {
+    informationBanner.style.display = "none";
+  }
+  previousScrollPosition = currentScrollPosition;
+} */
 
 /*==============================================================================
 MAIN
