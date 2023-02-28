@@ -338,6 +338,43 @@ margin-bottom: 0.8em;
 border: 1px solid grey;
 }
 
+.product-card__details {
+  margin-bottom: 0.5em;
+  background-color: aqua;
+  color: aqua;
+}
+
+.details__product-name {
+  font-size: 1.4rem;
+}
+
+.details__tag-line {
+  margin-bottom: 1em
+}
+
+.details__price {
+  font-size: 1.4rem;
+}
+
+.product-card__button {
+
+}
+
+.carousel__indicator {
+  background-color: beige;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+.indicator__next-button,
+.indicator__previous-button {
+  padding: .8em;
+  border-radius: 50%;
+  border-style: none;
+  border: 1px solid black;
+}
 /*==============================================================================
 MEDIA QUERY
 ==============================================================================*/
