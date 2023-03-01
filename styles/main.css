@@ -19,6 +19,7 @@ Length
 ==============================================*/
 :root {
   --standardPadding: 1.2em;
+  --sectionMarginBottom: 3em;
 }
 
 /*==============================================================================
@@ -32,6 +33,7 @@ body {
   font-family: "Lato", Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   padding: 0;
+  min-width: 344px;
 }
 
 /*==============================================================================
@@ -119,6 +121,11 @@ Popular products
   word-spacing: 4px;
 }
 
+.discover-card__details p {
+  font-size: .9rem;
+}
+
+
 .footer__header {
   font-size: 1.3rem;
 }
@@ -202,10 +209,13 @@ https://stackoverflow.com/questions/21653978/font-awesome-icon-preventing-click-
   display: block;
   font-size: 1.4rem;
   position: absolute;
+  z-index: 99;
   top: 100%;
   width: 100%;
   padding: 10px;
   background: orange;
+
+
 
 }
 
@@ -217,7 +227,7 @@ https://stackoverflow.com/questions/21653978/font-awesome-icon-preventing-click-
 
 .header__nav li {
   margin-bottom: 1em;
-  margin-left: 1em;
+/*   margin-left: 1em; */
 }
 
 .header__nav a {
@@ -267,10 +277,10 @@ Shopping cart
 }
 
 .shopping-cart {
-  position: relative;
   display: block;
   font-size: 1.4rem;
   position: absolute;
+  z-index: 99;
   right: 0;
   width: 100%;
   height: 100vh;
@@ -456,8 +466,8 @@ CAMPAIGN SECTION
   );
 }
 .campaign__tagline {
-  background-color: aqua;
-  margin-bottom: 1em;
+/*   background-color: aqua; */
+  margin-bottom: 1.5em;
   padding: var(--standardPadding);
 }
 
@@ -479,9 +489,10 @@ Campaign carousel
   margin: 0 auto;
   text-align: left;
   padding: 1em;
-  width: 70%;
+  max-width: 70%;
   margin: 0 auto;
   margin-bottom: 0.4em;
+  flex: 0 0 auto;
 }
 
 .product-card__image {
@@ -512,14 +523,27 @@ Campaign carousel
   color: var(--green);
 }
 
+.carousel__indicator {
+  padding: 10px 0;
+}
+
 .indicator__next-button,
 .indicator__previous-button {
-  padding: .7em;
+  padding: .8em;
   border-radius: 50%;
   border-style: none;
   background: var(--black);
   color: var(--white);
   position: absolute;
+  z-index: 99;
+}
+
+.indicator__next-button:hover,
+.indicator__next-button:focus,
+.indicator__previous-button:hover,
+.indicator__previous-button:focus {
+  background: var(--white);
+  color: var(--black);
 }
 
 .indicator__next-button {
@@ -534,72 +558,160 @@ Campaign carousel
   transform: translateY(-50%);
 }
 /*====================================
-POPULAR CATEGORIES
+POPULAR CATEGORIES SECTION
 =====================================*/
 .popular-categories-section {
-  background-color: paleturquoise;
+  background-color: var(--white);
+  margin-bottom: var(--sectionMarginBottom);
 }
 
 .popular-categories__container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
+ /*  display: flex; */
   text-align: center;
 }
 
 .popular-category__category-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  background-color: bisque;
-  padding: 5px 0;
+  padding: 1em;
+}
+
+a .category-card__image {
+  margin: 0 auto;
 }
 
 .category-card__image  {
-  width: 70%;
-  margin-bottom: 5px;
-  justify-self: center;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .category-card__details {
   align-self: center;
 }
 
-/* .category-card__details.even {
-  order: 1;
+ /*====================================
+FEATURED SECTION
+=====================================*/
+.featured-section {
+  margin-bottom: var(--sectionMarginBottom);
+  padding: var(--standardPadding);
 }
 
-.category-card__details.odd{
-  order: -1;
+a .featured-card__image {
+  margin: 0 auto;
+  margin-bottom: .5em;
+  
 }
- */
+.featured-card__image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.featured-card__details {
+  margin-bottom: 2em;
+}
+
+.featured-card__details h3 {
+  font-weight: 400;
+}
 
 /*====================================
-DISCOVER MORE
+DISCOVER MORE SECTION
 =====================================*/
+.discover-more-section {
+  margin-bottom: var(--sectionMarginBottom);
+  padding: 1em;
+}
+
 .discover-more__container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1em;
-  
 }
 
 .discover-more__discover-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  padding: 1em;
+  padding: var(--standardPadding);
   background: white;
+  background-color: aquamarine;
+  margin-bottom: 1em;
+  
 }
 
+a .discover-card__image {
+  margin-bottom: 0.5em;
+  
+}
 
+.discover-card__image {
+  object-fit: cover;
+  width: 100%;
+}
 
+.discover-card__details {
+/*   margin-bottom: 1.5em; */
+}
 
+.discover-card__details h3
+{
+  margin-bottom: 1em;
+}
+
+.discover-card__details p {
+  margin-bottom: 1.7em;
+}
+
+.discover-card__button {
+  text-decoration: none;
+  padding: 10px 15px;
+  background-color: var(--green);
+  border: 1px solid var(--green);
+  color: white
+}
+
+.discover-card__button:hover,
+.discover-card__button:focus {
+  background-color: var(--white);
+  color: var(--green);
+}
+
+/*====================================
+SERVICES SECTION
+=====================================*/
+.services-section {
+  margin-bottom: var(--sectionMarginBottom);
+}
+.services__service-card {
+  margin-bottom: 1.5em;
+}
+
+a .service-card__image {
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
+
+.service-card__details {
+  padding: 1em;
+}
+
+.service-card__image {
+  width: 70%;
+}
+/*====================================
+PRODUCT SEARCH SECTION
+=====================================*/
+.product-search-section {
+  background: var(--gray);
+  padding: var(--standardPadding);
+}
+
+.product-search__details {
+  margin-bottom: 1em;
+}
 
 .product-search__product-search-bar {
   display: flex;
   justify-content: center;
+  margin-bottom: .5em;
 }
-
 
 /*=========================================================
 FOOTER
@@ -661,14 +773,12 @@ FOOTER
   margin-right: 0.5em;
 }
 
-
 .footer__hr {
   border: none;
   height: 1px;
   background-color: var(--gray);
   margin-bottom: 2rem;
 }
-
 
 .footer__badges {
   display: flex;
@@ -691,12 +801,59 @@ MEDIA QUERY
   }
 }
 
+@media (min-width: 501px) and (max-width: 1000px) {
+  .popular-categories__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .popular-category__category-card {
+    width: 30%;
+  }  
+
+  .category-card__image {
+    height: 100px;
+    object-fit: cover;
+  }
+
+  .featured__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+  }
+
+  .featured__featured-card{
+    width: 45%;
+  }
+
+  .discover-more__container {
+
+  }
+
+
+
+
+}
+
+
+
+
+
+
 
 /*==============================================================================
 UTILITY
 ==============================================================================*/
+/* https://css-tricks.com/places-its-tempting-to-use-display-none-but-dont/ */
 .is-hidden {
-  display: none;
+  position: absolute; 
+  overflow: hidden; 
+  clip: rect(0 0 0 0); 
+  height: 1px; width: 1px; 
+  margin: -1px; padding: 0; border: 0; 
 }
 
 .big-title {
