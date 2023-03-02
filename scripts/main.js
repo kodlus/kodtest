@@ -133,14 +133,16 @@ const showCard = (num) => {
 /* Shows the first card */
 showCard(cardIndex);
 
-carouselNextButton.addEventListener("click", () => {
+carouselNextButton.addEventListener("mousedown", (e) => {
+  e.preventDefault();
   switchCard(+1);
   console.log(cardIndex)
-  indicatorNumber.innerText = `${cardIndex} / ${cardCollection.length}`
+  indicatorNumber.innerText = `${cardIndex} / ${cardCollection.length}`;
 });
 
-carouselPrevbutton.addEventListener("click", () => {
+carouselPrevbutton.addEventListener("mousedown", (e) => {
+  e.preventDefault();
   switchCard(-1);
   console.log(cardIndex)
   indicatorNumber.innerText = `${cardIndex} / ${cardCollection.length}`
-})
+});

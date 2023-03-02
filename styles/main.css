@@ -118,7 +118,7 @@ Popular products
 
 .discover-more__discover-card h3{
   font-weight: 400;
-  word-spacing: 4px;
+  letter-spacing: 1px;
 }
 
 .discover-card__details p {
@@ -215,8 +215,6 @@ https://stackoverflow.com/questions/21653978/font-awesome-icon-preventing-click-
   padding: 10px;
   background: orange;
 
-
-
 }
 
 .header__nav ul {
@@ -258,7 +256,6 @@ Logo
 Shopping cart
 =======================*/
 .header__shopping-cart {
-
   justify-self: self-end;
   align-self: center;
 }
@@ -480,8 +477,11 @@ Campaign carousel
 .campaign__carousel {
   position: relative;
 }
+
 .carousel__container {
   display: flex;
+  width: 100%;
+  margin: 0 auto;
   
 }
 .carousel__product-card {
@@ -542,8 +542,8 @@ Campaign carousel
 .indicator__next-button:focus,
 .indicator__previous-button:hover,
 .indicator__previous-button:focus {
-  background: var(--white);
-  color: var(--black);
+  background: var(--gray);
+  color: var(--white);
 }
 
 .indicator__next-button {
@@ -557,6 +557,7 @@ Campaign carousel
   top: 50%;
   transform: translateY(-50%);
 }
+
 /*====================================
 POPULAR CATEGORIES SECTION
 =====================================*/
@@ -626,6 +627,8 @@ DISCOVER MORE SECTION
 }
 
 .discover-more__container {
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .discover-more__discover-card {
@@ -633,17 +636,17 @@ DISCOVER MORE SECTION
   background: white;
   background-color: aquamarine;
   margin-bottom: 1em;
-  
 }
 
-a .discover-card__image {
+.discover-card__image-link {
   margin-bottom: 0.5em;
-  
+  width: 100%;
 }
 
 .discover-card__image {
   object-fit: cover;
   width: 100%;
+  max-height: 200px;
 }
 
 .discover-card__details {
@@ -694,6 +697,49 @@ a .service-card__image {
 
 .service-card__image {
   width: 70%;
+  object-fit: cover;
+  max-height: 150px;
+}
+
+.product-search__product-search-bar {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  justify-content: center;
+}
+
+.product-search-bar__input {
+  border-top: 1px solid black;
+  border-right: none;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  width: 50%;
+}
+
+.product-search-bar__input:focus {
+  outline: none;
+  border-top: 3px solid var(--green);
+  border-right: none;
+  border-bottom: 3px solid var(--green);
+  border-left: 3px solid var(--green);
+}
+
+.product-search-bar__button {
+  width: 40px;
+  background: var(--black);
+  color: var(--white);
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: none;
+}
+
+.product-search-bar__button:hover {
+  cursor: pointer;
+}
+
+.product-search-bar__button:active {
+  background-color: var(--green);
 }
 /*====================================
 PRODUCT SEARCH SECTION
@@ -801,7 +847,79 @@ MEDIA QUERY
   }
 }
 
-@media (min-width: 501px) and (max-width: 1000px) {
+@media (min-width: 501px) and (max-width: 800px) {
+
+  .campaign__carousel {
+    position: relative;
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .carousel__container {
+    
+  }
+  .carousel__product-card {
+    background-color: var(--white);
+    margin: 0 auto;
+    text-align: left;
+    padding: 1em;
+    max-width: 70%;
+    margin: 0 auto;
+    margin-bottom: 0.4em;
+    flex: 0 0 auto;
+  }
+  
+  .product-card__image {
+    border: 1px solid var(--gray);
+  }
+  
+  .product-card__details {
+    padding: 0.8em;
+    margin-bottom: 0.5em;
+    color: black;
+  }
+  
+  .details__tag-line {
+    margin-bottom: 1em;
+  }
+  
+  .product-card__button {
+    width: 100%;
+    padding: 10px 15px;
+    color: white;
+    background: var(--green);
+    border: 1px solid var(--green);
+  }
+  
+  .carousel__indicator {
+    padding: 10px 0;
+    display: flex;
+    width: 75%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+  
+  .indicator__next-button,
+  .indicator__previous-button {
+    padding: .8em;
+    border-radius: 50%;
+    border-style: none;
+    background: var(--black);
+    color: var(--white);
+    position:unset;
+  }
+  
+  
+  .indicator__next-button {
+    transform: none;
+  }
+  
+  .indicator__previous-button {
+    transform: none;
+  }
+
   .popular-categories__container {
     display: flex;
     flex-wrap: wrap;
@@ -830,14 +948,144 @@ MEDIA QUERY
   }
 
   .discover-more__container {
-
+    margin: 0 auto;
   }
 
+  .discover-card__image {
+    max-height: 320px;
+  }
 
-
-
+/*   .discover-more__discover-card {
+    margin: 0 auto;
+  } */
 }
 
+@media (min-width: 801px) and (max-width: 1400px) {
+  .campaign__carousel {
+    position: relative;
+    width: 45%;
+    margin: 0 auto;
+  
+  }
+
+  .carousel__container {
+    
+  }
+  .carousel__product-card {
+    background-color: var(--white);
+    margin: 0 auto;
+    text-align: left;
+    padding: 1em;
+    max-width: 70%;
+    margin: 0 auto;
+    margin-bottom: 0.4em;
+    flex: 0 0 auto;
+  }
+  
+  .product-card__image {
+    border: 1px solid var(--gray);
+  }
+  
+  .product-card__details {
+    padding: 0.8em;
+    margin-bottom: 0.5em;
+    color: black;
+  }
+  
+  .details__tag-line {
+    margin-bottom: 1em;
+  }
+  
+  .product-card__button {
+    width: 100%;
+    padding: 10px 15px;
+    color: white;
+    background: var(--green);
+    border: 1px solid var(--green);
+  }
+  
+  .carousel__indicator {
+    padding: 10px 0;
+    display: flex;
+    width: 75%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+  
+  .indicator__next-button,
+  .indicator__previous-button {
+    padding: .8em;
+    position: unset;
+  }
+  
+  
+  .indicator__next-button {
+    transform: none;
+  }
+  
+  .indicator__previous-button {
+    transform: none;
+  }
+
+  .popular-categories__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .popular-category__category-card {
+    width: 20%;
+  }  
+
+  .category-card__image {
+    height: 80px;
+    object-fit: cover;
+  }
+
+  .featured__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+  }
+
+  .featured__featured-card{
+    width: 30%;
+  }
+
+  .discover-more__container {
+    width: 80%;
+    margin: 0 auto
+  }
+
+  .discover-more__discover-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px
+  }
+
+  .discover-card__image-link {
+   
+    width: 100%;
+    grid-column: 1 / 2;
+    align-self: start;
+    justify-self: center
+  }
+
+  .discover-card__image {
+    max-height: 300px;
+  }
+
+  .discover-card__details {
+    width: 80%;
+    grid-column: 2 / 4;
+    align-self:auto;
+    justify-self: center;
+  }
+}
 
 
 
