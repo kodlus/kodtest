@@ -1,3 +1,6 @@
+"use strict";
+const v = "Hi! I'm a strict mode script!";
+
 /*============================================================================
 HEADER
 ==============================================================================*/
@@ -97,52 +100,97 @@ Campaign section
 /*====================================
 Campaign carousel (https://www.w3schools.com/w3css/w3css_slideshow.asp)
 =====================================*/
-let cardIndex = 1;
-const cardCollection = document.getElementsByClassName("carousel__product-card");
+let cardIndex = 0;
+const carouselContainer = document.getElementById("carousel__container");
 const carouselNextButton = document.getElementById("indicator__next-button");
-const carouselPrevbutton = document.getElementById("indicator__previous-button");
+const carouselPrevbutton = document
+  .getElementById("indicator__previous-button");
 const indicatorNumber = document.getElementById("indicator__number");
-indicatorNumber.innerText = `${cardIndex} / ${cardCollection.length}`
+
+// Fetching the card data and working with it
+fetch("scripts/data.json")
+  .then((response) => response.json())
+  .then((cardCollection) => { 
+    // Get the total numbers of cards, i.e. the length of the data object
+    const totalCards = Object.keys(cardCollection).length;
+    console.log(totalCards);
+
+    // Initialize the carousel indicator
+    indicatorNumber.innerText = `${cardIndex + 1} / ${totalCards}`;
+
+    // Initialize the first card from cardCollection
+    cards(cardCollection);
+
+    // Add event listeners to the next and previous buttons
+    carouselPrevbutton.addEventListener("mousedown", moveToPreviousCard);
+    carouselNextButton.addEventListener("mousedown", moveToNextCard);
+
+    /* Functions */
+
+    // render the current card
+    function cards () {
+      carouselContainer.innerHTML =
+      `
+      <div class="carousel__product-card ">
+      <a href="${cardCollection[cardIndex].link} target="_blank" ><img src="${cardCollection[cardIndex].image}"></a>
+      <div class="product-card__details"> 
+        <h3 class="details__product-name">
+        ${cardCollection[cardIndex].product}
+        </h3>
+        <h3 class="details__tag-line">
+        ${cardCollection[cardIndex].description}
+        </h3>
+        <p class="details__price">${cardCollection[cardIndex].price}</p>
+        <div class="details__rating">
+          ⭐⭐⭐⭐⭐ <!-- Ändra till SVG -->
+          <span class="details__rating">${cardCollection[cardIndex].rating}</span>
+          <span class="details__reviews">(${cardCollection[cardIndex].reviews})</span>
+        </div>
+      </div>
+      <button class="product-card__button">Lägg i varukorgen</button>
+    </div> <!-- End of carousel product card -->
+      `
+      // Reference the buy "lägg i varukorgen" button. Everytime cards() is envoked, the button is updated.
+      const buyButton = document.querySelector(".product-card__button");
+      
+      // Add event listener to the buy button - it's dynamic
+      buyButton.addEventListener("click", () => {
+        console.log(`This is the ${cardIndex + 1} card`)
+      })
+    }
+    
+    function moveToNextCard (e) {
+      e.preventDefault();
+      if (cardIndex === totalCards - 1) {
+        cardIndex = 0
+      } else {
+        cardIndex++;
+      }
+      // Update current card
+      cards()
+      indicatorNumber.innerText = `${cardIndex + 1} / ${totalCards}`;
+      console.log(cardIndex)
+      console.log("next card")
+    }
+    
+    function moveToPreviousCard (e) {
+      e.preventDefault();
+      if (cardIndex === 0) {
+        cardIndex = totalCards - 1;
+      } else {
+        cardIndex--;
+      }
+      
+      // Update current card
+      cards();
+      indicatorNumber.innerText = `${cardIndex + 1} / ${totalCards}`;
+      console.log(cardIndex)
+      console.log("previous card")
+    }
+})
 
 
-const switchCard = (num) => {
-  showCard(cardIndex += num)
-}
 
-const showCard = (num) => {
-  let i;
-  let cardCollection = document.getElementsByClassName("carousel__product-card");
+// GÖR SAMMA SAK FÖR POPULÄRA KATEGORIER: FETCH'EM!
 
-  /* Reset the cardIndex if it goes past the # of items in cardCollection */
-  if (num > cardCollection.length) {
-    cardIndex = 1; 
-  }
-
-  /* Go to the last item if num gets smaller than 1 (loop back) */
-  if (num < 1) {
-    cardIndex = cardCollection.length;
-  }
-
-  for (i = 0; i < cardCollection.length; i++) {
-    cardCollection[i].classList.add("is-hidden");
-  }
-
-  cardCollection[cardIndex - 1].classList.remove("is-hidden")
-}
-
-/* Shows the first card */
-showCard(cardIndex);
-
-carouselNextButton.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  switchCard(+1);
-  console.log(cardIndex)
-  indicatorNumber.innerText = `${cardIndex} / ${cardCollection.length}`;
-});
-
-carouselPrevbutton.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  switchCard(-1);
-  console.log(cardIndex)
-  indicatorNumber.innerText = `${cardIndex} / ${cardCollection.length}`
-});
+// konstig bugg: andra sliden glitchar när den laddas. Sen funkar karusellen helt ok

@@ -590,6 +590,23 @@ a .category-card__image {
   align-self: center;
 }
 
+/*====================================
+POPULAR PRODUCTS SECTION
+=====================================*/
+.popular-products-section {
+ padding: var(--standardPadding);
+}
+
+.popular-products__container {
+  margin: 0 auto;
+  display: grid;
+
+}
+
+.popular-products__product-card {
+  margin: 0 auto;
+  width: 50%;
+}
  /*====================================
 FEATURED SECTION
 =====================================*/
@@ -840,12 +857,12 @@ FOOTER
 /*==============================================================================
 MEDIA QUERY
 ==============================================================================*/
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
   .header__information-banner a:nth-child(3),
 .header__information-banner a:nth-child(4) {
   display: none;
   }
-}
+} */
 
 @media (min-width: 501px) and (max-width: 800px) {
 
@@ -855,9 +872,10 @@ MEDIA QUERY
     margin: 0 auto;
   }
 
-  .carousel__container {
+/*   .carousel__container {
     
-  }
+  } */
+
   .carousel__product-card {
     background-color: var(--white);
     margin: 0 auto;
@@ -898,7 +916,6 @@ MEDIA QUERY
     margin: 0 auto;
     align-items: center;
     justify-content: space-between;
-    
   }
   
   .indicator__next-button,
@@ -910,7 +927,6 @@ MEDIA QUERY
     color: var(--white);
     position:unset;
   }
-  
   
   .indicator__next-button {
     transform: none;
@@ -924,7 +940,7 @@ MEDIA QUERY
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    overflow: hidden;
+   
   }
 
   .popular-category__category-card {
@@ -936,8 +952,26 @@ MEDIA QUERY
     object-fit: cover;
   }
 
-  .featured__container {
+  /*====================================
+  popular products section
+  =====================================*/
+  .popular-products__container {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .popular-products__product-card {
+    background-color: aqua;
+    width: 25%;
+  }
+
+  /*====================================
+  featured section
+  =====================================*/
+  .featured__container {
+    display: flex; /* Möjligtvis byta till grid */
     flex-wrap: wrap;
     justify-content: center;
     gap: 1em;
@@ -947,6 +981,9 @@ MEDIA QUERY
     width: 45%;
   }
 
+  /*====================================
+  discover more section
+  =====================================*/
   .discover-more__container {
     margin: 0 auto;
   }

@@ -98,7 +98,7 @@
 
     <main>
       <div class="campaign-color-wrapper">
-<!--         <h1 class="page-title">OBH Nordica</h1> -->
+  <!-- <h1 class="page-title">OBH Nordica</h1> -->
 
         <section class="campaign-section">
           <h2 class="campaign__title">
@@ -110,63 +110,10 @@
            
           <!-- Campaign carousel -->
           <div class="campaign__carousel">
-            <div class="carousel__container">
-              <div class="carousel__product-card ">
-                <img src="images/pictures/products/beverages/2420/2420_Webformat.jpg" alt="" class="product-card__image">
-                <div class="product-card__details"> 
-                  <h3 class="details__product-name">
-                    Silence Force+
-                  </h3>
-                  <h3 class="details__tag-line">
-                    Tystlåten dammsugare med påse
-                  </h3>
-                  <p class="details__price">4999 SEK</p>
-                  <div class="details__rating">
-                    ⭐⭐⭐⭐⭐ <!-- Ändra till SVG -->
-                    <span class="details__rating">4.1</span>
-                    <span class="details__reviews">(15)</span>
-                  </div>
-                </div>
-                <button class="product-card__button">Lägg i varukorgen</button>
-              </div> <!-- End of carousel product card -->
-  
-              <div class="carousel__product-card ">
-                <img src="images/pictures/products/beverages/2420/2420_Webformat.jpg" alt="" class="product-card__image">
-                <div class="product-card__details"> 
-                  <h3 class="details__product-name">
-                    Silence Force+
-                  </h3>
-                  <h3 class="details__tag-line">
-                    Tystlåten dammsugare med påse
-                  </h3>
-                  <p class="details__price">4999 SEK</p>
-                  <div class="details__rating">
-                    ⭐⭐⭐⭐⭐ <!-- Ändra till SVG -->
-                    <span class="details__rating">4.1</span>
-                    <span class="details__reviews">(15)</span>
-                  </div>
-                </div>
-                <button class="product-card__button">Lägg i varukorgen</button>
-              </div> <!-- End of carousel product card -->
-  
-              <div class="carousel__product-card ">
-                <img src="images/pictures/products/beverages/2420/2420_Webformat.jpg" alt="" class="product-card__image">
-                <div class="product-card__details"> 
-                  <h3 class="details__product-name">
-                    Silence Force+
-                  </h3>
-                  <h3 class="details__tag-line">
-                    Tystlåten dammsugare med påse
-                  </h3>
-                  <p class="details__price">4999 SEK</p>
-                  <div class="details__rating">
-                    ⭐⭐⭐⭐⭐ <!-- Ändra till SVG -->
-                    <span class="details__rating">5.0</span>
-                    <span class="details__reviews">(78)</span>
-                  </div>
-                </div>
-                <button class="product-card__button">Lägg i varukorgen</button>
-              </div> <!-- End of carousel product card -->
+            <div id="carousel__container" class="carousel__container">
+
+              <!-- Content is generated with JS. -->
+              <!-- See campaign carousel in main.js for more information -->
               
             </div> <!-- End of carousel container-->
             <div class="carousel__indicator">
@@ -178,7 +125,7 @@
         </section> <!-- End of campaign section -->
       </div>
 
-      
+
       <section class="popular-categories-section">
         <h2 class="section-title">Populära kategorier</h2>
 
@@ -230,6 +177,36 @@
         </div> <!-- End of popular categories container -->
       </section>
 
+      <!-- Popular Product Section -->
+      <section class="popular-products-section">
+        <h2 class="section-title">Populära produkter</h2>
+
+        <div class="popular-products__container">
+          <!-- Popular product card -->
+          <div class="popular-products__product-card">
+            <img src="images/pictures/products/beverages/2420/2420_Webformat.jpg" alt="" class="product-card__image">
+            <div class="product-card__details"> 
+             <h3 class="details__product-name">
+              Silence Force+
+              </h3>
+              <h3 class="details__tag-line">
+              Tystlåten dammsugare med påse
+              </h3>
+              <p class="details__price">4999 SEK</p>
+              <div class="details__rating">
+               ⭐⭐⭐⭐⭐ <!-- Ändra till SVG -->
+               <span class="details__rating">5.0</span>
+               <span class="details__reviews">(78)</span>
+             </div>
+            </div>
+            <button class="product-card__button">Lägg i varukorgen</button>
+          </div> <!-- End of popular product card -->
+        </div>
+
+
+      </section> <!-- End of popular product section -->
+
+      <!-- Featured Section -->
       <section class="featured-section">
         <h2 class="section-title">Nyheter</h2> 
         <div class="featured__container">
@@ -256,10 +233,9 @@
               <p>Upplev skillnaden med våra Powelix-produkter</p>
             </div>
           </div> <!-- End of featured card -->
-      </section>
+      </section> <!-- End of Featured Section -->
 
-
-
+      <!-- Discover More Section -->
       <section class="discover-more-section">
         <h2 class="section-title">Upptäck mer</h2> 
         <div class="discover-more__container">
@@ -283,8 +259,9 @@
             
           </div><!-- End of discover card -->
         </div> <!-- End of discover more container -->
-      </section> <!-- end of discover more section -->
+      </section> <!-- End of discover more section -->
 
+      <!-- Service Section -->
       <section class="services-section">
         <h2 class="section-title">Service</h2>  <!-- Byt namn -->
         <div class="services__service-card">
@@ -319,7 +296,7 @@
 
 
 
-
+      <!-- Product Search Section -->
       <section class="product-search-section">
         <div class="product-search__background-container">
         <div class="product-search__details">
@@ -335,7 +312,7 @@
         <a href="#" class="">Var kan jag hitta modellnumret?</a>
         </div>
 
-      </section>
+      </section> <!-- End of product search section -->
     </main>
     
     <footer class="footer ">
@@ -403,6 +380,7 @@
       </div>
     </footer>
 
+    <script src="scripts/data.js"></script>
     <script src="scripts/main.js"></script>
   </body>
 </html>
