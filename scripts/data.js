@@ -36,6 +36,6 @@ const productsData = {
 }
 
 
-
+export {productsData};
 
 

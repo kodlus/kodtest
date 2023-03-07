@@ -1,8 +1,4 @@
 /*==============================================================================
-NOTES
-==============================================================================*/
-
-/*==============================================================================
 VARIABLES
 ==============================================================================*/
 /*=============================================
@@ -36,107 +32,7 @@ body {
   min-width: 344px;
 }
 
-/*==============================================================================
-TYPOGRAPHY
-==============================================================================*/
-/*=============================================
-Header
-==============================================*/
 
-/*====================================
-Shopping cart
-=====================================*/
-.shopping-cart__title {
-  font-size: 1.2rem;
-}
-
-.shopping-cart__close-button {
-  font-size: .875rem;
-  font-weight: 700;
-}
-
-.shopping-cart__body,
-.summary__content,
-.summary__discount,
-.summary__total-sum {
-  font-size: 1rem;
-}
-
-/*====================================
-Information banner
-=====================================*/
-.header__information-banner {
-
-  font-size: 0.9rem;
-}
-
-/*=============================================
-Main
-==============================================*/
-.page-title {
-  font-size: 1.7rem;
-}
-
-/*====================================
-Campaign section
-=====================================*/
-.campaign__title {
-  line-height: 1.5;
-  letter-spacing: 1px;
-  font-size: 1.7rem;
-}
-
-.campaign__tagline {
-  font-size: 1rem;
-  line-height: 1.5;
-  letter-spacing: 1px;
-  font-size: 1.2rem;
-}
-
-.product-card__details {
-
-}
-
-.details__product-name {
-  font-size: 1.2rem;
-}
-
-.details__tag-line {
-  font-size: 1rem;
-}
-
-.details__price {
-  font-size: 1.2rem;
-  font-weight: 900;
-}
-/*====================================
-Popular products
-=====================================*/
-.discover-more__discover-card {
-  text-align: left;
-}
-
-.discover-more__discover-card h3{
-  font-weight: 400;
-  letter-spacing: 1px;
-}
-
-.discover-card__details p {
-  font-size: .9rem;
-}
-
-
-.footer__header {
-  font-size: 1.3rem;
-}
-.copyright {
-  font-size: 0.75rem;
-  color: white;
-}
-
-.section-title {
-  font-size: 1.7rem;
-}
 /*==============================================================================
 LAYOUT
 ==============================================================================*/
@@ -281,7 +177,7 @@ Shopping cart
   right: 0;
   width: 100%;
   height: 100vh;
-  background: orange;
+  background: var(--white)
 }
 
 .shopping-cart__header {
@@ -311,13 +207,73 @@ Shopping cart
   font-size: 1.1rem;
 }
 
-.shopping-cart__body {
+.shopping-cart__container {
  padding: 1em;
  overflow-y: scroll;
  height: 100vh; /* annars krånglar JS-lösningen */
 }
 
-.shopping-cart__summary {
+.shopping-cart-item {
+  display: flex;
+  
+  position: relative;
+
+  margin-bottom: 2em;
+}
+
+.shopping-cart-item::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--gray);
+  left: 0;
+  bottom: -1em;
+  position: absolute;
+
+}
+
+.shopping-cart-item__image {
+  width: 20%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.shopping-cart-item__information {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.shopping-cart-item__summary {
+  display: flex;
+  justify-content: space-around;
+}
+
+.shopping-cart-item__quantity-input {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.shopping-cart-item__button {
+  width: 20%;
+}
+
+.shopping-cart-item__quantity {
+  width: 20%;
+  text-align: center;
+}
+
+
+.shopping-cart-item__quantity-input {
+  display: flex;
+  flex-direction: row;
+}
+
+.shopping-cart-checkout {
   background-color: blanchedalmond;
   position: absolute;
   width: 100%;
@@ -325,18 +281,18 @@ Shopping cart
   padding: 1em;
 }
 
-.summary__content,
-.summary__discount,
-.summary__total-sum {
+.shopping-cart-checkout__content,
+.shopping-cart-checkout__discount,
+.shopping-cart-checkout__total-sum {
   display: flex;
   justify-content: space-between;
 }
 
-.summary__content {
+.shopping-cart-checkout__content {
   margin-bottom: 0.2em;
 }
 
-.summary__button {
+.shopping-cart-checkout__button {
   width: 100%;
 }
 /*====================================
@@ -436,6 +392,51 @@ main {
   margin-bottom: 0.5em;
 }
 
+
+/*=======================
+Product card
+=======================*/
+.product-cards__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+}
+.product-card { 
+  background-color: var(--white);
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto minmax(auto, 70px) auto auto auto;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto;
+  max-width: 70%;
+ 
+  border: 1px solid black; /* debug */
+}
+
+.product-card__button {
+  
+}
+
+
+.product-card__image {
+  border: 1px solid var(--gray);
+  width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin-bottom: 0.5em;
+}
+
+.product-card__rating-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0.5em;
+}
+
+
 /*====================================
 CAMPAIGN SECTION
 =====================================*/
@@ -495,9 +496,7 @@ Campaign carousel
   flex: 0 0 auto;
 }
 
-.product-card__image {
-  border: 1px solid var(--gray);
-}
+
 
 .product-card__details {
   padding: 0.8em;
@@ -579,12 +578,7 @@ a .category-card__image {
   margin: 0 auto;
 }
 
-.category-card__image  {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  object-position: center;
-}
+
 
 .category-card__details {
   align-self: center;
@@ -595,17 +589,16 @@ POPULAR PRODUCTS SECTION
 =====================================*/
 .popular-products-section {
  padding: var(--standardPadding);
+ background-color: aqua;
 }
 
-.popular-products__container {
-  margin: 0 auto;
-  display: grid;
-
+.product-card--popular {
+  width: 45%;
+  padding: 0.5em;
 }
 
-.popular-products__product-card {
-  margin: 0 auto;
-  width: 50%;
+.product-card__rating-container--popular {
+  
 }
  /*====================================
 FEATURED SECTION
@@ -1144,4 +1137,8 @@ UTILITY
 .big-title {
   font-size: 2rem;
   margin-bottom: 2em;
+}
+
+.margin-right {
+  margin-right: 6px;
 }

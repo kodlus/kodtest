@@ -1,0 +1,123 @@
+/*==============================================================================
+VARIABLES
+==============================================================================*/
+/*=============================================
+Colors
+==============================================*/
+:root {
+  --white: rgb(254 254 254);
+  --black: rgb(39 39 39);
+  --gray: rgb(201, 201, 201);
+  --green: rgb(92, 146, 10);
+}
+
+/*==============================================================================
+TYPOGRAPHY
+==============================================================================*/
+/*=============================================
+BLOCKS
+==============================================*/
+/*====================================
+Button
+=====================================*/
+/*====================================
+Product card
+=====================================*/
+.product-card__product-name {
+  font-size: 1.2rem;
+}
+
+.product-card__description {
+  font-size: 1rem;
+  margin-bottom: 0.3em;
+}
+
+.product-card__price {
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 0.5em;
+}
+
+/*=============================================
+Header
+==============================================*/
+
+/*====================================
+Shopping cart
+=====================================*/
+.shopping-cart__title {
+  font-size: 1.2rem;
+}
+
+.shopping-cart__close-button {
+  font-size: .875rem;
+  font-weight: 700;
+}
+
+.shopping-cart__container,
+.shopping-cart-checkout__content,
+.shopping-cart-checkout__discount,
+.shopping-cart-checkout__total-sum {
+  font-size: 1rem;
+}
+
+/*====================================
+Information banner
+=====================================*/
+.header__information-banner {
+
+  font-size: 0.9rem;
+}
+
+/*=============================================
+Main
+==============================================*/
+.page-title {
+  font-size: 1.7rem;
+}
+/*====================================
+Campaign section
+=====================================*/
+.campaign__title {
+  line-height: 1.5;
+  letter-spacing: 1px;
+  font-size: 1.7rem;
+}
+
+.campaign__description {
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+}
+
+
+/*====================================
+Popular products
+=====================================*/
+.discover-more__discover-card {
+  text-align: left;
+}
+
+.discover-more__discover-card h3{
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.discover-card__details p {
+  font-size: .9rem;
+}
+
+
+.footer__header {
+  font-size: 1.3rem;
+}
+.copyright {
+  font-size: 0.75rem;
+  color: white;
+}
+
+.section-title {
+  font-size: 1.7rem;
+}
