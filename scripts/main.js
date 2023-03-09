@@ -1,7 +1,7 @@
 "use strict";
 const v = "Hi! I'm a strict mode script!";
 
-const cartItemContainer = document.getElementsByClassName("shopping-cart__container"); 
+const cartItemContainer = document.getElementsByClassName("shopping-cart-inner__item-container"); 
 
 import {updateCartTotal} from "/scripts/shopping_cart.js"
 updateCartTotal()
@@ -17,11 +17,16 @@ TOGGLE MENUS
 Global
 =========================================================*/
 const navButton = document.querySelector("#header__nav-button");
+console.log(navButton)
 const headerNav = document.querySelector("#header__nav");
-const shoppingCartButton = document.querySelector("#shopping-cart__button");
-const shoppingCart = document.querySelector("#shopping-cart");
-const shoppingCartDiv = document.querySelector(".header__shopping-cart");
-const closeButton = document.querySelector("#shopping-cart__close-button")
+console.log(headerNav)
+const shoppingCartButton = document.querySelector("#shopping-cart-outer__button");
+console.log(shoppingCartButton)
+const shoppingCart = document.querySelector("#shopping-cart-inner");
+console.log(shoppingCart)
+const shoppingCartDiv = document.querySelector(".shopping-cart-outer");
+const closeButton = document.querySelector("#shopping-cart-inner__close-button")
+console.log(closeButton)
 
 /*=========================================================
 Functions
@@ -36,6 +41,9 @@ const contentToggle= (element1, element2) => {
   }
 }
 
+// MÅSTE SES ÖVER! 
+
+
 /* Checks if a node is a child of a parent element. Returns true or false */
 /* https://developer.mozilla.org/en-US/docs/Web/API/Node/contains */
 function isAChildOf(node, parent) {
@@ -47,10 +55,10 @@ Navigation
 =========================================================*/
 /* Toggle the navigation on or off */
 navButton.addEventListener("click", (e) => {
-    let ClosestBtn = e.target;
-    if (closeButton) {
+    let closestButton = e.target;
+    if (closestButton) {
           contentToggle(headerNav, shoppingCart);
-    console.log("clicked")
+    console.log(e)
     }
 
 });
@@ -75,7 +83,7 @@ document.addEventListener("click", (e) => {
   // Closes the headerNav if the user clicks outside it. If the node is a child of headerNav, and contains the class button, nothing happens
   if (isAChildOf(node, headerNav) !== true && e.target.classList.contains("button") !== true ) {
       headerNav.classList.add("is-hidden") }
-});
+  });
 
 closeButton.addEventListener("click", () => {
   shoppingCart.classList.add("is-hidden");

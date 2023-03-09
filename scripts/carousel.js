@@ -3,6 +3,7 @@
 IMPORTED DATA, VARIABLES, ETC. 
 ==============================================================================*/
 import { addToCartClicked } from "./shopping_cart.js";
+import { carouselCardHtml } from "./utility.js";
 
 /*============================================================================
 CONTENT & EXPORT FUNCTION
@@ -15,10 +16,10 @@ export default async function loadCarousel() {
     // 1. Get access to carousel elements, as well as create a cardIndex
     let cardIndex = 0;
     const carouselContainer = document.getElementById("carousel__container");
-    const carouselNextButton = document.getElementById("indicator__next-button");
+    const carouselNextButton = document.getElementById("carousel__next-button");
     const carouselPrevbutton = document
-    .getElementById("indicator__previous-button");
-    const cardIndicator = document.getElementById("indicator__number");
+    .getElementById("carousel__previous-button");
+    const cardIndicator = document.getElementById("carousel__indicator-number");
   
     
     // 2. Get the total numbers of cards, i.e. the length of the data object
@@ -36,44 +37,8 @@ export default async function loadCarousel() {
 
     // FUNCTIONS
     function generateCard () {
-      carouselContainer.innerHTML =
-      `
-      <div class="product-card">
-        <a href="${carouselCards[cardIndex].link} target="_blank" class="product-card__link">
-          <img src="${carouselCards[cardIndex].image}" class="product-card__image">
-        </a>
-        
-        <h3 class="product-card__product-name">
-          ${carouselCards[cardIndex].product}
-        </h3>
-    
-        <p class="product-card__description">
-          ${carouselCards[cardIndex].description}
-        </p>
-    
-        <p class="product-card__price">
-          ${carouselCards[cardIndex].price} SEK
-        </p>
-        
-        <div class="product-card__rating-container">
-          <span class="product-card__star-rating margin-right">
-          ${carouselCards[cardIndex].stars} <!-- Ändra till SVG -->
-          </span>
-    
-          <span class="product-card__rating">
-            ${carouselCards[cardIndex].rating}
-          </span>
-    
-          <span class="product-card__reviews">
-            (${carouselCards[cardIndex].reviews})
-          </span>
-      </div>
+      carouselContainer.innerHTML = carouselCardHtml(carouselCards, cardIndex)
 
-      <button class="button product-card__button button__add-to-cart">
-        Lägg i varukorgen
-      </button>
-    </div> <!-- End of carousel product card -->
-      `
 
       // 6. Access the buy button of the newly created product card 
       const buyButton = document.querySelector(".product-card__button");

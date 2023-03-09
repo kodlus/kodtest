@@ -3,6 +3,7 @@ const v = "Hi! I'm a strict mode script!";
 /*============================================================================
 IMPORTED DATA, VARIABLES, ETC. 
 ==============================================================================*/
+import { shoppingCartItemHtml } from "./utility.js";
 
 /*============================================================================
 CONTENT
@@ -52,7 +53,8 @@ const increaseQuantity = (e) => {
 // Used for updating the entire shopping cart
 const updateCartTotal = () => {
   // Get the container for the cart items (shopping cart container), could also work with get element by id. Adding [0] after getElementsByClassName does the same thing, basically. 
-  const cartItemContainer = document.getElementById("shopping-cart__container")
+  const cartItemContainer = document.getElementById("shopping-cart-inner__item-container")
+ 
   // Get all of the shopping cart items inside the container
   let cartItems = cartItemContainer.getElementsByClassName("shopping-cart-item");
 
@@ -88,35 +90,72 @@ const updateCartTotal = () => {
   // Get the shopping cart discount element and update it...........
 
   // Get the shopping cart content cost element and update it
-  document.getElementsByClassName("shopping-cart-checkout__content")[0].children[1].innerText = `${total} SEK`;
+  document.getElementsByClassName("shopping-cart-inner__items-sum")[0].children[1].innerText = `${total} SEK`;
   
   // Get the shopping cart total cost element and update it
-  document.getElementsByClassName("shopping-cart-checkout__total-sum")[0].children[1].innerText = `${total - discount} SEK`;
+  document.getElementsByClassName("shopping-cart-inner__items-total-sum")[0].children[1].innerText = `${total - discount} SEK`;
+
+  // Get the shopping cart indicator and update it
+  const shoppingCartIndicator = document.getElementById("shopping-cart-outer__quantity-indicator");
 
 
+/*   Object.keys(popularProductsCards).length */
 
 
+  if(cartItemContainer.childElementCount === 0) {
+    shoppingCartIndicator.innerText = "0";
+  
+  } else {
+    // Initialize an empty array holding quantity data for each shopping item
+    let totalQuant = [];
 
+    // check each item inside the container
+    for (let i = 0; i < cartItems.length; i++) {
+      
+      // Get the item
+      let cartItem = cartItems[i];
+      
+      // Get its value
+      let value =cartItem.getElementsByClassName("shopping-cart-item__quantity")[0].value;
+      console.log(value)
 
+      // Convert value from string to integer
+      value = parseInt(value, 10);
 
+      // Push the new value to totalQuant. Remember, the value gets updated every time the increase or decrease button is pushed
+      totalQuant.push(value);
+    }
+    
+    // Reduce the array to a single integer 
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce 
+      const initialValue = 0;
+      let sumWithInitial = totalQuant.reduce (
+      (accumulator, currentValue) => accumulator + currentValue, initialValue);
+      console.log(sumWithInitial);
 
+      shoppingCartIndicator.innerText = sumWithInitial;
+    }
 
-  console.log(cartItemContainer.childElementCount)
-
-  const message = document.createElement("p");
-  message.setAttribute("id", "strul")
-  message.innerText = "Din korg är tom :(";
-  if (cartItemContainer.childElementCount == 0) {
-    cartItemContainer.appendChild(message);
+  // Add or remove shopping cart message
+  if (cartItemContainer.childElementCount === 0) {
+    createMessage("shopping-cart-message", "shopping-cart-message");
   } else if (cartItemContainer.childElementCount > 0) {
-    remove();
+    removeMessage("shopping-cart-message");
   }
 } // End of function
 
 
-function remove ()
- {
-  const message = document.getElementById("strul");
+const createMessage = (id, className) => {
+  const message = document.createElement("p");
+  message.setAttribute("id", `${id}`)
+  message.setAttribute("class", `${className}`)
+  message.innerText = "Din korg är tom :(";
+  document.getElementById("shopping-cart-inner__item-container").appendChild(message);
+}
+
+const removeMessage = (id) => {
+  const message = document.getElementById(`${id}`);
+  // If the message is not null, remove it. If the message is null, i.e. the message does not exist, do nothing
   if (message !== null) {
     message.parentNode.removeChild(message)
   }
@@ -136,61 +175,44 @@ const addToCartClicked = (e) => {
  
   // Get the image source
   const imageSrc = shopItem.getElementsByClassName("product-card__image")[0].src;
-  // Add information to the addItemToCart function:
+
+  // Send information to the addItemToCart function:
   addItemToCart(name, price, imageSrc)
 
   // Update the cart total
   updateCartTotal();
 } // End of function
 
-// The function is triggered when buy buttons are clicked, and creates an item element with the information from addToCartClicked. The item is placed in the shopping cart
+// This function is triggered when buy buttons are clicked, and creates an item element with the information from addToCartClicked. The item is placed in the shopping cart
 const addItemToCart = (name, price, imageSrc) => {
   // Create a shopping cart item
   const shoppingCartItem = document.createElement("div");
   shoppingCartItem.classList.add("shopping-cart-item")
 
   // Get access to the shopping cart container
-  const shoppingCartContainer = document.getElementsByClassName("shopping-cart__container")[0];
+  const shoppingCartContainer = document.getElementsByClassName("shopping-cart-inner__item-container")[0];
 
   // Get the names of all shopping cart items
   let shoppingCartItemNames = shoppingCartContainer.getElementsByClassName("shopping-cart-item__name");
 
   // Check if the item already exists inside the shopping cart with loop
   for (let item of shoppingCartItemNames) {
-    if (item.innerText == name) {
-      alert("This item is already added to the cart")
-      return; // ÄNDRA TILL IF ELLER SWITCH FÖR ATT ANTINGEN LÄGGA TILL EN NY ITEM, ELLER ADDERA QUANTITY INPUT MED 1
+    if (item.innerText === name) {
+      // If the item exists, update its value by 1. This long line represents the path to an item's quantity  indicator, which increments every time item duplicates are added to the shopping cart 
+      item.nextElementSibling.children[1].children[1].value ++
+
+      // Break loop, otherwise a duplicate item gets created 
+      return
     }
   }
 
-  // Create an HTML template and add the parameters
-  const shoppingCartHtml = `
-      <img src="${imageSrc}" alt="" class="shopping-cart-item__image">
-
-      <div class="shopping-cart-item__information">
-        <p class="shopping-cart-item__name">
-          <a href="#">${name}</a>
-        </p>
-        <div class="shopping-cart-item__summary">
-          <button class="shopping-cart-item__button shopping-cart-item__button--delete">Trash</button>
-          <div class="shopping-cart-item__quantity-input">
-            <button class="shopping-cart-item__button shopping-cart-item__button--subtract"> 
-              - 
-            </button>
-            <input type="text" disabled="" value="1" class="shopping-cart-item__quantity">
-            <button class="shopping-cart-item__button shopping-cart-item__button--add"> 
-              + 
-            </button>
-          </div> <!-- End of item quantity input -->
-          <p class="shopping-cart-item__total-price">${price}</p>
-        </div> <!-- End of shopping cart summary -->
-
-      </div> <!-- End of shopping cart item information -->
-  `
-  // Give the shopping cart item HTML
+  // Add the parameters to the imported utility function, generating shopping cart HTML
+  const shoppingCartHtml = shoppingCartItemHtml(imageSrc, name, price);
+  // Apply the newly created shopping cart HTML to the shopping cart item div
   shoppingCartItem.innerHTML = shoppingCartHtml;
   // Append the new shopping cart item to the end of the cart container
   shoppingCartContainer.append(shoppingCartItem);
+ 
 
   // Add event listeners to the newly created shopping cart items
   // Delete button
@@ -199,7 +221,7 @@ const addItemToCart = (name, price, imageSrc) => {
   // Subtract button
   shoppingCartItem.getElementsByClassName("shopping-cart-item__button--subtract")[0].addEventListener("mouseup", subtractQuantity);
 
-  // Add button
+  // Increase button
   shoppingCartItem.getElementsByClassName("shopping-cart-item__button--add")[0].addEventListener("mouseup", increaseQuantity);
 } // End of function
 

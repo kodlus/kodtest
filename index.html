@@ -20,12 +20,14 @@
       <div class="header__container">
         <!-- Row 1 -->
         <div class="header__row-1">
-          <!-- Nav -->
-          <button href="#" id="header__nav-button" class="header__nav-button button"> 
-            <i class="fa-solid fa-bars"></i>
-          </button>
+          <!-- Nav -->            
+          <label for="header__nav-button">
+            <button id="header__nav-button" class="button header__nav-button">
+              <span class="header__nav-button">text</span>
+            </button>
+          </label>
 
-          <nav id="header__nav" class="header__nav is-hidden">
+          <nav id="header__nav" class="nav header__nav is-hidden">
             <ul class="nav__links">
               <li class="nav__link"><a href="#">För hemmet</a></li>
               <li class="nav__link"><a href="#">Matlagning</a></li>
@@ -40,46 +42,50 @@
             <a href="#"><img src="images/logos/OBH_Nordica1 (2).png" alt="OBH Nordica logo"></a>
           </div>
 
-          <!-- Shopping cart -->
-          <div class="header__shopping-cart">
-            <button id="shopping-cart__button" class="shopping-cart__button button"><i class="fa-solid fa-cart-shopping button"></i></button>
+          <!-- Shopping cart outer-->
+          <div class="shopping-cart-outer">
+            <button id="shopping-cart-outer__button" class="button shopping-cart-outer__button"><i class="fa-solid fa-cart-shopping button"></i></button>
+            <label for="shopping-cart-outer__button">
+              <span id="shopping-cart-outer__quantity-indicator" class="shopping-cart-outer__quantity-indicator"></span>
+            </label>
           </div>
 
-          <div id="shopping-cart" class="shopping-cart is-hidden">
-            <div class="shopping-cart__header">
-              <h3 class="shopping-cart__title">Din varukorg</h3>
-              <button id="shopping-cart__close-button" class="shopping-cart__close-button"><p>Stäng</p><span>X</span></button>
+          <!-- Shopping cart inner-->
+          <div id="shopping-cart-inner" class="shopping-cart-inner is-hidden">
+            <div class="shopping-cart-inner__header">
+              <h3 class="shopping-cart-inner__title">Din varukorg</h3>
+              <button id="shopping-cart-inner__close-button" class="button shopping-cart-inner__close-button"><p>Stäng</p><span>X</span></button>
             </div>
 
-            <div id="shopping-cart__container" class="shopping-cart__container">
-            </div> <!-- End of shopping cart container -->
+            <div id="shopping-cart-inner__item-container" class="shopping-cart-inner__item-container">
+              <!-- Content is generated with JS -->
+            </div> 
 
-            <div class="shopping-cart-checkout">
-              <div class="shopping-cart-checkout__content">
+            <div class="shopping-cart-inner__checkout">
+              <div class="shopping-cart-inner__items-sum">
                 <p>Din varukorg</p>
                 <p>0 SEK</p>
               </div>
-              <div class="shopping-cart-checkout__discount">
+              <div class="shopping-cart-inner__items-discount">
                 <p>Rabatt</p>
                 <p>-0,00 SEK</p>
               </div>
-              <div class="shopping-cart-checkout__total-sum">
+              <div class="shopping-cart-inner__items-total-sum">
                 <p>Totalt</p>
                 <p>0 SEK</p>
               </div>
-              <button class="shopping-cart-checkout__button">Gå till kassan</button>
+              <button class="button shopping-cart-inner__checkout-button">Gå till kassan</button>
             </div>
       
           </div> <!-- End of shopping cart -->
-
         </div><!-- End of row-1 -->
       
         <!-- Row 2 -->
         <div class="header__row-2">
           <!-- Search bar -->
-          <div class="header__search-bar">
+          <div class="search-bar search-bar--header">
             <input type="search" name="search-bar" id="search-bar__input" class="search-bar__input">
-            <button class="search-bar__button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="button search-bar__button"><i class="fa-solid fa-magnifying-glass"></i></button>
           </div>
         </div> <!-- End of row 2 -->
 
@@ -101,26 +107,24 @@
   <!-- <h1 class="page-title">OBH Nordica</h1> -->
 
         <section class="campaign-section">
-          <h2 class="campaign__title">Februari-rea</h2>
+          <h2 class="section-title">Februari-rea</h2>
           
-          <p class="campaign__description">
+          <p class="campaign-section__description">
             Fira kärlekens månad med oss! <br>
             Just nu får du 20% rabatt på utvald sortiment när du använder koden FEBSALE i kassan
           </p>
            
           <!-- Campaign carousel -->
-          <div class="campaign__carousel">
+          <div class="carousel">
             <div id="carousel__container" class="carousel__container">
-              
-
               <!-- Content is generated with JS. -->
               <!-- See campaign carousel in main.js for more information -->
-              
             </div> <!-- End of carousel container-->
+            
             <div class="carousel__indicator">
-              <button id="indicator__previous-button" class="indicator__previous-button"><--</button>
-              <span id="indicator__number" class="indicator__number"> <!-- generated with JS --> </span>
-              <button id="indicator__next-button" class="indicator__next-button">--></button>
+              <button id="carousel__previous-button" class="carousel__previous-button"><--</button>
+              <span id="carousel__indicator-number" class="carousel__indicator-number"> <!-- generated with JS --> </span>
+              <button id="carousel__next-button" class="carousel__next-button">--></button>
             </div> <!-- End of Carousel indicator -->
           </div> <!-- End of campaign carousel -->
         </section> <!-- End of campaign section -->
@@ -130,92 +134,91 @@
       <section class="popular-categories-section">
         <h2 class="section-title">Populära kategorier</h2>
 
-        <div class="popular-categories__container">
-          <div class="popular-category__category-card">
+        <div class="popular-categories__card-container">
+          <div class="category-card">
             <a href="#"><img src="images/pictures/products/beverages/2420/2420_Styling09.jpg" alt="" class="category-card__image"></a>
 
               <div class="category-card__details">
-              <h3 class="details__product-name">Kaffebryggare</h3>
-              <p class="details__product-tagline">En helt ny kaffeupplevelse</p>
+              <h3 class="category-card__product-name">Kaffebryggare</h3>
+              <p class="category-card__description">En helt ny kaffeupplevelse</p>
             </div>
           </div> <!-- End of category card -->
 
-          <div class="popular-category__category-card">
+          <div class="category-card">
             <a href="#"><img src="images/pictures/products/home_cleaning/VO6164NA_10_Styling02.jpg" alt="" class="category-card__image"></a>
 
             <div class="category-card__details">
-              <h3 class="details__product-name">Dammsugare</h3>
-              <p class="details__product-tagline">Välj bland miljövänliga och effektiva dammsugare</p>
+              <h3 class="category-card__product-name">Dammsugare</h3>
+              <p class="category-card__description">Välj bland miljövänliga och effektiva dammsugare</p>
             </div>
           </div> <!-- End of category card -->
 
-          <div class="popular-category__category-card">
+          <div class="category-card">
             <a href="#"><img src="images/pictures/products/electrical_cooking/AG5018S0_Styling17.jpg" alt="" class="category-card__image"></a>
 
             <div class="category-card__details">
-              <h3 class="details__product-name">Airfryers</h3>
-              <p class="details__product-tagline">Spara upp till 65% energi med en airfryer</p>
+              <h3 class="category-card__product-name">Airfryers</h3>
+              <p class="category-card__description">Spara upp till 65% energi med en airfryer</p>
             </div>
           </div> <!-- End of category card -->
 
-          <div class="popular-category__category-card">
+          <div class="category-card">
             <a href="#"><img src="images/pictures/products/electrical_cooking/GO722DS0_02_Styling01(2).jpg" alt="" class="category-card__image"></a>
 
             <div class="category-card__details">
-              <h3 class="details__product-name">Optigrill</h3>
-              <p class="details__product-tagline">Grillar med förinställda program för den kräsna</p>
+              <h3 class="category-card__product-name">Optigrill</h3>
+              <p class="category-card__description">Grillar med förinställda program för den kräsna</p>
             </div>
           </div> <!-- End of category card -->
 
-          <div class="popular-category__category-card">
+          <div class="category-card">
             <a href="#"><img src="images/pictures/products/personal_care/3040_Product02.jpg" alt="" class="category-card__image"></a>
 
               <div class="category-card__details">
-              <h3 class="details__product-name">Plattång</h3>
-              <p class="details__product-tagline">Noga utformade för att passa din hårtyp</p>
+              <h3 class="category-card__product-name">Plattång</h3>
+              <p class="category-card__description">Noga utformade för att passa din hårtyp</p>
             </div>
           </div> <!-- End of category card -->
-        </div> <!-- End of popular categories container -->
-      </section>
+        </div> <!-- End of popular categories card container -->
+      </section> <!-- End of popular catergories section -->
 
       <!-- Popular Product Section -->
       <section class="popular-products-section">
         <h2 class="section-title">Populära produkter</h2>
 
-        <div id="product-cards__container--popular" class="product-cards__container">
-          <!-- Popular product card -->
-
-
+         <!-- Popular product cards -->
+        <div id="popular-products__card-container" class="product-cards__container">
+          <!-- Content generated with JS -->
         </div> <!-- End of product cards container -->
-
-
       </section> <!-- End of popular product section -->
 
       <!-- Featured Section -->
       <section class="featured-section">
         <h2 class="section-title">Nyheter</h2> 
         <div class="featured__container">
-          <div class="featured__featured-card">
+          <div class="featured-card">
             <a href=""><img src="images/pictures/products/home_cleaning/VO6164NA_Styling03.jpg" alt="" class="featured-card__image">
             <div class="featured-card__details"></a>
-              <h3>Green Force Dammsugare</h3>
-              <p>Upplev en energisnål, effektiv, och hållbar dammsugning</p>
+              <h3 class="featured-card__product-name">
+                Green Force Dammsugare
+              </h3>
+              <p class="featured-card__description">Upplev en energisnål, effektiv, och hållbar dammsugning</p>
             </div>
           </div> <!-- End of featured card -->
 
-          <div class="featured__featured-card">
+          <div class="featured-card">
             <a href=""><img src="images/pictures/products/personal_care/NF8210N0_Styling05.jpg" alt="" class="featured-card__image">
             <div class="featured-card__details"></a>
-              <h3>Ultimate experience</h3>
-              <p>Stylingverktyg framtagna i samarbete med professionella frisörer</p>
+              <h3 class="featured-card__product-name">Ultimate experience</h3>
+              <p class="featured-card__description">Stylingverktyg framtagna i samarbete med professionella frisörer</p>
             </div>
           </div> <!-- End of featured card -->
 
-          <div class="featured__featured-card">
+          <div class="featured-card">
             <a href=""><img src="images/pictures/products/food preparation/HN95HDS0_Styling04.jpg" alt="" class="featured-card__image">
             <div class="featured-card__details"></a>
-              <h3>Powelix - Smidigare, snabbare</h3>
-              <p>Upplev skillnaden med våra Powelix-produkter</p>
+              <h3 class="featured-card__product-name">Powelix - Smidigare, snabbare</h3>
+              <p class="featured-card__description">Upplev skillnaden med våra Powelix-produkter</p>
             </div>
           </div> <!-- End of featured card -->
       </section> <!-- End of Featured Section -->
@@ -223,22 +226,21 @@
       <!-- Discover More Section -->
       <section class="discover-more-section">
         <h2 class="section-title">Upptäck mer</h2> 
-        <div class="discover-more__container">
-          <div class="discover-more__discover-card">
+        <div class="discover-more__cards-container">
+          <div class="discover-card">
             <a href="#" class="discover-card__image-link"><img src="images/pictures/products/electrical_cooking/_Turbo Cuisine _ Fry 1200 W banner front page sverige.png" alt="" class="discover-card__image">
             <div class="discover-card__details"></a>
-              <h3>Godare, nyttigare, snabbare tillagning</h3>
-              <p>Turbo Cuisine & Fry multikokare är ett måste för dig som gillar att laga mat och vill göra det på ett nyttigare, godare och snabbare sätt. Turbo Cuisine & Fry kommer med ett Turbo Crisp lock så du även kan använda din multikokare som en air fryer med lite eller ingen olja. Spara upp till 80% energi* med elektriska tryckkokare från OBH Nordica. *jämfört med traditionell matlagning.</p>
+              <h3 class="discover-card__title">Godare, nyttigare, snabbare tillagning</h3>
+              <p class="discover-card__copy">Turbo Cuisine & Fry multikokare är ett måste för dig som gillar att laga mat och vill göra det på ett nyttigare, godare och snabbare sätt. Turbo Cuisine & Fry kommer med ett Turbo Crisp lock så du även kan använda din multikokare som en air fryer med lite eller ingen olja. Spara upp till 80% energi* med elektriska tryckkokare från OBH Nordica. *jämfört med traditionell matlagning.</p>
               <a href="#" class="discover-card__button">Läs mer</a>
             </div>
-            
           </div> <!-- End of discover card -->
 
-          <div class="discover-more__discover-card">
+          <div class="discover-card">
             <a href="#" class="discover-card__image-link"><img src="images/pictures/discover/kyckling med paprika.png" alt="" class="discover-card__image">
             <div class="discover-card__details"></a>
-              <h3>Hitta nya, spännande recept</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <h3 class="discover-card__title">Hitta nya, spännande recept</h3>
+              <p class="discover-card__copy">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
               <a href="#" class="discover-card__button">Läs mer</a>
             </div>
             
@@ -249,31 +251,31 @@
       <!-- Service Section -->
       <section class="services-section">
         <h2 class="section-title">Service</h2>  <!-- Byt namn -->
-        <div class="services__service-card">
-          <a href=""><img src="images/pictures/services/LH811DS0_04_Styling03.jpeg" alt="" class="service-card__image">
-          <div class="service-card__details"></a>
-            <h3>15 års åtagande för reperation</h3>
-            <p>OBH Nordica satsar på produktreperationer</p>
+        <div class="services-card">
+          <a href=""><img src="images/pictures/services/LH811DS0_04_Styling03.jpeg" alt="" class="services-card__image">
+          <div class="services-card__details"></a>
+            <h3 class="services-card__title">15 års åtagande för reperation</h3>
+            <p class="services-card__description">OBH Nordica satsar på produktreperationer</p>
             <a href="#">Läs mer</a>
           </div>
       
         </div> <!-- End of services card -->
 
-        <div class="services__service-card">
-          <a href=""><img src="images/pictures/services/FO827ES0_Try100Days_SE.jpg" alt="" class="service-card__image">
-          <div class="service-card__details"></a>
+        <div class="services-card">
+          <a href=""><img src="images/pictures/services/FO827ES0_Try100Days_SE.jpg" alt="" class="services-card__image">
+          <div class="services-card__details"></a>
             <h3>Prova hemma hundra dagar</h3>
-            <p>Under en begränsad period så har du möjlighet att testa utvalda produkter hemma och lämna tillbaka produkten om du inte är nöjd.</p>
+            <p class="services-card__description">Under en begränsad period så har du möjlighet att testa utvalda produkter hemma och lämna tillbaka produkten om du inte är nöjd.</p>
 
             <a href="#">Läs mer</a>
           </div>
 
         </div> <!-- End of services card -->
 
-        <div class="services__service-card">
-          <a href=""><img src="images/pictures/services/2420_Product04.jpeg" alt="" class="service-card__image">
-          <div class="service-card__details"></a>
-            <h3>2 års garanti</h3>
+        <div class="services-card">
+          <a href=""><img src="images/pictures/services/2420_Product04.jpeg" alt="" class="services-card__image">
+          <div class="services-card__details"></a>
+            <h3 class="services-card__title">2 års garanti</h3>
               <a href="#">Läs mer om vår tvåårs garanti</a>
           </div>
         </div> <!-- End of services card -->
@@ -290,8 +292,8 @@
         </div>
 
 
-        <div class="product-search__product-search-bar">
-          <input type="search" name="" id="product-search-bar__input" class="product-search-bar__input" placeholder="Modellnummer">
+        <div class="search-bar search-bar--product">
+          <input type="search" name="" id="product-search-bar__input" class="search-bar__input search-bar__input--product" placeholder="Modellnummer">
           <button id="product-search-bar__button" class="product-search-bar__button" type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <a href="#" class="">Var kan jag hitta modellnumret?</a>
@@ -367,6 +369,6 @@
 
     <!-- <script src="scripts/data.js" defer></script> -->
     <script src="scripts/main.js" type="module" defer></script>
-   <!--  <script src="scripts/playground.js"></script> -->
+    <script src="scripts/playground.js"></script>
   </body>
 </html>

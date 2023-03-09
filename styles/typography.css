@@ -45,19 +45,19 @@ Header
 /*====================================
 Shopping cart
 =====================================*/
-.shopping-cart__title {
+.shopping-cart-inner__title{
   font-size: 1.2rem;
 }
 
-.shopping-cart__close-button {
+.shopping-cart-inner__close-button {
   font-size: .875rem;
   font-weight: 700;
 }
 
-.shopping-cart__container,
-.shopping-cart-checkout__content,
-.shopping-cart-checkout__discount,
-.shopping-cart-checkout__total-sum {
+.shopping-cart-inner__item-container,
+.shopping-cart-inner__items-sum,
+.shopping-cart-inner__items-discount,
+.shopping-cart-inner__items-total-sum {
   font-size: 1rem;
 }
 
@@ -78,13 +78,13 @@ Main
 /*====================================
 Campaign section
 =====================================*/
-.campaign__title {
+.section-title {
   line-height: 1.5;
   letter-spacing: 1px;
   font-size: 1.7rem;
 }
 
-.campaign__description {
+.campaign-section__description {
   font-size: 1rem;
   line-height: 1.5;
   letter-spacing: 1px;
@@ -96,11 +96,11 @@ Campaign section
 /*====================================
 Popular products
 =====================================*/
-.discover-more__discover-card {
+.discover-card {
   text-align: left;
 }
 
-.discover-more__discover-card h3{
+.discover-card h3{
   font-weight: 400;
   letter-spacing: 1px;
 }

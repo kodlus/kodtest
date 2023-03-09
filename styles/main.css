@@ -21,10 +21,6 @@ Length
 /*==============================================================================
 GENERAL
 ==============================================================================*/
-/*=============================================
-Reset
-==============================================*/
-
 body {
   font-family: "Lato", Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
@@ -36,8 +32,6 @@ body {
 /*==============================================================================
 LAYOUT
 ==============================================================================*/
-
-
 /*=========================================================
 HEADER
 =========================================================*/
@@ -76,29 +70,13 @@ Navigation
   justify-self: self-start;
   align-self: center;
   font-size: 2rem;
-  width: 50px;
-
-  background: none;
+  padding: 12px 20px;
   border: none;
 }
 
 .header__nav-button:hover,
 .header__nav-button:focus {
   cursor: pointer;
-}
-
-/* Fixes the font-awesome issue:
-https://stackoverflow.com/questions/21653978/font-awesome-icon-preventing-click-in-parent-button */
-.header__nav-button > i {
-  pointer-events: none;
-}
-
-.header__nav-button div{
-  display: inline-block;
-  width: 35px;
-  height: 5px;
-  background-color: black;
-  margin: 6px 0;
 }
 
 .header__nav {
@@ -151,12 +129,13 @@ Logo
 /*=======================
 Shopping cart
 =======================*/
-.header__shopping-cart {
+.shopping-cart-outer {
   justify-self: self-end;
   align-self: center;
+  position: relative;
 }
 
-.shopping-cart__button {
+.shopping-cart-outer__button {
   font-size: 1.5rem;
   width: 50px;
 
@@ -164,12 +143,22 @@ Shopping cart
   border: none;
 }
 
+.shopping-cart-outer__quantity-indicator {
+  color: red ;
+  position: absolute;
+  top: -12px;
+  right: 45%;
+  transform: translateX(45%);
+}
+
 .shopping-cart__button:hover,
-.shopping-cart__button:focus {
+.shopping-cart__button:focus,
+.shopping-cart-outer__quantity-indicator{
   cursor: pointer;
 }
 
-.shopping-cart {
+
+.shopping-cart-inner {
   display: block;
   font-size: 1.4rem;
   position: absolute;
@@ -177,21 +166,24 @@ Shopping cart
   right: 0;
   width: 100%;
   height: 100vh;
-  background: var(--white)
+  background: var(--green);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.shopping-cart__header {
+.shopping-cart-inner__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: antiquewhite;
 }
 
-.shopping-cart__title {
+.shopping-cart-inner__title{
   padding-left: 1em;
 }
 
-.shopping-cart__close-button {
+.shopping-cart-inner__close-button {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -203,14 +195,15 @@ Shopping cart
   border: none;
 }
 
-.shopping-cart__close-button span {
+
+.shopping-cart-inner__close-button span {
   font-size: 1.1rem;
 }
 
-.shopping-cart__container {
- padding: 1em;
- overflow-y: scroll;
- height: 100vh; /* annars krånglar JS-lösningen */
+.shopping-cart-inner__item-container {
+  padding: 1em;
+  overflow: auto;
+  height: 100%;/* annars krånglar JS-lösningen */
 }
 
 .shopping-cart-item {
@@ -273,26 +266,24 @@ Shopping cart
   flex-direction: row;
 }
 
-.shopping-cart-checkout {
+.shopping-cart-inner__checkout {
   background-color: blanchedalmond;
-  position: absolute;
   width: 100%;
-  bottom: 0;
   padding: 1em;
 }
 
-.shopping-cart-checkout__content,
-.shopping-cart-checkout__discount,
-.shopping-cart-checkout__total-sum {
+.shopping-cart-inner__items-sum,
+.shopping-cart-inner__items-discount,
+.shopping-cart-inner__items-total-sum {
   display: flex;
   justify-content: space-between;
 }
 
-.shopping-cart-checkout__content {
+.shopping-cart-inner__items-sum {
   margin-bottom: 0.2em;
 }
 
-.shopping-cart-checkout__button {
+.shopping-cart-inner__checkout-button {
   width: 100%;
 }
 /*====================================
@@ -306,7 +297,7 @@ Header row 2
 /*=======================
 Search bar
 =======================*/
-.header__search-bar {
+.search-bar--header {
   display: flex;
   height: 40px;
   width: 100%;
@@ -475,7 +466,7 @@ CAMPAIGN SECTION
 /*=======================
 Campaign carousel
 =======================*/
-.campaign__carousel {
+.carousel {
   position: relative;
 }
 
@@ -526,8 +517,8 @@ Campaign carousel
   padding: 10px 0;
 }
 
-.indicator__next-button,
-.indicator__previous-button {
+.carousel__next-button,
+.carousel__previous-button {
   padding: .8em;
   border-radius: 50%;
   border-style: none;
@@ -537,21 +528,21 @@ Campaign carousel
   z-index: 99;
 }
 
-.indicator__next-button:hover,
-.indicator__next-button:focus,
-.indicator__previous-button:hover,
-.indicator__previous-button:focus {
+.carousel__next-button:hover,
+.carousel__next-button:focus,
+.carousel__previous-button:hover,
+.carousel__previous-button:focus {
   background: var(--gray);
   color: var(--white);
 }
 
-.indicator__next-button {
+.carousel__next-button {
   right: 0.3em;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.indicator__previous-button {
+.carousel__previous-button {
   left: 0.3em;
   top: 50%;
   transform: translateY(-50%);
@@ -565,12 +556,12 @@ POPULAR CATEGORIES SECTION
   margin-bottom: var(--sectionMarginBottom);
 }
 
-.popular-categories__container {
+.popular-categories__card-container {
  /*  display: flex; */
   text-align: center;
 }
 
-.popular-category__category-card {
+.category-card {
   padding: 1em;
 }
 
@@ -636,12 +627,12 @@ DISCOVER MORE SECTION
   padding: 1em;
 }
 
-.discover-more__container {
+.discover-more__cards-container {
   margin: 0 auto;
   overflow: hidden;
 }
 
-.discover-more__discover-card {
+.discover-card {
   padding: var(--standardPadding);
   background: white;
   background-color: aquamarine;
@@ -692,26 +683,26 @@ SERVICES SECTION
 .services-section {
   margin-bottom: var(--sectionMarginBottom);
 }
-.services__service-card {
+.services-card {
   margin-bottom: 1.5em;
 }
 
-a .service-card__image {
+a .services-card__image {
   margin: 0 auto;
   margin-bottom: 1em;
 }
 
-.service-card__details {
+.services-card__details {
   padding: 1em;
 }
 
-.service-card__image {
+.services-card__image {
   width: 70%;
   object-fit: cover;
   max-height: 150px;
 }
 
-.product-search__product-search-bar {
+.search-bar--product {
   display: flex;
   height: 40px;
   width: 100%;
@@ -763,7 +754,7 @@ PRODUCT SEARCH SECTION
   margin-bottom: 1em;
 }
 
-.product-search__product-search-bar {
+.search-bar--product {
   display: flex;
   justify-content: center;
   margin-bottom: .5em;
@@ -859,7 +850,7 @@ MEDIA QUERY
 
 @media (min-width: 501px) and (max-width: 800px) {
 
-  .campaign__carousel {
+  .carousel {
     position: relative;
     width: 75%;
     margin: 0 auto;
@@ -911,8 +902,8 @@ MEDIA QUERY
     justify-content: space-between;
   }
   
-  .indicator__next-button,
-  .indicator__previous-button {
+  .carousel__next-button,
+  .carousel__previous-button {
     padding: .8em;
     border-radius: 50%;
     border-style: none;
@@ -921,22 +912,22 @@ MEDIA QUERY
     position:unset;
   }
   
-  .indicator__next-button {
+  .carousel__next-button {
     transform: none;
   }
   
-  .indicator__previous-button {
+  .carousel__previous-button {
     transform: none;
   }
 
-  .popular-categories__container {
+  .popular-categories__card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
    
   }
 
-  .popular-category__category-card {
+  .category-card {
     width: 30%;
   }  
 
@@ -970,14 +961,14 @@ MEDIA QUERY
     gap: 1em;
   }
 
-  .featured__featured-card{
+  .featured-card{
     width: 45%;
   }
 
   /*====================================
   discover more section
   =====================================*/
-  .discover-more__container {
+  .discover-more__cards-container {
     margin: 0 auto;
   }
 
@@ -985,13 +976,13 @@ MEDIA QUERY
     max-height: 320px;
   }
 
-/*   .discover-more__discover-card {
+/*   .discover-card {
     margin: 0 auto;
   } */
 }
 
 @media (min-width: 801px) and (max-width: 1400px) {
-  .campaign__carousel {
+  .carousel {
     position: relative;
     width: 45%;
     margin: 0 auto;
@@ -1044,29 +1035,29 @@ MEDIA QUERY
     
   }
   
-  .indicator__next-button,
-  .indicator__previous-button {
+  .carousel__next-button,
+  .carousel__previous-button {
     padding: .8em;
     position: unset;
   }
   
   
-  .indicator__next-button {
+  .carousel__next-button {
     transform: none;
   }
   
-  .indicator__previous-button {
+  .carousel__previous-button {
     transform: none;
   }
 
-  .popular-categories__container {
+  .popular-categories__card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     overflow: hidden;
   }
 
-  .popular-category__category-card {
+  .category-card {
     width: 20%;
   }  
 
@@ -1082,16 +1073,16 @@ MEDIA QUERY
     gap: 1em;
   }
 
-  .featured__featured-card{
+  .featured-card{
     width: 30%;
   }
 
-  .discover-more__container {
+  .discover-more__cards-container {
     width: 80%;
     margin: 0 auto
   }
 
-  .discover-more__discover-card {
+  .discover-card {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px
