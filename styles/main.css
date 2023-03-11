@@ -66,7 +66,7 @@ Header row 1
 /*=======================
 Navigation
 =======================*/
-.header__nav-button {
+.nav-toggle-button {
   grid-column: 1 / 2;
   justify-self: self-start;
   align-self: center;
@@ -76,22 +76,20 @@ Navigation
 
 
 
-.header__nav-button:hover,
-.header__nav-button:focus {
+.nav-toggle-button:hover,
+.nav-toggle-button:focus {
   cursor: pointer;
 }
 
 /* Förhindrar att span elementet förhindrar knappen att fungera 
 https://stackoverflow.com/questions/26402033/missing-click-event-for-span-inside-button-element-on-firefox*/
-.header__nav-button-icon {
+.nav-toggle-button__icon {
   pointer-events: none;
   aspect-ratio: 1 / 1;
   width: 30px;
-
-
 }
 
-.header__nav {
+.nav {
   display: block;
   font-size: 1.4rem;
   position: absolute;
@@ -103,25 +101,25 @@ https://stackoverflow.com/questions/26402033/missing-click-event-for-span-inside
 
 }
 
-.header__nav ul {
+.nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.header__nav li {
+.nav li {
   margin-bottom: 1em;
 /*   margin-left: 1em; */
 }
 
-.header__nav a {
+.nav a {
   color: black;
   text-decoration: none;
   font-size: 1.2rem;
   text-transform: uppercase;
 }
 
-.header__nav a:hover {
+.nav a:hover {
   color: white;
   text-decoration: underline;
 }
@@ -129,7 +127,7 @@ https://stackoverflow.com/questions/26402033/missing-click-event-for-span-inside
 /*=======================
 Logo
 =======================*/
-.header__logo {
+.logo {
   width: 44px;
   margin: 0;
   padding: 0;
@@ -150,9 +148,13 @@ Shopping cart
 .shopping-cart-outer__button {
   font-size: 1.5rem;
   width: 50px;
-
   background: none;
   border: none;
+}
+
+.shopping-cart-outer__icon {
+  pointer-events: none;
+ 
 }
 
 .shopping-cart-outer__quantity-indicator {
@@ -163,6 +165,7 @@ Shopping cart
   transform: translateX(45%);
 }
 
+.shopping-cart-outer__button,
 .shopping-cart__button:hover,
 .shopping-cart__button:focus,
 .shopping-cart-outer__quantity-indicator{
@@ -333,6 +336,13 @@ Search bar
   border-right: 1px solid black;
   border-bottom: 1px solid black;
   border-left: none;
+}
+
+.search-bar__icon {
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+  width: 50%;
+  margin: 0 auto;
 }
 
 .search-bar__button:hover {
@@ -531,21 +541,12 @@ Campaign carousel
 
 .carousel__next-button,
 .carousel__previous-button {
-  padding: .8em;
+  padding: 0.8em;
   border-radius: 50%;
   border-style: none;
-  background: var(--black);
-  color: var(--white);
+  background: transparent;
   position: absolute;
   z-index: 99;
-}
-
-.carousel__next-button:hover,
-.carousel__next-button:focus,
-.carousel__previous-button:hover,
-.carousel__previous-button:focus {
-  background: var(--gray);
-  color: var(--white);
 }
 
 .carousel__next-button {
@@ -554,11 +555,56 @@ Campaign carousel
   transform: translateY(-50%);
 }
 
+/* https://codepen.io/reacraf/pen/ZPqRKV/ */
+.carousel__next-button::before {
+  content: " ";
+  border-right: 2px solid var(--black);
+  border-top: 2px solid var(--black);
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  cursor: pointer;
+  display: block;
+}
+
+.carousel__next-button:hover::before,
+.carousel__next-button:focus::before{
+  cursor: pointer;
+  scale: 1.1;
+  border-right: 2px solid var(--green);
+  border-top: 2px solid var(--green);
+}
+
 .carousel__previous-button {
   left: 0.3em;
   top: 50%;
   transform: translateY(-50%);
 }
+
+.carousel__previous-button::before {
+  content: " ";
+  border-left: 2px solid var(--black);
+  border-bottom: 2px solid var(--black);
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  cursor: pointer;
+  display: block;
+}
+
+.carousel__previous-button:hover::before {
+  cursor: pointer;
+  scale: 1.1;
+  border-left: 2px solid var(--green);
+  border-bottom: 2px solid var(--green);
+}
+
+.carousel__previous-button:focus {
+  background-color: var(--green);
+}
+
+
+
 
 /*====================================
 POPULAR CATEGORIES SECTION

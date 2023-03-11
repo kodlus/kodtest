@@ -1,11 +1,11 @@
 "use strict";
 const v = "Hi! I'm a strict mode script!";
 
-const cartItemContainer = document.getElementsByClassName("shopping-cart-inner__item-container"); 
-
+ /*============================================================================
+IMPORTED DATA
+==============================================================================*/
 import {updateCartTotal} from "/scripts/shopping_cart.js"
 updateCartTotal()
-
 
 /*============================================================================
 HEADER
@@ -14,19 +14,19 @@ HEADER
 TOGGLE MENUS
 =========================================================*/
 /*=========================================================
-Global
+Global variables
 =========================================================*/
-const navButton = document.getElementById("header__nav-button");
-console.log(navButton)
-const headerNav = document.querySelector("#header__nav");
-console.log(headerNav)
+const navButton = document.getElementById("nav-toggle-button");
+
+const headerNav = document.querySelector("#nav");
+
 const shoppingCartButton = document.querySelector("#shopping-cart-outer__button");
-console.log(shoppingCartButton)
+
 const shoppingCart = document.querySelector("#shopping-cart-inner");
-console.log(shoppingCart)
-const shoppingCartDiv = document.querySelector(".shopping-cart-outer");
+
+
 const closeButton = document.querySelector("#shopping-cart-inner__close-button")
-console.log(closeButton)
+
 
 /*=========================================================
 Functions
@@ -48,7 +48,7 @@ function isAChildOf(node, parent) {
 }
 
 /*=========================================================
-Navigation
+Toggle navigation
 =========================================================*/
 /* Toggle the navigation on or off */
 navButton.addEventListener("click", (e) => {
@@ -59,7 +59,7 @@ navButton.addEventListener("click", (e) => {
 });
 
 /*=========================================================
-Shopping cart
+Toggle shopping cart
 =========================================================*/
 shoppingCartButton.addEventListener("click", () => {
   contentToggle(shoppingCart, headerNav);
@@ -85,27 +85,48 @@ closeButton.addEventListener("click", () => {
 })
 
 /*=========================================================
-Hide information banner on scroll //MÅSTE SES ÖVER
+Hide information banner on scroll, only on small screens
 https://www.w3schools.com/howto/howto_js_sticky_header.asp
+https://www.satollo.net/execute-conditional-javascript-by-screen-size
+https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
 =========================================================*/
-// When the user scrolls the page, execute hideBanner
-window.onscroll = function () { hideBanner()}
-
 // Get the information banner
-const informationBanner = document.getElementById("header__information-banner");
+ const informationBanner = document.getElementById("header__information-banner");
 
 // Get the offset of the information banner
-let offset = informationBanner.offsetTop;
-console.log(offset)
+let informationBannerOffset = informationBanner.offsetTop;
 
-// Add the is-visible class to the information banner when you reach its scroll position. Remove is-visible when you leave the scroll position
-function hideBanner() {
-  if (window.pageYOffset > offset){
+// The function adds the "is-hidden" utility class if the window's vertical offset is larger than the element's offset
+function hideBanner () {
+  if (window.pageYOffset > informationBannerOffset){
     informationBanner.classList.add("is-hidden");
   } else {
     informationBanner.classList.remove("is-hidden")
+  } 
+}
+
+// The function takes in three parameters: screen size (integer), event type (string), and a function. If the screen width matches or is less to the size, an event listener defined by the event type and function will be hooked to the window object. If the screen size is larger than the size, the event listener gets removed
+function smallScreenOnlyEvent (size, eventType, func) {
+  // Get the screen width
+  let width = document.documentElement.clientWidth || window.innerWidth
+
+  if (width <= size) {
+    window.addEventListener(eventType, func, true)
+  } else  {
+    window.removeEventListener(eventType, func, true);
   }
 }
+
+// Call smallScreenOnlyEvent at run time
+smallScreenOnlyEvent(500, "scroll", hideBanner)
+
+// Detect when the screen size changes, and call smallScreenOnlyEvent
+window.addEventListener("resize", () => {
+  smallScreenOnlyEvent(500, "scroll", hideBanner);
+
+  // Remove the is-hidden class if the banner is hidden when transitioning from small screen to larger screen
+  informationBanner.classList.remove("is-hidden")
+})
 
 /*==============================================================================
 MAIN

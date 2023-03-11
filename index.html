@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/typography.css">
     <!-- Font awesome -->
-    <script src="https://kit.fontawesome.com/b0e386ccd8.js" crossorigin="anonymous"></script>
+<!--     <script src="https://kit.fontawesome.com/b0e386ccd8.js" crossorigin="anonymous"></script> -->
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
   </head>
@@ -21,13 +21,13 @@
         <!-- Row 1 -->
         <div class="header__row-1">
           <!-- Nav -->            
-          <label for="header__nav-button">
-            <button id="header__nav-button" class="button header__nav-button">
-              <img src="/images/icons/hamburger.png" class="header__nav-button-icon" />
+          <label for="nav-toggle-button">
+            <button id="nav-toggle-button" class="button nav-toggle-button">
+              <img src="/images/icons/hamburger.png" class="nav-toggle-button__icon" />
             </button>
           </label>
 
-          <nav id="header__nav" class="nav header__nav is-hidden">
+          <nav id="nav" class="nav is-hidden">
             <ul class="nav__links">
               <li class="nav__link"><a href="#">För hemmet</a></li>
               <li class="nav__link"><a href="#">Matlagning</a></li>
@@ -38,15 +38,18 @@
           </nav>
 
           <!-- Logo -->
-          <div class="header__logo">
+          <div class="logo">
             <a href="#"><img src="images/logos/OBH_Nordica1 (2).png" alt="OBH Nordica logo"></a>
           </div>
 
           <!-- Shopping cart outer-->
-          <div class="shopping-cart-outer">
-            <button id="shopping-cart-outer__button" class="button shopping-cart-outer__button"><i class="fa-solid fa-cart-shopping button"></i></button>
+          <div class="shopping-cart-outer"> 
             <label for="shopping-cart-outer__button">
-              <span id="shopping-cart-outer__quantity-indicator" class="shopping-cart-outer__quantity-indicator"></span>
+              <button id="shopping-cart-outer__button" class="button shopping-cart-outer__button">
+              <img class ="shopping-cart-outer__icon" src="images/icons/shopping-cart.png" alt="shopping cart button icon">
+              </button>
+           
+              <span id="shopping-cart-outer__quantity-indicator" class="shopping-cart-outer__quantity-indicator">0</span>
             </label>
           </div>
 
@@ -85,7 +88,7 @@
           <!-- Search bar -->
           <div class="search-bar search-bar--header">
             <input type="search" name="search-bar" id="search-bar__input" class="search-bar__input">
-            <button class="button search-bar__button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="button search-bar__button"><img class="search-bar__icon" src="/images/icons/search_icon.png" alt=""></button>
           </div>
         </div> <!-- End of row 2 -->
 
@@ -122,9 +125,9 @@
             </div> <!-- End of carousel container-->
             
             <div class="carousel__indicator">
-              <button id="carousel__previous-button" class="carousel__previous-button"><--</button>
+              <button id="carousel__previous-button" class="carousel__previous-button"></button>
               <span id="carousel__indicator-number" class="carousel__indicator-number"> <!-- generated with JS --> </span>
-              <button id="carousel__next-button" class="carousel__next-button">--></button>
+              <button id="carousel__next-button" class="carousel__next-button"></button>
             </div> <!-- End of Carousel indicator -->
           </div> <!-- End of campaign carousel -->
         </section> <!-- End of campaign section -->
@@ -294,7 +297,7 @@
 
         <div class="search-bar search-bar--product">
           <input type="search" name="" id="product-search-bar__input" class="search-bar__input search-bar__input--product" placeholder="Modellnummer">
-          <button id="product-search-bar__button" class="product-search-bar__button" type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button id="product-search-bar__button" class="product-search-bar__button" type="submit" ><img src="images/icons/search_icon.png" alt="" class="search-bar__icon"></button>
         </div>
         <a href="#" class="">Var kan jag hitta modellnumret?</a>
         </div>
