@@ -16,7 +16,7 @@ TOGGLE MENUS
 /*=========================================================
 Global
 =========================================================*/
-const navButton = document.querySelector("#header__nav-button");
+const navButton = document.getElementById("header__nav-button");
 console.log(navButton)
 const headerNav = document.querySelector("#header__nav");
 console.log(headerNav)
@@ -41,9 +41,6 @@ const contentToggle= (element1, element2) => {
   }
 }
 
-// MÅSTE SES ÖVER! 
-
-
 /* Checks if a node is a child of a parent element. Returns true or false */
 /* https://developer.mozilla.org/en-US/docs/Web/API/Node/contains */
 function isAChildOf(node, parent) {
@@ -55,11 +52,9 @@ Navigation
 =========================================================*/
 /* Toggle the navigation on or off */
 navButton.addEventListener("click", (e) => {
-    let closestButton = e.target;
-    if (closestButton) {
-          contentToggle(headerNav, shoppingCart);
-    console.log(e)
-    }
+  console.log(e)
+  contentToggle(headerNav, shoppingCart);
+
 
 });
 
@@ -91,21 +86,26 @@ closeButton.addEventListener("click", () => {
 
 /*=========================================================
 Hide information banner on scroll //MÅSTE SES ÖVER
-https://www.w3schools.com/howto/howto_js_navbar_hide_scroll.asp
+https://www.w3schools.com/howto/howto_js_sticky_header.asp
 =========================================================*/
-/* let previousScrollPosition = window.pageYOffset;
-window.onscroll = function () {
-  const informationBanner = document.getElementById("header__information-banner");
-  let currentScrollPosition = window.pageYOffset;
-  if (previousScrollPosition > currentScrollPosition) {
-    informationBanner.style.visibility = "flex";
+// When the user scrolls the page, execute hideBanner
+window.onscroll = function () { hideBanner()}
+
+// Get the information banner
+const informationBanner = document.getElementById("header__information-banner");
+
+// Get the offset of the information banner
+let offset = informationBanner.offsetTop;
+console.log(offset)
+
+// Add the is-visible class to the information banner when you reach its scroll position. Remove is-visible when you leave the scroll position
+function hideBanner() {
+  if (window.pageYOffset > offset){
+    informationBanner.classList.add("is-hidden");
   } else {
-    informationBanner.style.display = "none";
+    informationBanner.classList.remove("is-hidden")
   }
-  previousScrollPosition = currentScrollPosition;
-} */
-
-
+}
 
 /*==============================================================================
 MAIN

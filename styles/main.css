@@ -36,7 +36,8 @@ LAYOUT
 HEADER
 =========================================================*/
 .header {
-  position: fixed;
+  position: sticky;
+  position: -webkit-sticky;
   top: 0;
   z-index: 999;
   width: 100%;
@@ -69,14 +70,25 @@ Navigation
   grid-column: 1 / 2;
   justify-self: self-start;
   align-self: center;
-  font-size: 2rem;
-  padding: 12px 20px;
+  padding: 10px;
   border: none;
 }
+
+
 
 .header__nav-button:hover,
 .header__nav-button:focus {
   cursor: pointer;
+}
+
+/* Förhindrar att span elementet förhindrar knappen att fungera 
+https://stackoverflow.com/questions/26402033/missing-click-event-for-span-inside-button-element-on-firefox*/
+.header__nav-button-icon {
+  pointer-events: none;
+  aspect-ratio: 1 / 1;
+  width: 30px;
+
+
 }
 
 .header__nav {
@@ -437,7 +449,7 @@ CAMPAIGN SECTION
 }
 
 .campaign-color-wrapper {
-  padding-top: 13em;
+  padding-top: 5em;
   padding-bottom: 0.5em;
   width: 100%;
   background-image: linear-gradient(
