@@ -28,291 +28,22 @@ body {
   min-width: 344px;
 }
 
-
-/*==============================================================================
-LAYOUT
-==============================================================================*/
-/*=========================================================
-HEADER
-=========================================================*/
-.header {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-  z-index: 999;
-  width: 100%;
-}
-
-.header__container {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  background: var(--white);
-}
-
-
-
-/*====================================
-Header row 1
-=====================================*/
-.header__row-1 {
-
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  position: relative;
-  padding: 10px;
-}
-
-/*=======================
-Navigation
-=======================*/
-.nav-toggle-button {
-  grid-column: 1 / 2;
-  justify-self: self-start;
-  align-self: center;
-  padding: 10px;
-  border: none;
-}
-
-
-
-.nav-toggle-button:hover,
-.nav-toggle-button:focus {
+.button:hover,
+.button:focus {
   cursor: pointer;
 }
 
-/* Förhindrar att span elementet förhindrar knappen att fungera 
+/* Förhindrar att element innanför knappar förhindrar knappen att fungera 
 https://stackoverflow.com/questions/26402033/missing-click-event-for-span-inside-button-element-on-firefox*/
-.nav-toggle-button__icon {
+.icon {
   pointer-events: none;
-  aspect-ratio: 1 / 1;
-  width: 30px;
 }
 
-.nav {
-  display: block;
-  font-size: 1.4rem;
-  position: absolute;
-  z-index: 99;
-  top: 100%;
-  width: 100%;
-  padding: 10px;
-  background: orange;
-
-}
-
-.nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.nav li {
-  margin-bottom: 1em;
-/*   margin-left: 1em; */
-}
-
-.nav a {
-  color: black;
-  text-decoration: none;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-}
-
-.nav a:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-/*=======================
-Logo
-=======================*/
-.logo {
-  width: 44px;
-  margin: 0;
-  padding: 0;
-  grid-column: 2 / 3;
-  justify-self: center;
-  align-self: center;
-}
-
-/*=======================
-Shopping cart
-=======================*/
-.shopping-cart-outer {
-  justify-self: self-end;
-  align-self: center;
-  position: relative;
-}
-
-.shopping-cart-outer__button {
-  font-size: 1.5rem;
-  width: 50px;
-  background: none;
-  border: none;
-}
-
-.shopping-cart-outer__icon {
-  pointer-events: none;
- 
-}
-
-.shopping-cart-outer__quantity-indicator {
-  color: red ;
-  position: absolute;
-  top: -12px;
-  right: 45%;
-  transform: translateX(45%);
-}
-
-.shopping-cart-outer__button,
-.shopping-cart__button:hover,
-.shopping-cart__button:focus,
-.shopping-cart-outer__quantity-indicator{
+.label:hover {
   cursor: pointer;
 }
 
-
-.shopping-cart-inner {
-  display: block;
-  font-size: 1.4rem;
-  position: absolute;
-  z-index: 99;
-  right: 0;
-  width: 100%;
-  height: 100vh;
-  background: var(--green);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.shopping-cart-inner__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: antiquewhite;
-}
-
-.shopping-cart-inner__title{
-  padding-left: 1em;
-}
-
-.shopping-cart-inner__close-button {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 1.2em 1.6em; /* Bestämmer headerns höjd */
-  text-transform: uppercase;
-  width: 33%;
-  background: black;
-  color: white;
-  border: none;
-}
-
-
-.shopping-cart-inner__close-button span {
-  font-size: 1.1rem;
-}
-
-.shopping-cart-inner__item-container {
-  padding: 1em;
-  overflow: auto;
-  height: 100%;/* annars krånglar JS-lösningen */
-}
-
-.shopping-cart-item {
-  display: flex;
-  
-  position: relative;
-
-  margin-bottom: 2em;
-}
-
-.shopping-cart-item::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  background-color: var(--gray);
-  left: 0;
-  bottom: -1em;
-  position: absolute;
-
-}
-
-.shopping-cart-item__image {
-  width: 20%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-.shopping-cart-item__information {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.shopping-cart-item__summary {
-  display: flex;
-  justify-content: space-around;
-}
-
-.shopping-cart-item__quantity-input {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-}
-
-.shopping-cart-item__button {
-  width: 20%;
-}
-
-.shopping-cart-item__quantity {
-  width: 20%;
-  text-align: center;
-}
-
-
-.shopping-cart-item__quantity-input {
-  display: flex;
-  flex-direction: row;
-}
-
-.shopping-cart-inner__checkout {
-  background-color: blanchedalmond;
-  width: 100%;
-  padding: 1em;
-}
-
-.shopping-cart-inner__items-sum,
-.shopping-cart-inner__items-discount,
-.shopping-cart-inner__items-total-sum {
-  display: flex;
-  justify-content: space-between;
-}
-
-.shopping-cart-inner__items-sum {
-  margin-bottom: 0.2em;
-}
-
-.shopping-cart-inner__checkout-button {
-  width: 100%;
-}
-/*====================================
-Header row 2
-=====================================*/
-.header__row-2 {
-  display: flex;
-  justify-content: center;
-}
-
-/*=======================
-Search bar
-=======================*/
-.search-bar--header {
+.search-bar {
   display: flex;
   height: 40px;
   width: 100%;
@@ -345,10 +76,6 @@ Search bar
   margin: 0 auto;
 }
 
-.search-bar__button:hover {
-  cursor: pointer;
-}
-
 .search-bar__button:active {
   background-color: var(--green);
 }
@@ -361,19 +88,275 @@ Search bar
   border-left: 3px solid var(--green);
 }
 
-.search-bar__input:focus ~ .search-bar__button {
-/*   border-top: 3px solid var(--green);
-  border-right: 3px solid var(--green);
-  border-bottom: 3px solid var(--green);
-  border-left: none; */
+/*==============================================================================
+LAYOUT
+==============================================================================*/
+/*=========================================================
+HEADER
+=========================================================*/
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
 }
+
+.header__container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--white);
+}
+
+/*====================================
+Header row 1
+=====================================*/
+.header__row-1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+  padding: 0.625em 0.625em 0 0.625em;
+}
+
+/*=======================
+Navigation
+=======================*/
+.nav-toggle-button {
+  grid-column: 1 / 2;
+  justify-self: self-start;
+  align-self: center;
+  padding: 0.625em;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+/* Förhindrar att span elementet förhindrar knappen att fungera 
+https://stackoverflow.com/questions/26402033/missing-click-event-for-span-inside-button-element-on-firefox*/
+.nav-toggle-button__icon {
+  aspect-ratio: 1 / 1;
+  width: 30px;
+}
+
+.nav {
+  display: block;
+  font-size: 1.4rem;
+  position: absolute;
+  z-index: 99;
+  top: 100%;
+  width: 100%;
+  padding: 10px;
+  background: var(--black)
+}
+
+.nav ul {
+  margin: 0;
+  padding: 0.2em;
+  list-style: none;
+}
+
+.nav li {
+  margin-bottom: 1em;
+}
+
+/*=======================
+Logo
+=======================*/
+.logo {
+  width: 50px;
+  margin: 0;
+  padding: 0;
+  grid-column: 2 / 3;
+  justify-self: center;
+  align-self: center;
+}
+
+/*=======================
+Shopping cart
+=======================*/
+.shopping-cart-outer {
+  justify-self: self-end;
+  align-self: center;
+  position: relative;
+}
+
+.shopping-cart-outer__button {
+  font-size: 1.5rem;
+  width: 50px;
+  background: none;
+  border: none;
+}
+
+.shopping-cart-outer__icon {
+  aspect-ratio: 1 / 1;
+
+}
+
+.shopping-cart-outer__quantity-indicator {
+  color: black ;
+  position: absolute;
+  top: -14px;
+  right: 41%;
+  transform: translateX(41%);
+}
+
+.shopping-cart-inner {
+  display: block;
+  font-size: 1.4rem;
+  position: absolute;
+  z-index: 99;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.shopping-cart-inner__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--gray);
+}
+
+.shopping-cart-inner__title{
+  padding-left: 1em;
+}
+
+.shopping-cart-inner__close-button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.2em 1.6em; /* Determines the header's height */
+  text-transform: uppercase;
+  width: 33%;
+  background: black;
+  border: none;
+}
+
+.shopping-cart-inner__item-container {
+  padding: 1em;
+  overflow: auto;
+  height: 100%;/* annars krånglar JS-lösningen */
+}
+
+.shopping-cart-item {
+  display: flex;
+  position: relative;
+  margin-bottom: 2em;
+  min-height: 70px;
+}
+
+.shopping-cart-item::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--gray);
+  left: 0;
+  bottom: -1em;
+  position: absolute;
+}
+
+.shopping-cart-item__image {
+  width: 40%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.shopping-cart-item__information {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.shopping-cart-item__summary {
+  display: flex;
+  justify-content: space-around;
+}
+
+.shopping-cart-item__delete-button {
+  background-color: gray;
+  aspect-ratio: 1 / 1;
+  width: 15%;
+  border: none;
+}
+
+.shopping-cart-item__button-icon {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+}
+
+.shopping-cart-item__quantity-input {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.shopping-cart-item__button {
+  width: 25%;
+}
+
+.shopping-cart-item__quantity {
+  width: 25%;
+  text-align: center;
+}
+
+.shopping-cart-inner__checkout {
+  background-color: var(--gray);
+  width: 100%;
+  padding: 1em;
+}
+
+.shopping-cart-inner__items-sum,
+.shopping-cart-inner__items-discount,
+.shopping-cart-inner__items-total-sum {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shopping-cart-inner__items-discount {
+  margin-bottom: 0.5em;
+}
+
+.shopping-cart-inner__items-total-sum {
+  margin-bottom: 2em;
+}
+
+.shopping-cart-inner__checkout-button {
+  width: 100%;
+  padding: 0.625em 0.937em;
+  background-color: var(--green);
+  border: 1px solid var(--green);
+}
+
+.shopping-cart-inner__checkout-button:hover,
+.shopping-cart-inner__checkout-button:focus {
+  background-color: var(--white);
+  color: var(--green);
+}
+/*====================================
+Header row 2
+=====================================*/
+.header__row-2 {
+  display: flex;
+  justify-content: center;
+}
+
+/*=======================
+Search bar
+=======================*/
+/* Ingen specifik styling */
 
 /*====================================
 Header row 3
 =====================================*/
 .header__row-3 {
   display: flex;
-
 }
 
 /*=======================
@@ -385,7 +368,6 @@ Information banner
   justify-content: space-evenly;
   background-color: gainsboro;
   padding: .5em;
-
 }
 
 /*=========================================================
@@ -400,11 +382,9 @@ main {
   margin-bottom: 0.375em;
 }
 
-
 .section-title {
   margin-bottom: 0.5em;
 }
-
 
 /*=======================
 Product card
@@ -593,7 +573,6 @@ Campaign carousel
 }
 
 .carousel__previous-button:hover::before {
-  cursor: pointer;
   scale: 1.1;
   border-left: 2px solid var(--green);
   border-bottom: 2px solid var(--green);
@@ -745,11 +724,6 @@ SERVICES SECTION
   margin-bottom: 1.5em;
 }
 
-a .services-card__image {
-  margin: 0 auto;
-  margin-bottom: 1em;
-}
-
 .services-card__details {
   padding: 1em;
 }
@@ -758,48 +732,13 @@ a .services-card__image {
   width: 70%;
   object-fit: cover;
   max-height: 150px;
+  margin: 0 auto;
 }
 
-.search-bar--product {
-  display: flex;
-  height: 40px;
-  width: 100%;
-  justify-content: center;
+.search-bar__input--product {
+  width: 75%;
 }
 
-.product-search-bar__input {
-  border-top: 1px solid black;
-  border-right: none;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  width: 50%;
-}
-
-.product-search-bar__input:focus {
-  outline: none;
-  border-top: 3px solid var(--green);
-  border-right: none;
-  border-bottom: 3px solid var(--green);
-  border-left: 3px solid var(--green);
-}
-
-.product-search-bar__button {
-  width: 40px;
-  background: var(--black);
-  color: var(--white);
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  border-left: none;
-}
-
-.product-search-bar__button:hover {
-  cursor: pointer;
-}
-
-.product-search-bar__button:active {
-  background-color: var(--green);
-}
 /*====================================
 PRODUCT SEARCH SECTION
 =====================================*/
@@ -813,8 +752,6 @@ PRODUCT SEARCH SECTION
 }
 
 .search-bar--product {
-  display: flex;
-  justify-content: center;
   margin-bottom: .5em;
 }
 
@@ -827,7 +764,6 @@ FOOTER
   background: var(--black);
   position: relative;
   bottom: 0;
-
 }
 
 .footer__header {
@@ -1174,13 +1110,20 @@ MEDIA QUERY
 /*==============================================================================
 UTILITY
 ==============================================================================*/
+.bold-text {
+  font-weight: 700;
+}
+
 /* https://css-tricks.com/places-its-tempting-to-use-display-none-but-dont/ */
-.is-hidden {
+.is-not-visible {
   position: absolute; 
   overflow: hidden; 
   clip: rect(0 0 0 0); 
-  height: 1px; width: 1px; 
-  margin: -1px; padding: 0; border: 0; 
+  height: 1px; 
+  width: 1px; 
+  margin: -1px; 
+  padding: 0; 
+  border: 0; 
 }
 
 .big-title {

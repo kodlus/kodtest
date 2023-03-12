@@ -32,12 +32,12 @@ const closeButton = document.querySelector("#shopping-cart-inner__close-button")
 Functions
 =========================================================*/
 const contentToggle= (element1, element2) => {
-  // if the the element contains the class "is-hidden", remove it, else add it
-  if (element1.classList.contains("is-hidden")) {
-      element1.classList.remove("is-hidden");
-      element2.classList.add("is-hidden");
+  // if the the element contains the class "is-not-visible", remove it, else add it
+  if (element1.classList.contains("is-not-visible")) {
+      element1.classList.remove("is-not-visible");
+      element2.classList.add("is-not-visible");
   } else {
-    element1.classList.add("is-hidden");
+    element1.classList.add("is-not-visible");
   }
 }
 
@@ -72,16 +72,16 @@ document.addEventListener("click", (e) => {
   let node = e.target;
   /* Closes the shopping cart if the users clicks outside it. If the node is a child of shoppingCart, and contains the class button, nothing happens */
   if (isAChildOf(node, shoppingCart) !== true && e.target.classList.contains("button") !== true ){
-    shoppingCart.classList.add("is-hidden")
+    shoppingCart.classList.add("is-not-visible")
   } 
   
   // Closes the headerNav if the user clicks outside it. If the node is a child of headerNav, and contains the class button, nothing happens
   if (isAChildOf(node, headerNav) !== true && e.target.classList.contains("button") !== true ) {
-      headerNav.classList.add("is-hidden") }
+      headerNav.classList.add("is-not-visible") }
   });
 
 closeButton.addEventListener("click", () => {
-  shoppingCart.classList.add("is-hidden");
+  shoppingCart.classList.add("is-not-visible");
 })
 
 /*=========================================================
@@ -96,12 +96,12 @@ https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
 // Get the offset of the information banner
 let informationBannerOffset = informationBanner.offsetTop;
 
-// The function adds the "is-hidden" utility class if the window's vertical offset is larger than the element's offset
+// The function adds the "is-not-visible" utility class if the window's vertical offset is larger than the element's offset
 function hideBanner () {
   if (window.pageYOffset > informationBannerOffset){
-    informationBanner.classList.add("is-hidden");
+    informationBanner.classList.add("is-not-visible");
   } else {
-    informationBanner.classList.remove("is-hidden")
+    informationBanner.classList.remove("is-not-visible")
   } 
 }
 
@@ -124,8 +124,8 @@ smallScreenOnlyEvent(500, "scroll", hideBanner)
 window.addEventListener("resize", () => {
   smallScreenOnlyEvent(500, "scroll", hideBanner);
 
-  // Remove the is-hidden class if the banner is hidden when transitioning from small screen to larger screen
-  informationBanner.classList.remove("is-hidden")
+  // Remove the is-not-visible class if the banner is hidden when transitioning from small screen to larger screen
+  informationBanner.classList.remove("is-not-visible")
 })
 
 /*==============================================================================

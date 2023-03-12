@@ -15,36 +15,30 @@ Colors
 TYPOGRAPHY
 ==============================================================================*/
 /*=============================================
-BLOCKS
+General
 ==============================================*/
-/*====================================
-Button
-=====================================*/
-/*====================================
-Product card
-=====================================*/
-.product-card__product-name {
-  font-size: 1.2rem;
-}
 
-.product-card__description {
-  font-size: 1rem;
-  margin-bottom: 0.3em;
-}
-
-.product-card__price {
-  font-size: 1.2rem;
-  font-weight: 900;
-  margin-bottom: 0.5em;
-}
 
 /*=============================================
 Header
 ==============================================*/
+.nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
 
+.nav a:hover {
+  text-decoration: underline;
+}
 /*====================================
 Shopping cart
 =====================================*/
+.shopping-cart-outer__quantity-indicator {
+  font-weight: 700;
+}
+
 .shopping-cart-inner__title{
   font-size: 1.2rem;
 }
@@ -52,6 +46,11 @@ Shopping cart
 .shopping-cart-inner__close-button {
   font-size: .875rem;
   font-weight: 700;
+  color: white;
+}
+
+.shopping-cart-inner__close-button span {
+  font-size: 1.1rem;
 }
 
 .shopping-cart-inner__item-container,
@@ -59,6 +58,10 @@ Shopping cart
 .shopping-cart-inner__items-discount,
 .shopping-cart-inner__items-total-sum {
   font-size: 1rem;
+}
+
+.shopping-cart-inner__items-total-sum {
+  font-weight: 700;
 }
 
 /*====================================
@@ -91,6 +94,25 @@ Campaign section
   font-size: 1.2rem;
   margin-bottom: 1em;
 }
+
+/*====================================
+Product card
+=====================================*/
+.product-card__product-name {
+  font-size: 1.2rem;
+}
+
+.product-card__description {
+  font-size: 1rem;
+  margin-bottom: 0.3em;
+}
+
+.product-card__price {
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 0.5em;
+}
+
 
 
 /*====================================

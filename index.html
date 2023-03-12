@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/typography.css">
     <!-- Font awesome -->
-<!--     <script src="https://kit.fontawesome.com/b0e386ccd8.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/b0e386ccd8.js" crossorigin="anonymous"></script>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
   </head>
@@ -21,13 +21,13 @@
         <!-- Row 1 -->
         <div class="header__row-1">
           <!-- Nav -->            
-          <label for="nav-toggle-button">
+          <label for="nav-toggle-button" class="label">
             <button id="nav-toggle-button" class="button nav-toggle-button">
-              <img src="/images/icons/hamburger.png" class="nav-toggle-button__icon" />
+              <img src="/images/icons/hamburger.png" class="icon nav-toggle-button__icon" />
             </button>
           </label>
 
-          <nav id="nav" class="nav is-hidden">
+          <nav id="nav" class="nav is-not-visible">
             <ul class="nav__links">
               <li class="nav__link"><a href="#">För hemmet</a></li>
               <li class="nav__link"><a href="#">Matlagning</a></li>
@@ -44,9 +44,9 @@
 
           <!-- Shopping cart outer-->
           <div class="shopping-cart-outer"> 
-            <label for="shopping-cart-outer__button">
+            <label for="shopping-cart-outer__button" class="label">
               <button id="shopping-cart-outer__button" class="button shopping-cart-outer__button">
-              <img class ="shopping-cart-outer__icon" src="images/icons/shopping-cart.png" alt="shopping cart button icon">
+              <img class ="icon shopping-cart-outer__icon" src="images/icons/shopping-cart.png" alt="shopping cart button icon">
               </button>
            
               <span id="shopping-cart-outer__quantity-indicator" class="shopping-cart-outer__quantity-indicator">0</span>
@@ -54,7 +54,7 @@
           </div>
 
           <!-- Shopping cart inner-->
-          <div id="shopping-cart-inner" class="shopping-cart-inner is-hidden">
+          <div id="shopping-cart-inner" class="shopping-cart-inner is-not-visible">
             <div class="shopping-cart-inner__header">
               <h3 class="shopping-cart-inner__title">Din varukorg</h3>
               <button id="shopping-cart-inner__close-button" class="button shopping-cart-inner__close-button"><p>Stäng</p><span>X</span></button>
@@ -88,7 +88,7 @@
           <!-- Search bar -->
           <div class="search-bar search-bar--header">
             <input type="search" name="search-bar" id="search-bar__input" class="search-bar__input">
-            <button class="button search-bar__button"><img class="search-bar__icon" src="/images/icons/search_icon.png" alt=""></button>
+            <button class="button search-bar__button"><img class="icon search-bar__icon" src="/images/icons/search_icon.png" alt=""></button>
           </div>
         </div> <!-- End of row 2 -->
 
@@ -97,8 +97,8 @@
           <!-- Information banner -->
           <div id="header__information-banner" class="header__information-banner">
             <p> Fri frakt över 500kr</p>
-            <p class="is-hidden">30 dagar öppet köp</p> 
-            <p class="is-hidden"> Prova hemma 100 dagar</p>
+            <p class="is-not-visible">30 dagar öppet köp</p> 
+            <p class="is-not-visible"> Prova hemma 100 dagar</p>
             <p>Fria returer</p>
           </div>
         </div> <!-- End of row 3 -->
@@ -125,9 +125,9 @@
             </div> <!-- End of carousel container-->
             
             <div class="carousel__indicator">
-              <button id="carousel__previous-button" class="carousel__previous-button"></button>
+              <button id="carousel__previous-button" class="button carousel__previous-button"></button>
               <span id="carousel__indicator-number" class="carousel__indicator-number"> <!-- generated with JS --> </span>
-              <button id="carousel__next-button" class="carousel__next-button"></button>
+              <button id="carousel__next-button" class="button carousel__next-button"></button>
             </div> <!-- End of Carousel indicator -->
           </div> <!-- End of campaign carousel -->
         </section> <!-- End of campaign section -->
@@ -255,7 +255,7 @@
       <section class="services-section">
         <h2 class="section-title">Service</h2>  <!-- Byt namn -->
         <div class="services-card">
-          <a href=""><img src="images/pictures/services/LH811DS0_04_Styling03.jpeg" alt="" class="services-card__image">
+          <a href="#" class="service-card__link"><img src="images/pictures/services/LH811DS0_04_Styling03.jpeg" alt="" class="services-card__image">
           <div class="services-card__details"></a>
             <h3 class="services-card__title">15 års åtagande för reperation</h3>
             <p class="services-card__description">OBH Nordica satsar på produktreperationer</p>
@@ -265,7 +265,7 @@
         </div> <!-- End of services card -->
 
         <div class="services-card">
-          <a href=""><img src="images/pictures/services/FO827ES0_Try100Days_SE.jpg" alt="" class="services-card__image">
+          <a href="#" class="service-card__link"><img src="images/pictures/services/FO827ES0_Try100Days_SE.jpg" alt="" class="services-card__image">
           <div class="services-card__details"></a>
             <h3>Prova hemma hundra dagar</h3>
             <p class="services-card__description">Under en begränsad period så har du möjlighet att testa utvalda produkter hemma och lämna tillbaka produkten om du inte är nöjd.</p>
@@ -297,7 +297,7 @@
 
         <div class="search-bar search-bar--product">
           <input type="search" name="" id="product-search-bar__input" class="search-bar__input search-bar__input--product" placeholder="Modellnummer">
-          <button id="product-search-bar__button" class="product-search-bar__button" type="submit" ><img src="images/icons/search_icon.png" alt="" class="search-bar__icon"></button>
+          <button id="product-search-bar__button" class="button search-bar__button" type="submit" ><img src="images/icons/search_icon.png" alt="" class="icon search-bar__icon"></button>
         </div>
         <a href="#" class="">Var kan jag hitta modellnumret?</a>
         </div>
@@ -336,10 +336,10 @@
       <div class="footer__social-media footer__category">
         <h2 class="footer__header">Följ oss</h2>
         <ul>
-          <li><a href="#" class="footer__link"></a><i class="fa-brands fa-facebook social-media-icon"></i></li>
-          <li><a href="#" class="footer__link"><i class="fa-brands fa-instagram social-media-icon"></i></a></li>
-          <li><a href="#" class="footer__link"><i class="fa-brands fa-youtube social-media-icon"></i></a></li>
-          <li><a href="#" class="footer__link"><i class="fa-brands fa-linkedin social-media-icon"></i></a></li>
+          <li><a href="#" class="footer__link"></a><i class="icon fa-brands fa-facebook social-media-icon"></i></li>
+          <li><a href="#" class="footer__link"><i class="icon fa-brands fa-instagram social-media-icon"></i></a></li>
+          <li><a href="#" class="footer__link"><i class="icon fa-brands fa-youtube social-media-icon"></i></a></li>
+          <li><a href="#" class="footer__link"><i class="icon fa-brands fa-linkedin social-media-icon"></i></a></li>
         </ul>
       </div>
 

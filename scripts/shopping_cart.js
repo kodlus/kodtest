@@ -216,7 +216,7 @@ const addItemToCart = (name, price, imageSrc) => {
 
   // Add event listeners to the newly created shopping cart items
   // Delete button
-  shoppingCartItem.getElementsByClassName("shopping-cart-item__button--delete")[0].addEventListener("mouseup", deleteShoppingCartItem);
+  shoppingCartItem.getElementsByClassName("shopping-cart-item__delete-button")[0].addEventListener("mouseup", deleteShoppingCartItem);
 
   // Subtract button
   shoppingCartItem.getElementsByClassName("shopping-cart-item__button--subtract")[0].addEventListener("mouseup", subtractQuantity);

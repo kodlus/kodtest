@@ -26,7 +26,7 @@ export default async function loadCarousel() {
     const numberOfCards = Object.keys(carouselCards).length;
 
     // 3. Initialize the carousel indicator
-    cardIndicator.innerText = `${cardIndex + 1} / ${numberOfCards}`;
+    cardIndicator.innerHTML = `<span class="bold-text">${cardIndex + 1}</span> / ${numberOfCards}`;
 
     // 4. Event listeners for buttons outside the carousel card
     carouselPrevbutton.addEventListener("mousedown", moveToPreviousCard);
@@ -57,7 +57,7 @@ export default async function loadCarousel() {
       // Generate new card
       generateCard()
       // Update the indicator
-      cardIndicator.innerText = `${cardIndex + 1} / ${numberOfCards}`;
+      cardIndicator.innerHTML =`<span class="bold-text">${cardIndex + 1}</span> / ${numberOfCards}`;
     }
     
     function moveToPreviousCard (e) {
@@ -72,7 +72,7 @@ export default async function loadCarousel() {
       // Generate new card
       generateCard();
       // Update the indicator
-      cardIndicator.innerText = `${cardIndex + 1} / ${numberOfCards}`;
+      cardIndicator.innerHTML = `<span class="bold-text">${cardIndex + 1}</span> / ${numberOfCards}`;
     }
   } catch (error) {
     alert(`Error: ${error}`)
