@@ -23,7 +23,7 @@ General
 Header
 ==============================================*/
 .nav a {
-  color: var(--white);
+  color: var(--black);
   text-decoration: none;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -31,6 +31,14 @@ Header
 
 .nav a:hover {
   text-decoration: underline;
+}
+
+.nav__dropdown a {
+  font-size: 1rem;
+}
+
+.nav__dropdown-button {
+  font-size: 2rem;
 }
 /*====================================
 Shopping cart

@@ -4,6 +4,7 @@
     "link": "#",
     "description": "Tystlåten dammsugare med påse",
     "image": "images/pictures/products/beverages/2420/2420_Webformat.jpg",
+    "alt-text":"",
     "price": 4999,
     "rating": 4.1,
     "stars": "⭐⭐⭐⭐",
@@ -12,7 +13,9 @@
   "1": {
     "product": "GeForce, baibee",
     "description": "Tystlåten dammsugare med påse",
+    "link": "#",
     "image": "images/pictures/products/beverages/2329/2329_Webformat.jpg",
+    "alt-text":"",
     "price": 50000,
     "rating": 4.1,
     "stars": "⭐⭐⭐⭐",
@@ -21,7 +24,9 @@
   "2": {
     "product": "Born to run",
     "description": "Tystlåten dammsugare med påse",
+    "link": "#",
     "image": "images/pictures/products/beverages/2420/2420_Webformat.jpg",
+    "alt-text":"",
     "price": 4999,
     "rating": 4.1,
     "stars": "⭐⭐⭐⭐",
@@ -30,7 +35,9 @@
   "3": {
     "product": "Where is my mind",
     "description": "Tystlåten dammsugare med påse",
+    "link": "#",
     "image": "images/pictures/products/beverages/2329/2329_Webformat.jpg",
+    "alt-text":"",
     "price": 50000,
     "rating": 4.1,
     "stars": "⭐⭐⭐⭐",
@@ -39,7 +46,9 @@
   "4": {
     "product": "La grange",
     "description": "Tystlåten dammsugare med påse",
+    "link": "#",
     "image": "images/pictures/products/beverages/2329/2329_Webformat.jpg",
+    "alt-text":"",
     "price": 50000,
     "rating": 4.1,
     "stars": "⭐⭐⭐⭐",
@@ -48,7 +57,9 @@
   "5": {
     "product": "Dreams",
     "description": "Tystlåten dammsugare med påse",
+    "link": "#",
     "image": "images/pictures/products/beverages/2329/2329_Webformat.jpg",
+    "alt-text":"",
     "price": 50000,
     "rating": 4.1,
     "stars": "⭐⭐⭐⭐",

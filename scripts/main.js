@@ -80,8 +80,32 @@ document.addEventListener("click", (e) => {
       headerNav.classList.add("is-not-visible") }
   });
 
-closeButton.addEventListener("click", () => {
+  closeButton.addEventListener("click", () => {
   shoppingCart.classList.add("is-not-visible");
+})
+
+
+// NAV DROPDOWN MENU MOBILE ONLY
+// Select the nav container
+const nav = document.querySelector(".nav");
+// Add event listener to the nav element
+nav.addEventListener("mouseup", (e) => {
+  // Capture when the event
+  const targetButton = e.target.closest("button");
+ 
+  // Remove warning messages if target button is null
+  if (targetButton === null) {
+    return
+  }
+  
+  // Check if the button has the right inner text and is of the right class. Toggling 
+  if (targetButton.innerText === "+" && targetButton.classList.contains("nav__dropdown-button")) {
+    targetButton.innerText = "-";
+    targetButton.parentElement.nextElementSibling.classList.remove("is-not-visible");
+  } else {
+    targetButton.innerText = "+";
+    targetButton.parentElement.nextElementSibling.classList.add("is-not-visible");
+  }
 })
 
 /*=========================================================
@@ -95,6 +119,9 @@ https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
 
 // Get the offset of the information banner
 let informationBannerOffset = informationBanner.offsetTop;
+
+// Set the screen small screen width variable. The number represents pixels
+const smallScreenWidth = 800;
 
 // The function adds the "is-not-visible" utility class if the window's vertical offset is larger than the element's offset
 function hideBanner () {
@@ -118,11 +145,11 @@ function smallScreenOnlyEvent (size, eventType, func) {
 }
 
 // Call smallScreenOnlyEvent at run time
-smallScreenOnlyEvent(500, "scroll", hideBanner)
+smallScreenOnlyEvent(smallScreenWidth, "scroll", hideBanner)
 
 // Detect when the screen size changes, and call smallScreenOnlyEvent
 window.addEventListener("resize", () => {
-  smallScreenOnlyEvent(500, "scroll", hideBanner);
+  smallScreenOnlyEvent(smallScreenWidth, "scroll", hideBanner);
 
   // Remove the is-not-visible class if the banner is hidden when transitioning from small screen to larger screen
   informationBanner.classList.remove("is-not-visible")

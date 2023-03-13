@@ -12,7 +12,7 @@ CONTENT
 const deleteShoppingCartItem = (e) => {
   const buttonClicked = e.target;
   // Find the correct parent item (shopping-cart-item) and remove it
-  buttonClicked.parentElement.parentElement.parentElement.remove();
+  buttonClicked.parentElement.parentElement.parentElement.parentElement.remove();
   
   // Update the shopping cart total
   updateCartTotal();
