@@ -1,5 +1,6 @@
 {
   "0": {
+    "index": 0,
     "product": "Silence Force +",
     "link": "#",
     "description": "Tystlåten dammsugare med påse",
@@ -11,6 +12,7 @@
     "reviews": 15
   },
   "1": {
+    "index": 1,
     "product": "GeForce, baibee",
     "description": "Tystlåten dammsugare med påse",
     "link": "#",
@@ -22,6 +24,7 @@
     "reviews": 15
   },
   "2": {
+    "index": 2,
     "product": "Born to run",
     "description": "Tystlåten dammsugare med påse",
     "link": "#",
@@ -33,6 +36,7 @@
     "reviews": 15
   },
   "3": {
+    "index": 3,
     "product": "Where is my mind",
     "description": "Tystlåten dammsugare med påse",
     "link": "#",
@@ -44,6 +48,7 @@
     "reviews": 15
   },
   "4": {
+    "index": 4,
     "product": "La grange",
     "description": "Tystlåten dammsugare med påse",
     "link": "#",
@@ -55,6 +60,7 @@
     "reviews": 15
   },
   "5": {
+    "index": 5,
     "product": "Dreams",
     "description": "Tystlåten dammsugare med påse",
     "link": "#",

@@ -170,6 +170,12 @@ const addToCartClicked = (e) => {
   // Get the name of the product
   const name = shopItem.getElementsByClassName("product-card__product-name")[0].innerText;
   
+  // Get the ID of the product
+  const productIndex = Number(shopItem.id.slice(-1));
+  
+  console.log("This is productIndex")
+  console.log(productIndex)
+
   // Get the price of the product
   const price = shopItem.getElementsByClassName("product-card__price")[0].innerText;
  
@@ -177,14 +183,14 @@ const addToCartClicked = (e) => {
   const imageSrc = shopItem.getElementsByClassName("product-card__image")[0].src;
 
   // Send information to the addItemToCart function:
-  addItemToCart(name, price, imageSrc)
+  addItemToCart(name, price, imageSrc, productIndex)
 
   // Update the cart total
   updateCartTotal();
 } // End of function
 
 // This function is triggered when buy buttons are clicked, and creates an item element with the information from addToCartClicked. The item is placed in the shopping cart
-const addItemToCart = (name, price, imageSrc) => {
+const addItemToCart = (name, price, imageSrc, productIndex) => {
   // Create a shopping cart item
   const shoppingCartItem = document.createElement("div");
   shoppingCartItem.classList.add("shopping-cart-item")
@@ -208,11 +214,12 @@ const addItemToCart = (name, price, imageSrc) => {
   }
 
   // Add the parameters to the imported utility function, generating shopping cart HTML
-  const shoppingCartHtml = shoppingCartItemHtml(imageSrc, name, price);
+  const shoppingCartHtml = shoppingCartItemHtml(imageSrc, name, price, productIndex);
   // Apply the newly created shopping cart HTML to the shopping cart item div
   shoppingCartItem.innerHTML = shoppingCartHtml;
   // Append the new shopping cart item to the end of the cart container
   shoppingCartContainer.append(shoppingCartItem);
+
  
 
   // Add event listeners to the newly created shopping cart items

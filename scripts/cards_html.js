@@ -1,4 +1,4 @@
-function shoppingCartItemHtml (imageSrc, name, price) {
+function shoppingCartItemHtml (imageSrc, name, price, productIndex) {
   return `<img src="${imageSrc}" alt="" class="shopping-cart-item__image">
 
   <div class="shopping-cart-item__information">
@@ -7,8 +7,8 @@ function shoppingCartItemHtml (imageSrc, name, price) {
     </p>
     <div class="shopping-cart-item__summary">
       
-      <label for=""></label>
-      <button class="button shopping-cart-item__delete-button" >
+      <label for="shopping-cart-item__delete-button-${productIndex}"></label>
+      <button id="shopping-cart-item__delete-button-${productIndex}" class="button shopping-cart-item__delete-button" >
         <img src="/images/icons/icons8-trash-can-48.png" alt="remove item from the shopping cart icon" class="shopping-cart-item__button-icon"/>
       </button>
       
@@ -19,7 +19,8 @@ function shoppingCartItemHtml (imageSrc, name, price) {
 
         <input type="text" disabled="" value="1" class="shopping-cart-item__quantity">
         
-        <button class="shopping-cart-item__button shopping-cart-item__button--add"> 
+        <label for="shopping-cart-item__button--add-${productIndex}"></label>
+        <button id="shopping-cart-item__button--add-${productIndex}" class="shopping-cart-item__button shopping-cart-item__button--add"> 
           + 
         </button>
       </div> <!-- End of item quantity input -->
@@ -30,36 +31,36 @@ function shoppingCartItemHtml (imageSrc, name, price) {
   `
  }
 
-function carouselCardHtml (data, cardIndex) {
+function carouselCardHtml (data, property) {
   return       `
-  <div class="product-card">
-    <a href="${data[cardIndex].link} target="_blank" class="product-card__link">
-      <img src="${data[cardIndex].image}" class="product-card__image">
+  <div id="carousel-card-${data[property].index}" class="product-card">
+    <a href="${data[property].link} target="_blank" class="product-card__link">
+      <img src="${data[property].image}" class="product-card__image">
     </a>
     
     <h3 class="product-card__product-name">
-      ${data[cardIndex].product}
+      ${data[property].product}
     </h3>
 
     <p class="product-card__description">
-      ${data[cardIndex].description}
+      ${data[property].description}
     </p>
 
     <p class="product-card__price">
-      ${data[cardIndex].price} SEK
+      ${data[property].price} SEK
     </p>
     
     <div class="product-card__rating-container">
       <span class="product-card__star-rating margin-right">
-      ${data[cardIndex].stars} <!-- Ändra till SVG -->
+      ${data[property].stars} <!-- Ändra till SVG -->
       </span>
 
       <span class="product-card__rating">
-        ${data[cardIndex].rating}
+        ${data[property].rating}
       </span>
 
       <span class="product-card__reviews">
-        (${data[cardIndex].reviews})
+        (${data[property].reviews})
       </span>
   </div>
 
