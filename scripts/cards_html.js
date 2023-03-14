@@ -6,6 +6,8 @@ function shoppingCartItemHtml (imageSrc, name, price) {
       <a href="#">${name}</a>
     </p>
     <div class="shopping-cart-item__summary">
+      
+      <label for=""></label>
       <button class="button shopping-cart-item__delete-button" >
         <img src="/images/icons/icons8-trash-can-48.png" alt="remove item from the shopping cart icon" class="shopping-cart-item__button-icon"/>
       </button>
@@ -14,7 +16,9 @@ function shoppingCartItemHtml (imageSrc, name, price) {
         <button class="shopping-cart-item__button shopping-cart-item__button--subtract"> 
           - 
         </button>
+
         <input type="text" disabled="" value="1" class="shopping-cart-item__quantity">
+        
         <button class="shopping-cart-item__button shopping-cart-item__button--add"> 
           + 
         </button>

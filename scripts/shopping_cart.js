@@ -199,7 +199,8 @@ const addItemToCart = (name, price, imageSrc) => {
   for (let item of shoppingCartItemNames) {
     if (item.innerText === name) {
       // If the item exists, update its value by 1. This long line represents the path to an item's quantity  indicator, which increments every time item duplicates are added to the shopping cart 
-      item.nextElementSibling.children[1].children[1].value ++
+      item.nextElementSibling.children[2].children[1].value ++
+    
 
       // Break loop, otherwise a duplicate item gets created 
       return
