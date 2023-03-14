@@ -58,7 +58,9 @@ https://stackoverflow.com/questions/26402033/missing-click-event-for-span-inside
   pointer-events: none;
 }
 
-.label:hover {
+
+
+label:hover {
   cursor: pointer;
 }
 
