@@ -3,7 +3,7 @@ const v = "Hi! I'm a strict mode script!";
 /*============================================================================
 IMPORTED DATA, VARIABLES, ETC. 
 ==============================================================================*/
-import { shoppingCartItemHtml } from "./utility.js";
+import { shoppingCartItemHtml } from "./cards_html.js";
 
 /*============================================================================
 CONTENT

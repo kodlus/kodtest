@@ -3,7 +3,7 @@
 IMPORTED DATA, VARIABLES, ETC. 
 ==============================================================================*/
 import { addToCartClicked } from "./shopping_cart.js";
-import { popularProductCardHtml } from "./utility.js";
+import { popularProductCardHtml } from "./cards_html.js";
 
 /*============================================================================
 CONTENT & EXPORT FUNCTION
