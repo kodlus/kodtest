@@ -34,10 +34,16 @@ function shoppingCartItemHtml (imageSrc, name, price, productIndex, productLink)
  }
 
 function carouselCardHtml (data, property) {
-  return       `
+  return `
   <div id="carousel-card-${data[property].index}" class="product-card">
-    <a href="${data[property].link} target="_blank" class="product-card__link">
-      <img src="${data[property].image}" class="product-card__image">
+    <a href="${data[property].link} 
+    target="_blank" 
+    class="product-card__link" 
+    aria-label="Läs mer om ${data[property].product}">
+      <img src="${data[property].image}" 
+      class="product-card__image 
+      alt="${data[property].altText}"
+      aria-label="${data[property].altText}">
     </a>
     
     <h3 class="product-card__product-name">
@@ -66,7 +72,7 @@ function carouselCardHtml (data, property) {
       </span>
   </div>
 
-  <label for="product-card__button"></label>
+  <label for="product-card__button-${data[property].index}"></label>
   <button id="product-card__button-${data[property].index}" class="button product-card__button button__add-to-cart" aria-label="Lägg produkten i din varukorg">
     Lägg i varukorgen
   </button>
@@ -78,9 +84,12 @@ function popularProductCardHtml (data, property) {
   return `
   <!-- Popular product card -->
   <div id="popular-card-${data[property].index}"class="product-card product-card--popular"> 
-    <a href="${data[property].link}" class="product-card__link">
+    <a href="${data[property].link}" 
+    class="product-card__link" 
+    aria-label="Läs mer om ${data[property].product}">
       <img src="${data[property].image}" 
-      alt="" 
+      alt="${data[property].altText}" 
+      aria-label="${data[property].altText}"
       class="product-card__image product-card__image--popular">
     </a>
 
