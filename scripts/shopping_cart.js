@@ -8,6 +8,9 @@ import { shoppingCartItemHtml } from "./cards_html.js";
 /*============================================================================
 CONTENT
 ==============================================================================*/
+/*=========================================================
+DELETE ITEMS FROM THE SHOPPING CART
+=========================================================*/
 // Used for deleting a shopping cart item created with addItemToCart
 const deleteShoppingCartItem = (e) => {
   const buttonClicked = e.target;
@@ -18,6 +21,9 @@ const deleteShoppingCartItem = (e) => {
   updateCartTotal();
 } // End of function
 
+/*=========================================================
+REDUCE THE QUANTITY OF A SHOPPING CART PRODUCT
+=========================================================*/
 // Used for increasing the quantity of a shopping cart item created with addItemToCart
 const subtractQuantity = (e) => {
   const buttonClicked = e.target;
@@ -37,6 +43,10 @@ const subtractQuantity = (e) => {
   updateCartTotal();
 } // End of function
 
+/*=========================================================
+INCREASE THE QUANTITY OF A SHOPPING CART PRODUCT 
+INSIDE THE SHOPPING CART
+=========================================================*/
 // Used for decreasing the quantity of a shopping cart item created with addItemToCart
 const increaseQuantity = (e) => {
   const buttonClicked = e.target;
@@ -53,6 +63,9 @@ const increaseQuantity = (e) => {
 
 } // End of function
 
+/*=========================================================
+UPDATE THE SHOPPING CART
+=========================================================*/
 // Used for updating the entire shopping cart
 const updateCartTotal = () => {
   // Get the container for the cart items (shopping cart container), could also work with get element by id. Adding [0] after getElementsByClassName does the same thing, basically. 
@@ -106,6 +119,9 @@ const updateCartTotal = () => {
 
 /*   Object.keys(popularProductsCards).length */
 
+/*=============== MÅSTE SES ÖVER - IBLAND BUGGAR LÖSNINGEN =============*/
+// Skapa en array som håller alla produkter. Är den tom visas meddelandet,
+
 
   if(cartItemContainer.childElementCount === 0) {
     shoppingCartIndicator.innerText = "0";
@@ -149,7 +165,9 @@ const updateCartTotal = () => {
   }
 } // End of function
 
-
+/*=========================================================
+CREATE AND REMOVE SHOPPING CART MESSAGE
+=========================================================*/
 const createMessage = (id, className) => {
   const message = document.createElement("p");
   message.setAttribute("id", `${id}`)
@@ -166,6 +184,9 @@ const removeMessage = (id) => {
   }
  }
 
+ /*=========================================================
+CLICK ON PRODUCT BUY BUTTON AND GET PRODUCT DATA
+=========================================================*/
 // Used for collecting relevant data from items when buy button is clicked, and passes that information to addToCart
 const addToCartClicked = (e) => {
   const button = e.target;
@@ -197,6 +218,9 @@ const addToCartClicked = (e) => {
   updateCartTotal();
 } // End of function
 
+/*=========================================================
+GENERATE A SHOPPING CART PRODUCT CARD INSIDE SHOPPING CART
+=========================================================*/
 // This function is triggered when buy buttons are clicked, and creates an item element with the information from addToCartClicked. The item is placed in the shopping cart
 const addItemToCart = (name, price, imageSrc, productIndex, productLink) => {
   // Create a shopping cart item
@@ -218,9 +242,7 @@ const addItemToCart = (name, price, imageSrc, productIndex, productLink) => {
         .children[2] // shopping-cart-item__quantity-input
         .children[2] //shopping-cart-item__quantity
         .value ++;
-      
-        console.log("Debug")
-      console.log(item.nextElementSibling.children[2].children[1])
+
       // Break loop, otherwise a duplicate item gets created 
       return
     }

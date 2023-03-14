@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="swe">
+<html lang="sv">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -169,9 +169,15 @@
             </div> <!-- End of carousel container-->
             
             <div class="carousel__indicator">
-              <button id="carousel__previous-button" class="button carousel__previous-button"></button>
+              <label for="carousel__previous-button">
+                <button id="carousel__previous-button" class="button carousel__previous-button" aria-label="Nästa produkt"></button>
+              </label>
+              
               <span id="carousel__indicator-number" class="carousel__indicator-number"> <!-- generated with JS --> </span>
-              <button id="carousel__next-button" class="button carousel__next-button"></button>
+
+              <label for="carousel__next-button">
+                <button id="carousel__next-button" class="button carousel__next-button" aria-label="Föregående product"></button>
+              </label>
             </div> <!-- End of Carousel indicator -->
           </div> <!-- End of campaign carousel -->
         </section> <!-- End of campaign section -->
@@ -183,7 +189,7 @@
 
         <div class="popular-categories__card-container">
           <div class="category-card">
-            <a href="#"><img src="images/pictures/products/beverages/2420/2420_Styling09.jpg" alt="" class="category-card__image"></a>
+            <img src="images/pictures/products/beverages/2420/2420_Styling09.jpg" alt="Image description" class="category-card__image">
 
               <div class="category-card__details">
               <h3 class="category-card__product-name">Kaffebryggare</h3>
@@ -192,7 +198,7 @@
           </div> <!-- End of category card -->
 
           <div class="category-card">
-            <a href="#"><img src="images/pictures/products/home_cleaning/VO6164NA_10_Styling02.jpg" alt="" class="category-card__image"></a>
+            <img src="images/pictures/products/home_cleaning/VO6164NA_10_Styling02.jpg" alt="Image description" class="category-card__image">
 
             <div class="category-card__details">
               <h3 class="category-card__product-name">Dammsugare</h3>
@@ -201,7 +207,7 @@
           </div> <!-- End of category card -->
 
           <div class="category-card">
-            <a href="#"><img src="images/pictures/products/electrical_cooking/AG5018S0_Styling17.jpg" alt="" class="category-card__image"></a>
+            <img src="images/pictures/products/electrical_cooking/AG5018S0_Styling17.jpg" alt="Image description" class="category-card__image">
 
             <div class="category-card__details">
               <h3 class="category-card__product-name">Airfryers</h3>
@@ -210,7 +216,7 @@
           </div> <!-- End of category card -->
 
           <div class="category-card">
-            <a href="#"><img src="images/pictures/products/electrical_cooking/GO722DS0_02_Styling01(2).jpg" alt="" class="category-card__image"></a>
+            <img src="images/pictures/products/electrical_cooking/GO722DS0_02_Styling01(2).jpg" alt="Image description" class="category-card__image">
 
             <div class="category-card__details">
               <h3 class="category-card__product-name">Optigrill</h3>
@@ -219,7 +225,7 @@
           </div> <!-- End of category card -->
 
           <div class="category-card">
-            <a href="#"><img src="images/pictures/products/personal_care/3040_Product02.jpg" alt="" class="category-card__image"></a>
+            <img src="images/pictures/products/personal_care/3040_Product02.jpg" alt="Image description" class="category-card__image">
 
               <div class="category-card__details">
               <h3 class="category-card__product-name">Plattång</h3>
@@ -244,8 +250,8 @@
         <h2 class="section-title">Nyheter</h2> 
         <div class="featured__container">
           <div class="featured-card">
-            <a href=""><img src="images/pictures/products/home_cleaning/VO6164NA_Styling03.jpg" alt="" class="featured-card__image">
-            <div class="featured-card__details"></a>
+            <a href="#"><img src="images/pictures/products/home_cleaning/VO6164NA_Styling03.jpg" alt="Image description" class="featured-card__image" aria-label="Läs mer om Green Force Dammsugare">
+            <div class="featured-card__details">
               <h3 class="featured-card__product-name">
                 Green Force Dammsugare
               </h3>
@@ -254,16 +260,16 @@
           </div> <!-- End of featured card -->
 
           <div class="featured-card">
-            <a href=""><img src="images/pictures/products/personal_care/NF8210N0_Styling05.jpg" alt="" class="featured-card__image">
-            <div class="featured-card__details"></a>
+            <a href="#"><img src="images/pictures/products/personal_care/NF8210N0_Styling05.jpg" alt="Image description" class="featured-card__image" aria-label="Läs mer om Ultimate experience">
+            <div class="featured-card__details">
               <h3 class="featured-card__product-name">Ultimate experience</h3>
               <p class="featured-card__description">Stylingverktyg framtagna i samarbete med professionella frisörer</p>
             </div>
           </div> <!-- End of featured card -->
 
           <div class="featured-card">
-            <a href=""><img src="images/pictures/products/food preparation/HN95HDS0_Styling04.jpg" alt="" class="featured-card__image">
-            <div class="featured-card__details"></a>
+            <a href="#"><img src="images/pictures/products/food preparation/HN95HDS0_Styling04.jpg" alt="Image description" class="featured-card__image" aria-label="Läs mer om Powelix">
+            <div class="featured-card__details">
               <h3 class="featured-card__product-name">Powelix - Smidigare, snabbare</h3>
               <p class="featured-card__description">Upplev skillnaden med våra Powelix-produkter</p>
             </div>
@@ -275,22 +281,21 @@
         <h2 class="section-title">Upptäck mer</h2> 
         <div class="discover-more__cards-container">
           <div class="discover-card">
-            <a href="#" class="discover-card__image-link"><img src="images/pictures/products/electrical_cooking/_Turbo Cuisine _ Fry 1200 W banner front page sverige.png" alt="" class="discover-card__image">
-            <div class="discover-card__details"></a>
+            <img src="images/pictures/products/electrical_cooking/_Turbo Cuisine _ Fry 1200 W banner front page sverige.png" alt="Image description" class="discover-card__image">
+            <div class="discover-card__details">
               <h3 class="discover-card__title">Godare, nyttigare, snabbare tillagning</h3>
               <p class="discover-card__copy">Turbo Cuisine & Fry multikokare är ett måste för dig som gillar att laga mat och vill göra det på ett nyttigare, godare och snabbare sätt. Turbo Cuisine & Fry kommer med ett Turbo Crisp lock så du även kan använda din multikokare som en air fryer med lite eller ingen olja. Spara upp till 80% energi* med elektriska tryckkokare från OBH Nordica. *jämfört med traditionell matlagning.</p>
-              <a href="#" class="discover-card__button">Läs mer</a>
+              <a href="#" class="discover-card__button" aria-label="Läs mer om Turbo Cuisine & Fry multikokare">Läs mer</a>
             </div>
           </div> <!-- End of discover card -->
 
           <div class="discover-card">
-            <a href="#" class="discover-card__image-link"><img src="images/pictures/discover/kyckling med paprika.png" alt="" class="discover-card__image">
-            <div class="discover-card__details"></a>
+            <img src="images/pictures/discover/kyckling med paprika.png" alt="Image description" class="discover-card__image">
+            <div class="discover-card__details">
               <h3 class="discover-card__title">Hitta nya, spännande recept</h3>
               <p class="discover-card__copy">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <a href="#" class="discover-card__button">Läs mer</a>
-            </div>
-            
+              <a href="#" class="discover-card__button" aria-label="Läs mer om våra recept">Läs mer</a>
+            </div>  
           </div><!-- End of discover card -->
         </div> <!-- End of discover more container -->
       </section> <!-- End of discover more section -->
@@ -300,8 +305,8 @@
         <h2 class="section-title">Service</h2>
         <div class="services__card-container">
           <div class="services-card">
-            <a href="#" class="service-card__link"><img src="images/pictures/services/LH811DS0_04_Styling03.jpeg" alt="" class="services-card__image">
-            <div class="services-card__details"></a>
+            <img src="images/pictures/services/LH811DS0_04_Styling03.jpeg" alt="Image description" class="services-card__image">
+            <div class="services-card__details">
               <h3 class="services-card__title">15 års åtagande för reperation</h3>
               <p class="services-card__description">OBH Nordica satsar på produktreperationer</p>
               <a href="#">Läs mer</a>
@@ -310,8 +315,8 @@
           </div> <!-- End of services card -->
   
           <div class="services-card">
-            <a href="#" class="service-card__link"><img src="images/pictures/services/FO827ES0_Try100Days_SE.jpg" alt="" class="services-card__image">
-            <div class="services-card__details"></a>
+            <img src="images/pictures/services/FO827ES0_Try100Days_SE.jpg" alt="Image description" class="services-card__image">
+            <div class="services-card__details">
               <h3>Prova hemma hundra dagar</h3>
               <p class="services-card__description">Under en begränsad period så har du möjlighet att testa utvalda produkter hemma och lämna tillbaka produkten om du inte är nöjd.</p>
   
@@ -321,8 +326,8 @@
           </div> <!-- End of services card -->
   
           <div class="services-card">
-            <a href=""><img src="images/pictures/services/2420_Product04.jpeg" alt="" class="services-card__image">
-            <div class="services-card__details"></a>
+            <img src="images/pictures/services/2420_Product04.jpeg" alt="Image description" class="services-card__image">
+            <div class="services-card__details">
               <h3 class="services-card__title">2 års garanti</h3>
                 <a href="#">Läs mer om vår tvåårs garanti</a>
             </div>
@@ -343,9 +348,9 @@
 
         <div class="search-bar search-bar--product">
           <input type="search" name="" id="product-search-bar__input" class="search-bar__input search-bar__input--product" placeholder="Modellnummer">
-          <button id="product-search-bar__button" class="button search-bar__button" type="submit" ><img src="images/icons/search_icon.png" alt="" class="icon search-bar__icon"></button>
+          <button id="product-search-bar__button" class="button search-bar__button" type="submit" ><img src="images/icons/search_icon.png" alt="Image description" class="icon search-bar__icon"></button>
         </div>
-        <a href="#" class="">Var kan jag hitta modellnumret?</a>
+          <a href="#" class="">Var kan jag hitta modellnumret?</a>
         </div>
 
       </section> <!-- End of product search section -->
@@ -382,10 +387,25 @@
       <div class="footer__social-media footer__category">
         <h2 class="footer__header">Följ oss</h2>
         <ul>
-          <li><a href="#" class="footer__link"><i class="icon fa-brands fa-facebook social-media-icon"></i></a></li>
-          <li><a href="#" class="footer__link"><i class="icon fa-brands fa-instagram social-media-icon"></i></a></li>
-          <li><a href="#" class="footer__link"><i class="icon fa-brands fa-youtube social-media-icon"></i></a></li>
-          <li><a href="#" class="footer__link"><i class="icon fa-brands fa-linkedin social-media-icon"></i></a></li>
+          <li>
+            <a href="#" class="footer__link" aria-label="Besök oss gärna på Facebook">
+              <i class="icon fa-brands fa-facebook social-media-icon"></i>
+           </a>
+          </li>
+          <li>
+            <a href="#" class="footer__link" aria-label="Besök oss gärna på Instagram">
+              <i class="icon fa-brands fa-instagram social-media-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__link" aria-label="Besök oss gärna på Youtube">
+              <i class="icon fa-brands fa-youtube social-media-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__link" aria-label="Besök oss gärna på LinkedIn"><i class="icon fa-brands fa-linkedin social-media-icon"></i>
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -417,7 +437,7 @@
     </footer>
 
     <!-- <script src="scripts/data.js" defer></script> -->
-    <script src="scripts/main.js" type="module" defer></script>
+    <script src="scripts/main.js" type="module" async></script>
     <script src="scripts/playground.js"></script>
   </body>
 </html>
