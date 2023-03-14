@@ -1,26 +1,28 @@
-function shoppingCartItemHtml (imageSrc, name, price, productIndex) {
+function shoppingCartItemHtml (imageSrc, name, price, productIndex, productLink) {
   return `<img src="${imageSrc}" alt="" class="shopping-cart-item__image">
 
   <div class="shopping-cart-item__information">
     <p class="shopping-cart-item__name">
-      <a href="#">${name}</a>
+      <a href="${productLink}">${name}</a>
     </p>
     <div class="shopping-cart-item__summary">
       
       <label for="shopping-cart-item__delete-button-${productIndex}"></label>
-      <button id="shopping-cart-item__delete-button-${productIndex}" class="button shopping-cart-item__delete-button" >
+      <button id="shopping-cart-item__delete-button-${productIndex}" class="button shopping-cart-item__delete-button" aria-label="Ta bort alla exemplar av ${name} från din varukorg">
         <img src="/images/icons/icons8-trash-can-48.png" alt="remove item from the shopping cart icon" class="shopping-cart-item__button-icon"/>
       </button>
       
       <div class="shopping-cart-item__quantity-input">
-        <button class="shopping-cart-item__button shopping-cart-item__button--subtract"> 
+        
+        <label for="shopping-cart-item__button--subtract-${productIndex}"></label>
+        <button id=""shopping-cart-item__button--subtract-${productIndex}" class="shopping-cart-item__button shopping-cart-item__button--subtract" aria-label="Reducera antalet ${name} i din varukorg"> 
           - 
         </button>
 
-        <input type="text" disabled="" value="1" class="shopping-cart-item__quantity">
+        <input type="text" disabled="" value="1" class="shopping-cart-item__quantity" aria-label="Antal exemplar av ${name}">
         
         <label for="shopping-cart-item__button--add-${productIndex}"></label>
-        <button id="shopping-cart-item__button--add-${productIndex}" class="shopping-cart-item__button shopping-cart-item__button--add"> 
+        <button id="shopping-cart-item__button--add-${productIndex}" class="shopping-cart-item__button shopping-cart-item__button--add" aria-label="Öka antalet ${name} i din varukorg"> 
           + 
         </button>
       </div> <!-- End of item quantity input -->
@@ -64,7 +66,8 @@ function carouselCardHtml (data, property) {
       </span>
   </div>
 
-  <button class="button product-card__button button__add-to-cart">
+  <label for="product-card__button"></label>
+  <button id="product-card__button-${data[property].index}" class="button product-card__button button__add-to-cart" aria-label="Lägg produkten i din varukorg">
     Lägg i varukorgen
   </button>
 </div> <!-- End of carousel product card -->
@@ -74,7 +77,7 @@ function carouselCardHtml (data, property) {
 function popularProductCardHtml (data, property) {
   return `
   <!-- Popular product card -->
-  <div class="product-card product-card--popular"> 
+  <div id="popular-card-${data[property].index}"class="product-card product-card--popular"> 
     <a href="${data[property].link}" class="product-card__link">
       <img src="${data[property].image}" 
       alt="" 
@@ -107,7 +110,7 @@ function popularProductCardHtml (data, property) {
         </span>
       </div>
 
-    <button class="button product-card__button product-card__button--popular button__add-to-cart">
+    <button id="product-card__button--popular-${data[property].index}" class="button product-card__button product-card__button--popular button__add-to-cart" aria-label="Lägg produkten i din varukorg">
       Lägg i varukorgen
     </button>
   </div> <!-- End of product card -->
