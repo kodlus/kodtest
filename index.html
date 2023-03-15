@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/reset.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/main.css">
+
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/b0e386ccd8.js" crossorigin="anonymous"></script>
     <!-- Google Font -->
@@ -240,7 +241,7 @@
         <h2 class="section-title">Populära produkter</h2>
 
          <!-- Popular product cards -->
-        <div id="popular-products__card-container" class="product-cards__container">
+        <div id="popular-products__card-container" class="popular-products__card-container">
           <!-- Content generated with JS -->
         </div> <!-- End of product cards container -->
       </section> <!-- End of popular product section -->
@@ -340,18 +341,18 @@
       <!-- Product Search Section -->
       <section class="product-search-section">
         <div class="product-search__background-container">
-        <div class="product-search__details">
-          <h2>Sök, så ska ni hitta</h2> 
-          <p>Använd sökfältet för att hitta användarböcker, vanliga frågor, och programvaruuppdateringar för din produkt.</p>
-        </div>
+          <div class="product-search__details">
+            <h2 class="product-search__title">Sök, så ska ni hitta</h2> 
+            <p class="product-search__description">Använd sökfältet för att hitta användarböcker, vanliga frågor, och programvaruuppdateringar för din produkt.</p>
+          </div>
 
 
-        <div class="search-bar search-bar--product">
-          <label for="product-search-bar__input"></label>
-          <input type="search" name="" id="product-search-bar__input" class="search-bar__input search-bar__input--product" placeholder="Modellnummer" aria-label="Sök efter produkter med hjälp av produktnummer">
-          <button id="product-search-bar__button" class="button search-bar__button" type="submit" ><img src="images/icons/search_icon.png" alt="Image description" class="icon search-bar__icon"></button>
-        </div>
-          <a href="#" class="">Var kan jag hitta modellnumret?</a>
+          <div class="search-bar search-bar--product">
+            <label for="product-search-bar__input"></label>
+            <input type="search" name="" id="product-search-bar__input" class="search-bar__input search-bar__input--product" placeholder="Modellnummer" aria-label="Sök efter produkter med hjälp av produktnummer">
+            <button id="product-search-bar__button" class="button search-bar__button" type="submit" ><img src="images/icons/search_icon.png" alt="Image description" class="icon search-bar__icon"></button>
+          </div>
+          <a href="#" class="product-search__link">Var kan jag hitta modellnumret?</a>
         </div> <!-- End of searchbar container -->
 
       </section> <!-- End of product search section -->

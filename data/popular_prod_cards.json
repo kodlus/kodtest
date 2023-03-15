@@ -1,5 +1,6 @@
 {
   "0": {
+    "index": 10,
     "product": "Kid Charlemagne",
     "link": "#",
     "description": "Tystlåten dammsugare med påse",
@@ -11,6 +12,7 @@
     "reviews": 15
   },
   "1": {
+    "index": 11,
     "product": "Gloria",
     "link":"#",
     "description": "Tystlåten dammsugare med påse",
@@ -22,6 +24,7 @@
     "reviews": 15
   },
   "2": {
+    "index": 12,
     "product": "Black Hole Sun",
     "link":"#",
     "description": "Tystlåten dammsugare med påse",
@@ -33,6 +36,7 @@
     "reviews": 15
   },
   "3": {
+    "index": 13,
     "product": "Sunshine of Your Love",
     "link":"#",
     "description": "Tystlåten dammsugare med påse",
@@ -44,6 +48,7 @@
     "reviews": 15
   },
   "4": {
+    "index": 14,
     "product": "Heart-Shaped Box",
     "link":"#",
     "description": "Tystlåten dammsugare med påse",
@@ -55,6 +60,7 @@
     "reviews": 15
   },
   "5": {
+    "index": 15,
     "product": "Holding On",
     "link":"#",
     "description": "Tystlåten dammsugare med påse",
