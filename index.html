@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
   </head>
   <body>
+    <div id="overlay" class="overlay"></div>
     <header class="header" title="header">
       <div class="header__container">
         <!-- Row 1 -->
@@ -27,7 +28,7 @@
             <img src="/images/icons/hamburger.png" class="icon nav-toggle-button__icon" alt="hamburger menu"/>
           </button>
 
-          <nav id="nav" class="nav is-not-visible" name="header navigation" tabindex="0">
+          <nav id="nav" class="nav is-not-visible" name="header navigation" tabindex="0" aria-label="Navigationsmenyn">
             <ul class="nav__links">
               <!-- Dropdown menus -->
               <li class="nav__link">

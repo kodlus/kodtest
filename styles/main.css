@@ -319,7 +319,7 @@ Shopping cart
   position: absolute;
   z-index: 99;
   right: 0;
-  width: 100%;
+  width: 50%;
   height: 100vh;
   background: var(--white);
   display: flex;
@@ -1206,4 +1206,26 @@ UTILITY
 
 .margin-right {
   margin-right: 6px;
+}
+
+
+/* https://www.w3schools.com/howto/howto_css_overlay.asp */
+.overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+/* https://www.geeksforgeeks.org/how-to-disable-scrolling-temporarily-using-javascript/ */
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
 }
