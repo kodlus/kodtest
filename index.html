@@ -16,81 +16,100 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
   </head>
   <body>
+<!--     <button id="corner-button" class="corner-button">
+      <img class="icon search-bar__icon" src="/images/icons/search_icon.png" alt="search bar magnification glass icon">
+    </button> -->
     <div id="overlay" class="overlay"></div>
     <header class="header" title="header">
       <div class="header__container">
         <!-- Row 1 -->
         <div class="header__row-1">
-          <!-- Nav -->            
-          <label for="nav-toggle-button" class="label">
-          </label>
-          <button id="nav-toggle-button" class="button nav-toggle-button" name="nav-toggle-button" aria-label="open/close">
-            <img src="/images/icons/hamburger.png" class="icon nav-toggle-button__icon" alt="hamburger menu"/>
-          </button>
+          <!-- Nav --> 
+          <div class="header__left-column">
+            <label for="nav-toggle-button" class="label">
+              <button id="nav-toggle-button" class="button nav-toggle-button" name="nav-toggle-button" aria-label="open/close">
+                <img src="/images/icons/hamburger.png" class="icon nav-toggle-button__icon" alt="hamburger menu"/>
+              </button>  
+            </label>
+  
+            <nav id="nav" class="nav is-not-visible" name="header navigation" tabindex="0" aria-label="Navigationsmenyn">
+              <ul class="nav__links">
+                <!-- Dropdown menus -->
+                <li class="nav__link">
+                  <div class="nav__link-details">
+                    <a href="#" class="nav__link-title">För hemmet</a>
+                    <button class="button nav__dropdown-button">+</button>
+                  </div> 
+                  
+                  <ul class="nav__dropdown is-not-visible">
+                    <li><a href="#">Dammsugare med påse</a></li>
+                    <li><a href="#">Sladdlös skaftdammsugare</a></li>
+                  </ul>
+                </li> <!-- End of dropdown -->
+                <!-- Dropdown menus -->
+                <li class="nav__link">
+                  <div class="nav__link-details">
+                    <a href="#" class="nav__link-title">Matlagning</a>
+                    <button class="button nav__dropdown-button">+</button> 
+                  </div>
+  
+                  <ul class="nav__dropdown is-not-visible">
+                    <li><a href="#">Airfryers & Fritöser</a></li>
+                    <li><a href="#">Blenders</a></li>
+                    <li><a href="#">Brödrostar</a></li>
+                    <li><a href="#">Kaffebryggare</a></li>
+                    <li><a href="#">Köksmaskiner</a></li>
+                    <li><a href="#">Flera alternativ</a></li>
+                  </ul>
+                </li> <!-- End of dropdown -->
+                <li class="nav__link">
+                  <div class="nav__link-details">
+                    <a href="#" class="nav__link-title">Styling & Wellness</a>
+                    <button class="button nav__dropdown-button">+</button> 
+                  </div>
+                  <ul class="nav__dropdown is-not-visible">
+                    <li><a href="#">Björn Axén Tools</a></li>
+                    <li><a href="#">Håfönar</a></li>
+                    <li><a href="#">Locktänger</a></li>
+                    <li><a href="#">Hårklippare & Trimmers</a></li>
+                    <li><a href="#">Plattänger</a></li>
+                    <li><a href="#">Flera alternativ</a></li>
+                  </ul>
+                </li><!-- End of dropdown -->
+                <li class="nav__link"><a href="#">Retur & Reklamation</a></li>
+                <li class="nav__link"><a href="#">Kontakta oss</a></li>
+              </ul>
+            </nav>
+          </div>       
 
-          <nav id="nav" class="nav is-not-visible" name="header navigation" tabindex="0" aria-label="Navigationsmenyn">
-            <ul class="nav__links">
-              <!-- Dropdown menus -->
-              <li class="nav__link">
-                <div class="nav__link-details">
-                  <a href="#" class="nav__link-title">För hemmet</a>
-                  <button class="button nav__dropdown-button">+</button>
-                </div> 
-                
-                <ul class="nav__dropdown is-not-visible">
-                  <li><a href="#">Dammsugare med påse</a></li>
-                  <li><a href="#">Sladdlös skaftdammsugare</a></li>
-                </ul>
-              </li> <!-- End of dropdown -->
-              <!-- Dropdown menus -->
-              <li class="nav__link">
-                <div class="nav__link-details">
-                  <a href="#" class="nav__link-title">Matlagning</a>
-                  <button class="button nav__dropdown-button">+</button> 
-                </div>
-
-                <ul class="nav__dropdown is-not-visible">
-                  <li><a href="#">Airfryers & Fritöser</a></li>
-                  <li><a href="#">Blenders</a></li>
-                  <li><a href="#">Brödrostar</a></li>
-                  <li><a href="#">Kaffebryggare</a></li>
-                  <li><a href="#">Köksmaskiner</a></li>
-                  <li><a href="#">Flera alternativ</a></li>
-                </ul>
-              </li> <!-- End of dropdown -->
-              <li class="nav__link">
-                <div class="nav__link-details">
-                  <a href="#" class="nav__link-title">Styling & Wellness</a>
-                  <button class="button nav__dropdown-button">+</button> 
-                </div>
-                <ul class="nav__dropdown is-not-visible">
-                  <li><a href="#">Björn Axén Tools</a></li>
-                  <li><a href="#">Håfönar</a></li>
-                  <li><a href="#">Locktänger</a></li>
-                  <li><a href="#">Hårklippare & Trimmers</a></li>
-                  <li><a href="#">Plattänger</a></li>
-                  <li><a href="#">Flera alternativ</a></li>
-                </ul>
-              </li><!-- End of dropdown -->
-              <li class="nav__link"><a href="#">Retur & Reklamation</a></li>
-              <li class="nav__link"><a href="#">Kontakta oss</a></li>
-            </ul>
-          </nav>
 
           <!-- Logo -->
-          <div class="logo">
-            <a href="#"><img src="images/logos/OBH_Nordica1 (2).png" alt="OBH Nordica logo"></a>
+          <div class="header__middle-column">
+            <div class="logo">
+              <a href="#"><img src="images/logos/OBH_Nordica1 (2).png" alt="OBH Nordica logo"></a>
+            </div>
           </div>
 
-          <!-- Shopping cart outer-->
-          <div class="shopping-cart-outer"> 
-            <label for="shopping-cart-outer__button" class="label">
-              <button id="shopping-cart-outer__button" class="button shopping-cart-outer__button">
-              <img class ="icon shopping-cart-outer__icon" src="images/icons/shopping-cart.png" alt="shopping cart button icon">
+
+          <div class="header__right-column">
+
+         
+            <label for="header__reveal-search-button">
+              <button id="header__reveal-search-button" class="header__reveal-search-button is-not-visible" aria-label="Öppna sökfältet">
+                <img class="icon search-bar__icon" src="/images/icons/search_icon.png" alt="search bar magnification glass icon">
               </button>
-           
-              <span id="shopping-cart-outer__quantity-indicator" class="shopping-cart-outer__quantity-indicator">0</span>
-            </label>
+              </label>
+
+            <!-- Shopping cart outer-->
+            <div class="shopping-cart-outer"> 
+              <label for="shopping-cart-outer__button" class="label">
+                <button id="shopping-cart-outer__button" class="button shopping-cart-outer__button">
+                <img class ="icon shopping-cart-outer__icon" src="images/icons/shopping-cart.png" alt="shopping cart button icon">
+                </button>
+            
+                <span id="shopping-cart-outer__quantity-indicator" class="shopping-cart-outer__quantity-indicator">0</span>
+              </label>
+            </div> 
           </div>
 
           <!-- Shopping cart inner-->
@@ -124,7 +143,7 @@
         </div><!-- End of row-1 -->
       
         <!-- Row 2 -->
-        <div class="header__row-2">
+        <div id="header__row-2" class="header__row-2">
           <!-- Search bar -->
           <div class="search-bar search-bar--header">
             <label for="search-bar__input"></label>
@@ -138,13 +157,13 @@
         </div> <!-- End of row 2 -->
 
         <!-- Row 3 -->
-        <div class="header__row-3">
+        <div id="header__row-3" class="header__row-3">
           <!-- Information banner -->
           <div id="header__information-banner" class="header__information-banner">
             <p> Fri frakt över 500kr</p>
             <p>30 dagar öppet köp</p> 
             <p> Prova hemma 100 dagar</p>
-            <p>Fria returer</p>
+            <p aria-label="Telefonnummer till vår Kundservice">08 100 20 20</p>
           </div>
         </div> <!-- End of row 3 -->
       </div> <!-- End of header container -->

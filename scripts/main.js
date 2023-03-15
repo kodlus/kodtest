@@ -188,13 +188,13 @@ https://www.satollo.net/execute-conditional-javascript-by-screen-size
 https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
 =========================================================*/
 // Get the information banner
- const informationBanner = document.getElementById("header__information-banner");
+ const informationBanner = document.getElementById("header__row-3");
 
 // Get the offset of the information banner
 let informationBannerOffset = informationBanner.offsetTop;
 
 // Set the screen small screen width variable. The number represents pixels
-const smallScreenWidth = 800;
+const smallScreenWidth = 1400;
 
 // The function adds the "is-not-visible" utility class if the window's vertical offset is larger than the element's offset
 function hideBanner () {
@@ -206,7 +206,7 @@ function hideBanner () {
 }
 
 // The function takes in three parameters: screen size (integer), event type (string), and a function. If the screen width matches or is less to the size, an event listener defined by the event type and function will be hooked to the window object. If the screen size is larger than the size, the event listener gets removed
-function smallScreenOnlyEvent (size, eventType, func) {
+function screenEvent (size, eventType, func) {
   // Get the screen width
   let width = document.documentElement.clientWidth || window.innerWidth
 
@@ -217,17 +217,45 @@ function smallScreenOnlyEvent (size, eventType, func) {
   }
 }
 
-// Call smallScreenOnlyEvent at run time
-smallScreenOnlyEvent(smallScreenWidth, "scroll", hideBanner)
+// Call screenEvent at run time
+screenEvent(smallScreenWidth, "scroll", hideBanner)
 
-// Detect when the screen size changes, and call smallScreenOnlyEvent
+// Detect when the screen size changes, and call screenEvent
 window.addEventListener("resize", () => {
-  smallScreenOnlyEvent(smallScreenWidth, "scroll", hideBanner);
+  screenEvent(smallScreenWidth, "scroll", hideBanner);
 
   // Remove the is-not-visible class if the banner is hidden when transitioning from small screen to larger screen
   informationBanner.classList.remove("is-not-visible")
 })
 
+
+// SEARCH BAR - mobile & tablet
+const headerSearchBar = document.getElementById("header__row-2");
+let headerSearchBarOffset = headerSearchBar.offsetTop;
+console.log(headerSearchBarOffset)
+
+
+function hideSearchBar () {
+  const searchButton = document.getElementById("header__reveal-search-button");
+  if (window.pageYOffset > headerSearchBarOffset){
+    searchButton.classList.remove("is-not-visible");
+    headerSearchBar.classList.add("is-not-visible");
+    
+    searchButton.addEventListener("click", ()=> {
+      console.log("clicked")
+      headerSearchBar.classList.remove("is-not-visible");
+      searchButton.classList.add("is-not-visible")
+    })
+  } else {
+    searchButton.classList.add("is-not-visible")
+    headerSearchBar.classList.remove("is-not-visible");
+  } 
+}
+
+window.addEventListener("scroll", ()=> {
+  hideSearchBar();
+
+})
 /*==============================================================================
 MAIN
 ==============================================================================*/

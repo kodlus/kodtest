@@ -314,7 +314,6 @@ HEADER
 .header__container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
   background: var(--white);
 }
 
@@ -322,10 +321,16 @@ HEADER
 Header row 1
 =====================================*/
 .header__row-1 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   position: relative;
-  padding: 0.625em 0.625em 0 0.625em;
+  padding: 0.625em;
+}
+
+.header__left-column {
+  background-color: blanchedalmond;
+  width: 35%;
 }
 
 /*=======================
@@ -351,7 +356,7 @@ Navigation
   font-size: 1.4rem;
   position: absolute;
   z-index: 99;
-  top: 100%;
+  top: 70px;
   width: 100%;
   padding: 10px;
   background: var(--white);
@@ -409,13 +414,15 @@ Navigation
 /*=======================
 Logo
 =======================*/
+.header__middle-column {
+  align-self: center;
+  background-color: aqua;
+}
 .logo {
   width: 50px;
   margin: 0;
   padding: 0;
-  grid-column: 2 / 3;
-  justify-self: center;
-  align-self: center;
+
 }
 
 /*=======================
@@ -450,6 +457,7 @@ Shopping cart
   display: block;
   font-size: 1.4rem;
   position: absolute;
+  top: 0;
   z-index: 999;
   right: 0;
   width: 100%;
@@ -517,6 +525,7 @@ Shopping cart
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  
 }
 
 .shopping-cart-item__summary {
@@ -590,13 +599,41 @@ Header row 2
 .header__row-2 {
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 0.625em;
 }
 
 /*=======================
 Search bar
 =======================*/
-/* Ingen specifik styling */
+/* .search-bar--header {
+  
+} */
 
+body {
+  position: relative;
+}
+
+
+.header__right-column {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  background-color: blueviolet;
+  width: 35%;
+  
+}
+
+/* Large screens */
+.header__reveal-search-button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 50px;
+  border: none;
+  background-color: black;
+}
 /*====================================
 Header row 3
 =====================================*/
@@ -612,7 +649,6 @@ Information banner
   width: 100%;
   justify-content: space-evenly;
   background-color: gainsboro;
-  padding: .5em;
 }
 
 .header__information-banner p:nth-child(3),
@@ -1030,7 +1066,6 @@ SMALL/MEDIUM SCREENS
   .header__container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
   }
 
   .header__information-banner {
@@ -1226,14 +1261,57 @@ MEDIUM/LARGE SCREENS
   :root {
     --standardPadding: 1.5em;
   }
-
   /*====================================
   header section
   =====================================*/
   .header__container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+  }
+
+  /*====================================
+  Header row 1
+  =====================================*/
+  .header__row-1 {
+    display: flex;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+  }
+
+  .logo {
+    width: 50px;
+    margin: 0;
+    padding: 0;
+    grid-column: 2 / 3;
+    justify-self: center;
+    align-self: center;
+  }
+
+  .header__row-3 {
+    order: -1;
+  }
+  .header__information-banner {
+    font-size: 0.75rem;
+    
+  }
+
+  .header__information-banner p:nth-child(3),
+  .header__information-banner p:nth-child(4) {
+    position: unset; 
+    overflow: auto; 
+    clip:unset; 
+    height: auto; 
+    width: auto; 
+    margin: 0; 
+    padding: 0; 
+    border: 0;
+  }
+
+  .shopping-cart-outer__button {
+    font-size: 1.5rem;
+    width: 40px;
+    background: none;
+    border: none;
   }
   /*====================================
   campaign section
