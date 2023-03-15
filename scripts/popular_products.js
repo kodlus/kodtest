@@ -29,7 +29,7 @@ export default async function loadPopularProducts() {
     const buyBtn = document.querySelectorAll(".product-card__button--popular");
 
     // 5. Loop over the buttons and attach an event listener on each element
-    buyBtn.forEach(button => button.addEventListener("mouseup", addToCartClicked));
+    buyBtn.forEach(button => button.addEventListener("click", addToCartClicked));
   
   } catch(error) {
     alert(`Error: ${error}`)

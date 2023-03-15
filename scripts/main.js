@@ -7,6 +7,7 @@ IMPORTED DATA
 import {updateCartTotal} from "/scripts/shopping_cart.js"
 updateCartTotal()
 
+
 /*============================================================================
 HEADER
 ==============================================================================*/
@@ -55,7 +56,6 @@ navButton.addEventListener("click", (e) => {
   console.log(e)
   contentToggle(headerNav, shoppingCart);
 
-
 });
 
 /*=========================================================
@@ -63,33 +63,66 @@ Toggle shopping cart
 =========================================================*/
 shoppingCartButton.addEventListener("click", () => {
   contentToggle(shoppingCart, headerNav);
+
+  // Stop the body element from scrolling
+  document.body.classList.add("stop-scrolling")
+
+  document.getElementsByClassName("overlay")[0].style.display = "block";
 });
 
 /*=========================================================
 Close/ open menus
 =========================================================*/
-document.addEventListener("click", (e) => {
+closeButton.addEventListener("click", () => {
+  shoppingCart.classList.add("is-not-visible");
+
+  // Enable the body to scroll
+  document.body.classList.remove("stop-scrolling");
+
+  // Remove overlay
+  document.getElementsByClassName("overlay")[0].style.display = "none";
+})
+
+const closeMenusWhenClickingOutside = (e) => {
   let node = e.target;
-  /* Closes the shopping cart if the users clicks outside it. If the node is a child of shoppingCart, and contains the class button, nothing happens */
-  if (isAChildOf(node, shoppingCart) !== true && e.target.classList.contains("button") !== true ){
-    shoppingCart.classList.add("is-not-visible")
+  
+  // Closes the shopping cart if the users clicks outside it. If the node is a child of shoppingCart, and contains the class shopping-cart-inner__close-button, nothing happens 
+  if (isAChildOf(node, shoppingCart) !== true && node.classList.contains("shopping-cart-outer__button") !== true){
+
+   shoppingCart.classList.add("is-not-visible")
+
+    // Enable the body to scroll
+    document.body.classList.remove("stop-scrolling")
+
+    // Remove overlay
+    document.getElementsByClassName("overlay")[0].style.display = "none";
+    console.log("Close")
+
   } 
   
   // Closes the headerNav if the user clicks outside it. If the node is a child of headerNav, and contains the class button, nothing happens
-  if (isAChildOf(node, headerNav) !== true && e.target.classList.contains("button") !== true ) {
+  if (isAChildOf(node, headerNav) !== true && e.target.classList.contains("nav-toggle-button") !== true ) {
       headerNav.classList.add("is-not-visible") }
-  });
+}
 
-  closeButton.addEventListener("click", () => {
-  shoppingCart.classList.add("is-not-visible");
-})
+// Hook event listener to the body and invoke the function
+document.addEventListener("click", closeMenusWhenClickingOutside)
+
+
+
+
+
+
+
+
+
 
 
 // NAV DROPDOWN MENU MOBILE ONLY
 // Select the nav container
 const nav = document.querySelector(".nav");
 // Add event listener to the nav element
-nav.addEventListener("mouseup", (e) => {
+nav.addEventListener("click", (e) => {
   // Capture when the event
   const targetButton = e.target.closest("button");
  
@@ -172,4 +205,5 @@ loadCarousel()
 POPULAR CATEGORIES
 =========================================================*/
 import loadPopularProducts from "./popular_products.js";
+import { deleteShoppingCartItem } from "./shopping_cart.js";
 loadPopularProducts()
