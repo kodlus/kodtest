@@ -103,9 +103,23 @@ const closeMenusWhenClickingOutside = (e) => {
   // Closes the headerNav if the user clicks outside it. If the node is a child of headerNav, and contains the class button, nothing happens
   if (isAChildOf(node, headerNav) !== true && e.target.classList.contains("nav-toggle-button") !== true ) {
       headerNav.classList.add("is-not-visible") }
+
+
+      // Resetting the nav
+      const dropDownButtons = document.getElementsByClassName("nav__dropdown-button");
+
+      if(headerNav.classList.contains("is-not-visible")) {
+        for (let i = 0; i < dropDownButtons.length; i++) {
+          dropDownButtons[i]. innerText ="+";
+          dropDownButtons[i]
+          .parentElement
+          .nextElementSibling
+          .classList.add("is-not-visible");
+        }
+      }
 }
 
-// Hook event listener to the body and invoke the function
+// Hook event listener to the document and invoke the function
 document.addEventListener("click", closeMenusWhenClickingOutside)
 
 
@@ -134,12 +148,38 @@ nav.addEventListener("click", (e) => {
   // Check if the button has the right inner text and is of the right class. Toggling 
   if (targetButton.innerText === "+" && targetButton.classList.contains("nav__dropdown-button")) {
     targetButton.innerText = "-";
-    targetButton.parentElement.nextElementSibling.classList.remove("is-not-visible");
+    targetButton
+      .parentElement
+      .nextElementSibling
+      .classList.remove("is-not-visible");
+
+
   } else {
     targetButton.innerText = "+";
-    targetButton.parentElement.nextElementSibling.classList.add("is-not-visible");
+    targetButton
+      .parentElement
+      .nextElementSibling
+      .classList.add("is-not-visible");
   }
-})
+
+
+  // Toggle dropdown menus
+  const dropDownButtons = document.getElementsByClassName("nav__dropdown-button");
+
+  if (targetButton) {
+    for (let i = 0; i < dropDownButtons.length; i++) {
+      if (dropDownButtons[i] !== targetButton) {
+        dropDownButtons[i].innerText ="+";
+        dropDownButtons[i]
+        .parentElement
+        .nextElementSibling
+        .classList.add("is-not-visible");
+      }
+    }
+    }
+  })
+
+
 
 /*=========================================================
 Hide information banner on scroll, only on small screens
