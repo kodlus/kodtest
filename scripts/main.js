@@ -28,7 +28,9 @@ const shoppingCart = document.querySelector("#shopping-cart-inner");
 
 const closeButton = document.querySelector("#shopping-cart-inner__close-button")
 
+const headerSearchBar = document.getElementById("header__searchbar");
 
+const searchButton = document.getElementById("header__reveal-search-button");
 /*=========================================================
 Functions
 =========================================================*/
@@ -105,18 +107,25 @@ const closeMenusWhenClickingOutside = (e) => {
       headerNav.classList.add("is-not-visible") }
 
 
-      // Resetting the nav
-      const dropDownButtons = document.getElementsByClassName("nav__dropdown-button");
+    // Resetting the nav
+    const dropDownButtons = document.getElementsByClassName("nav__dropdown-button");
 
-      if(headerNav.classList.contains("is-not-visible")) {
-        for (let i = 0; i < dropDownButtons.length; i++) {
-          dropDownButtons[i]. innerText ="+";
-          dropDownButtons[i]
-          .parentElement
-          .nextElementSibling
-          .classList.add("is-not-visible");
-        }
+    if(headerNav.classList.contains("is-not-visible")) {
+      for (let i = 0; i < dropDownButtons.length; i++) {
+        dropDownButtons[i]. innerText ="+";
+        dropDownButtons[i]
+        .parentElement
+        .nextElementSibling
+        .classList.add("is-not-visible");
       }
+    }
+
+  // Close searchbar if user clicks outside it
+  if (isAChildOf(node, headerSearchBar) !== true && node.id !== "header__reveal-search-button") {
+    headerSearchBar.classList.add("is-not-visible");
+    searchButton.classList.remove("is-not-visible")
+
+  }
 }
 
 // Hook event listener to the document and invoke the function
@@ -132,7 +141,7 @@ document.addEventListener("click", closeMenusWhenClickingOutside)
 
 
 
-// NAV DROPDOWN MENU MOBILE ONLY
+// NAV DROPDOWN MENU 
 // Select the nav container
 const nav = document.querySelector(".nav");
 // Add event listener to the nav element
@@ -230,31 +239,34 @@ window.addEventListener("resize", () => {
 
 
 // SEARCH BAR - mobile & tablet
-const headerSearchBar = document.getElementById("header__searchbar");
+
 let headerSearchBarOffset = headerSearchBar.offsetTop;
 console.log(headerSearchBarOffset)
 
 
 function hideSearchBar () {
-  const searchButton = document.getElementById("header__reveal-search-button");
+  
   if (window.pageYOffset > headerSearchBarOffset){
     searchButton.classList.remove("is-not-visible");
     headerSearchBar.classList.add("is-not-visible");
     
-    searchButton.addEventListener("click", ()=> {
-      console.log("clicked")
-      headerSearchBar.classList.remove("is-not-visible");
-      searchButton.classList.add("is-not-visible")
-    })
+
   } else {
     searchButton.classList.add("is-not-visible")
     headerSearchBar.classList.remove("is-not-visible");
   } 
+
 }
+
+// Hide the search button when pressed
+searchButton.addEventListener("click", ()=> {
+  console.log("clicked")
+  headerSearchBar.classList.remove("is-not-visible");
+  searchButton.classList.add("is-not-visible")
+})
 
 window.addEventListener("scroll", ()=> {
   hideSearchBar();
-
 })
 /*==============================================================================
 MAIN

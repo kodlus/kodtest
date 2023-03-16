@@ -328,11 +328,12 @@ Header row 1
   width: 100%;
   position: relative;
   padding: 0.625em 0;
+  gap: 5px;
 }
 
 .header__left-column {
   background-color: brown;
-  flex: 1 1 25%;
+  flex: 1 1 35%;
 }
 
 .header__right-column {
@@ -340,7 +341,7 @@ Header row 1
   align-items: center;
   justify-content: end;
   background-color: blueviolet;
-  flex: 1 1 25%;
+  flex: 1 1 35%;
 }
 
 .header__middle-column {
@@ -375,11 +376,12 @@ Navigation
 .nav-toggle-button {
   grid-column: 1 / 2;
   justify-self: self-start;
-  
   padding: 0.625em;
   border: none;
   border-radius: 5px;
   background-color: transparent;
+
+  margin-left: 0.3em
 }
 
 .nav-toggle-button__icon {
@@ -474,6 +476,7 @@ Shopping cart
   width: 50px;
   background: none;
   border: none;
+  margin-right: 0.3em
 }
 
 .shopping-cart-outer__icon {
