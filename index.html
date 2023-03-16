@@ -16,14 +16,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
   </head>
   <body>
-<!--     <button id="corner-button" class="corner-button">
-      <img class="icon search-bar__icon" src="/images/icons/search_icon.png" alt="search bar magnification glass icon">
-    </button> -->
     <div id="overlay" class="overlay"></div>
     <header class="header" title="header">
       <div class="header__container">
         <!-- Row 1 -->
         <div class="header__row-1">
+          
           <!-- Nav --> 
           <div class="header__left-column">
             <label for="nav-toggle-button" class="label">
@@ -90,12 +88,23 @@
             </div>
           </div>
 
+          <!-- Searchbar -->
+          <div id="header__searchbar" class="last-column header__searchbar">
+            <div class="search-bar search-bar--header">
+              <label for="search-bar__input"></label>
+              <input type="search" aria-label="search-bar" name="search-bar" id="search-bar__input" class="search-bar__input" aria-placeholder="Sök">
+              
+              <label for="search-bar__button--header"></label>
+              <button class="button search-bar__button" id="search-bar__button--header" aria-label="search">
+                <img class="icon search-bar__icon" src="/images/icons/search_icon.png" alt="search bar magnification glass icon">
+              </button>
+            </div>
+          </div>
 
+          <!-- Searchbar reveal button-->
           <div class="header__right-column">
-
-         
             <label for="header__reveal-search-button">
-              <button id="header__reveal-search-button" class="header__reveal-search-button is-not-visible" aria-label="Öppna sökfältet">
+              <button id="header__reveal-search-button" class="header__reveal-search-button " aria-label="Öppna sökfältet">
                 <img class="icon search-bar__icon" src="/images/icons/search_icon.png" alt="search bar magnification glass icon">
               </button>
               </label>
@@ -138,22 +147,17 @@
               </div>
               <button class="button shopping-cart-inner__checkout-button">Gå till kassan</button>
             </div>
-      
           </div> <!-- End of shopping cart -->
+
+
+
+
         </div><!-- End of row-1 -->
       
         <!-- Row 2 -->
         <div id="header__row-2" class="header__row-2">
           <!-- Search bar -->
-          <div class="search-bar search-bar--header">
-            <label for="search-bar__input"></label>
-            <input type="search" aria-label="search-bar" name="search-bar" id="search-bar__input" class="search-bar__input" aria-placeholder="Sök">
-            
-            <label for="search-bar__button--header"></label>
-            <button class="button search-bar__button" id="search-bar__button--header" aria-label="search">
-              <img class="icon search-bar__icon" src="/images/icons/search_icon.png" alt="search bar magnification glass icon">
-            </button>
-          </div>
+
         </div> <!-- End of row 2 -->
 
         <!-- Row 3 -->

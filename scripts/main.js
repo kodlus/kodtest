@@ -230,7 +230,7 @@ window.addEventListener("resize", () => {
 
 
 // SEARCH BAR - mobile & tablet
-const headerSearchBar = document.getElementById("header__row-2");
+const headerSearchBar = document.getElementById("header__searchbar");
 let headerSearchBarOffset = headerSearchBar.offsetTop;
 console.log(headerSearchBarOffset)
 

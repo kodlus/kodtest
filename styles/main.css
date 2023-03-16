@@ -322,16 +322,52 @@ Header row 1
 =====================================*/
 .header__row-1 {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
   width: 100%;
   position: relative;
-  padding: 0.625em;
+  padding: 0.625em 0;
 }
 
 .header__left-column {
-  background-color: blanchedalmond;
-  width: 35%;
+  background-color: brown;
+  flex: 1 1 25%;
 }
+
+.header__right-column {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  background-color: blueviolet;
+  flex: 1 1 25%;
+}
+
+.header__middle-column {
+  align-self: center;
+  background-color: aqua;
+}
+
+/* Large screens */
+.header__reveal-search-button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 50px;
+  border: none;
+  background-color: black;
+}
+
+.last-column {
+  background-color: orange;
+  order: 5;
+ /*  flex: 1 1 auto; */
+}
+
+
+
+
 
 /*=======================
 Navigation
@@ -339,7 +375,7 @@ Navigation
 .nav-toggle-button {
   grid-column: 1 / 2;
   justify-self: self-start;
-  align-self: center;
+  
   padding: 0.625em;
   border: none;
   border-radius: 5px;
@@ -357,6 +393,7 @@ Navigation
   position: absolute;
   z-index: 99;
   top: 70px;
+  left: 0;
   width: 100%;
   padding: 10px;
   background: var(--white);
@@ -402,7 +439,7 @@ Navigation
   padding: 0.3em 0 0 0.8em;
   background-color: var(--white);
   width: 100%;
-  top: -5000px;
+ /*  top: -5000px; */
   display: block;
 }
 
@@ -414,10 +451,8 @@ Navigation
 /*=======================
 Logo
 =======================*/
-.header__middle-column {
-  align-self: center;
-  background-color: aqua;
-}
+
+
 .logo {
   width: 50px;
   margin: 0;
@@ -596,12 +631,12 @@ Shopping cart
 /*====================================
 Header row 2
 =====================================*/
-.header__row-2 {
+/* .header__row-2 {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.625em;
-}
+} */
 
 /*=======================
 Search bar
@@ -610,30 +645,11 @@ Search bar
   
 } */
 
-body {
-  position: relative;
-}
 
 
-.header__right-column {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  background-color: blueviolet;
-  width: 35%;
-  
-}
 
-/* Large screens */
-.header__reveal-search-button {
-  display: block;
-  width: 40px;
-  height: 40px;
-  padding: 10px;
-  border-radius: 50px;
-  border: none;
-  background-color: black;
-}
+
+
 /*====================================
 Header row 3
 =====================================*/
