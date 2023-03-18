@@ -197,7 +197,7 @@ https://www.satollo.net/execute-conditional-javascript-by-screen-size
 https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
 =========================================================*/
 // Get the information banner
- const informationBanner = document.getElementById("header__row-3");
+ const informationBanner = document.getElementById("header__row-2");
 
 // Get the offset of the information banner
 let informationBannerOffset = informationBanner.offsetTop;
@@ -239,10 +239,11 @@ window.addEventListener("resize", () => {
 
 
 // SEARCH BAR - mobile & tablet
-
 let headerSearchBarOffset = headerSearchBar.offsetTop;
 console.log(headerSearchBarOffset)
 
+// TODO: CALCULATE THE OFFSET ON LOAD
+// TODO: EXCEPTION WHEN CLICKING ON STUFF BUT THE PAGE HAS NOT SCROLLED
 
 function hideSearchBar () {
   
@@ -255,14 +256,13 @@ function hideSearchBar () {
     searchButton.classList.add("is-not-visible")
     headerSearchBar.classList.remove("is-not-visible");
   } 
-
 }
 
 // Hide the search button when pressed
 searchButton.addEventListener("click", ()=> {
   console.log("clicked")
   headerSearchBar.classList.remove("is-not-visible");
-  searchButton.classList.add("is-not-visible")
+  searchButton.classList.add("is-not-visible");
 })
 
 window.addEventListener("scroll", ()=> {
