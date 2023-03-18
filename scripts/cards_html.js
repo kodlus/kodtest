@@ -35,7 +35,7 @@ function shoppingCartItemHtml (imageSrc, name, price, productIndex, productLink)
 
 function carouselCardHtml (data, property) {
   return `
-  <div id="carousel-card-${data[property].index}" class="product-card">
+  <div id="carousel-card-${data[property].index}" class="product-card carousel__product-card">
     <a href="${data[property].link} 
     target="_blank" 
     class="product-card__link" 

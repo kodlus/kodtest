@@ -8,9 +8,6 @@ import { shoppingCartItemHtml } from "./cards_html.js";
 /*============================================================================
 CONTENT
 ==============================================================================*/
-const productArray = [];
-let deleteWasPushed = true;
-
 /*=========================================================
 DELETE ITEMS FROM THE SHOPPING CART
 =========================================================*/
@@ -25,11 +22,11 @@ const deleteShoppingCartItem = (e) => {
   .parentElement // shopping-cart-item__information
   .parentElement.remove() // shopping-cart-item
   
-  // Stop deleteShoppingCartItem from being captured by closeMenusWhenClickingOutside 
-  e.stopPropagation();
- 
   // Update the shopping cart total
   updateCartTotal();
+
+  // Stop deleteShoppingCartItem from being captured by closeMenusWhenClickingOutside 
+  e.stopPropagation();
 } // End of function
 
 /*=========================================================
@@ -84,8 +81,6 @@ const updateCartTotal = () => {
  
   // Get all of the shopping cart items inside the container
   let cartItems = cartItemContainer.getElementsByClassName("shopping-cart-item");
-
-  deleteWasPushed = false;
 
   // Initialize the total price of the shopping cart items
   let total = 0

@@ -28,7 +28,9 @@ const shoppingCart = document.querySelector("#shopping-cart-inner");
 
 const closeButton = document.querySelector("#shopping-cart-inner__close-button")
 
+const headerSearchBar = document.getElementById("header__searchbar");
 
+const searchButton = document.getElementById("header__reveal-search-button");
 /*=========================================================
 Functions
 =========================================================*/
@@ -103,9 +105,30 @@ const closeMenusWhenClickingOutside = (e) => {
   // Closes the headerNav if the user clicks outside it. If the node is a child of headerNav, and contains the class button, nothing happens
   if (isAChildOf(node, headerNav) !== true && e.target.classList.contains("nav-toggle-button") !== true ) {
       headerNav.classList.add("is-not-visible") }
+
+
+    // Resetting the nav
+    const dropDownButtons = document.getElementsByClassName("nav__dropdown-button");
+
+    if(headerNav.classList.contains("is-not-visible")) {
+      for (let i = 0; i < dropDownButtons.length; i++) {
+        dropDownButtons[i]. innerText ="+";
+        dropDownButtons[i]
+        .parentElement
+        .nextElementSibling
+        .classList.add("is-not-visible");
+      }
+    }
+
+  // Close searchbar if user clicks outside it
+  if (isAChildOf(node, headerSearchBar) !== true && node.id !== "header__reveal-search-button") {
+    headerSearchBar.classList.add("is-not-visible");
+    searchButton.classList.remove("is-not-visible")
+
+  }
 }
 
-// Hook event listener to the body and invoke the function
+// Hook event listener to the document and invoke the function
 document.addEventListener("click", closeMenusWhenClickingOutside)
 
 
@@ -118,7 +141,7 @@ document.addEventListener("click", closeMenusWhenClickingOutside)
 
 
 
-// NAV DROPDOWN MENU MOBILE ONLY
+// NAV DROPDOWN MENU 
 // Select the nav container
 const nav = document.querySelector(".nav");
 // Add event listener to the nav element
@@ -134,12 +157,38 @@ nav.addEventListener("click", (e) => {
   // Check if the button has the right inner text and is of the right class. Toggling 
   if (targetButton.innerText === "+" && targetButton.classList.contains("nav__dropdown-button")) {
     targetButton.innerText = "-";
-    targetButton.parentElement.nextElementSibling.classList.remove("is-not-visible");
+    targetButton
+      .parentElement
+      .nextElementSibling
+      .classList.remove("is-not-visible");
+
+
   } else {
     targetButton.innerText = "+";
-    targetButton.parentElement.nextElementSibling.classList.add("is-not-visible");
+    targetButton
+      .parentElement
+      .nextElementSibling
+      .classList.add("is-not-visible");
   }
-})
+
+
+  // Toggle dropdown menus
+  const dropDownButtons = document.getElementsByClassName("nav__dropdown-button");
+
+  if (targetButton) {
+    for (let i = 0; i < dropDownButtons.length; i++) {
+      if (dropDownButtons[i] !== targetButton) {
+        dropDownButtons[i].innerText ="+";
+        dropDownButtons[i]
+        .parentElement
+        .nextElementSibling
+        .classList.add("is-not-visible");
+      }
+    }
+    }
+  })
+
+
 
 /*=========================================================
 Hide information banner on scroll, only on small screens
@@ -148,13 +197,13 @@ https://www.satollo.net/execute-conditional-javascript-by-screen-size
 https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
 =========================================================*/
 // Get the information banner
- const informationBanner = document.getElementById("header__information-banner");
+ const informationBanner = document.getElementById("header__row-2");
 
 // Get the offset of the information banner
 let informationBannerOffset = informationBanner.offsetTop;
 
 // Set the screen small screen width variable. The number represents pixels
-const smallScreenWidth = 800;
+const smallScreenWidth = 1400;
 
 // The function adds the "is-not-visible" utility class if the window's vertical offset is larger than the element's offset
 function hideBanner () {
@@ -166,7 +215,7 @@ function hideBanner () {
 }
 
 // The function takes in three parameters: screen size (integer), event type (string), and a function. If the screen width matches or is less to the size, an event listener defined by the event type and function will be hooked to the window object. If the screen size is larger than the size, the event listener gets removed
-function smallScreenOnlyEvent (size, eventType, func) {
+function screenEvent (size, eventType, func) {
   // Get the screen width
   let width = document.documentElement.clientWidth || window.innerWidth
 
@@ -177,17 +226,48 @@ function smallScreenOnlyEvent (size, eventType, func) {
   }
 }
 
-// Call smallScreenOnlyEvent at run time
-smallScreenOnlyEvent(smallScreenWidth, "scroll", hideBanner)
+// Call screenEvent at run time
+screenEvent(smallScreenWidth, "scroll", hideBanner)
 
-// Detect when the screen size changes, and call smallScreenOnlyEvent
+// Detect when the screen size changes, and call screenEvent
 window.addEventListener("resize", () => {
-  smallScreenOnlyEvent(smallScreenWidth, "scroll", hideBanner);
+  screenEvent(smallScreenWidth, "scroll", hideBanner);
 
   // Remove the is-not-visible class if the banner is hidden when transitioning from small screen to larger screen
   informationBanner.classList.remove("is-not-visible")
 })
 
+
+// SEARCH BAR - mobile & tablet
+let headerSearchBarOffset = headerSearchBar.offsetTop;
+console.log(headerSearchBarOffset)
+
+// TODO: CALCULATE THE OFFSET ON LOAD
+// TODO: EXCEPTION WHEN CLICKING ON STUFF BUT THE PAGE HAS NOT SCROLLED
+
+function hideSearchBar () {
+  
+  if (window.pageYOffset > headerSearchBarOffset){
+    searchButton.classList.remove("is-not-visible");
+    headerSearchBar.classList.add("is-not-visible");
+    
+
+  } else {
+    searchButton.classList.add("is-not-visible")
+    headerSearchBar.classList.remove("is-not-visible");
+  } 
+}
+
+// Hide the search button when pressed
+searchButton.addEventListener("click", ()=> {
+  console.log("clicked")
+  headerSearchBar.classList.remove("is-not-visible");
+  searchButton.classList.add("is-not-visible");
+})
+
+window.addEventListener("scroll", ()=> {
+  hideSearchBar();
+})
 /*==============================================================================
 MAIN
 ==============================================================================*/

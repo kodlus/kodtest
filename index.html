@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles/reset.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/typography.css">
+
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/b0e386ccd8.js" crossorigin="anonymous"></script>
     <!-- Google Font -->
@@ -21,77 +21,112 @@
       <div class="header__container">
         <!-- Row 1 -->
         <div class="header__row-1">
-          <!-- Nav -->            
-          <label for="nav-toggle-button" class="label">
-          </label>
-          <button id="nav-toggle-button" class="button nav-toggle-button" name="nav-toggle-button" aria-label="open/close">
-            <img src="/images/icons/hamburger.png" class="icon nav-toggle-button__icon" alt="hamburger menu"/>
-          </button>
-
-          <nav id="nav" class="nav is-not-visible" name="header navigation" tabindex="0" aria-label="Navigationsmenyn">
-            <ul class="nav__links">
-              <!-- Dropdown menus -->
-              <li class="nav__link">
-                <div class="nav__link-details">
-                  <a href="#" class="nav__link-title">För hemmet</a>
-                  <button class="button nav__dropdown-button">+</button>
-                </div> 
+          <!-- Nav --> 
+          <div class="header__navigation-column">
+            <!-- Toggle button -->
+            <label for="nav-toggle-button" class="label">
+              <button id="nav-toggle-button" class="button nav-toggle-button" name="nav-toggle-button" aria-label="open/close">
+                <img src="/images/icons/hamburger.png" class="icon nav-toggle-button__icon" alt="hamburger menu"/>
+              </button>  
+            </label>
+            
+            <!-- Menu -->
+            <nav id="nav" class="nav is-not-visible" name="header navigation" tabindex="0" aria-label="Navigationsmeny">
+              <ul class="nav__links">
+                <li class="nav__link">
+                  <div class="nav__link-details">
+                    <a href="#" class="nav__link-title">För hemmet</a>
+                    <button class="button nav__dropdown-button">+</button>
+                  </div> 
+                   <!-- Dropdown menu -->
+                  <ul class="nav__dropdown is-not-visible">
+                    <li><a href="#">Dammsugare med påse</a></li>
+                    <li><a href="#">Sladdlös skaftdammsugare</a></li>
+                  </ul>
+                </li> <!-- End of dropdown -->
                 
-                <ul class="nav__dropdown is-not-visible">
-                  <li><a href="#">Dammsugare med påse</a></li>
-                  <li><a href="#">Sladdlös skaftdammsugare</a></li>
-                </ul>
-              </li> <!-- End of dropdown -->
-              <!-- Dropdown menus -->
-              <li class="nav__link">
-                <div class="nav__link-details">
-                  <a href="#" class="nav__link-title">Matlagning</a>
-                  <button class="button nav__dropdown-button">+</button> 
-                </div>
+                <li class="nav__link">
+                  <div class="nav__link-details">
+                    <a href="#" class="nav__link-title">Matlagning</a>
+                    <button class="button nav__dropdown-button">+</button> 
+                  </div>
+                  <!-- Dropdown menu -->
+                  <ul class="nav__dropdown is-not-visible">
+                    <li><a href="#">Airfryers & Fritöser</a></li>
+                    <li><a href="#">Blenders</a></li>
+                    <li><a href="#">Brödrostar</a></li>
+                    <li><a href="#">Kaffebryggare</a></li>
+                    <li><a href="#">Köksmaskiner</a></li>
+                    <li><a href="#">Flera alternativ</a></li>
+                  </ul>
+                </li> <!-- End of dropdown -->
+                
+                <li class="nav__link">
+                  <div class="nav__link-details">
+                    <a href="#" class="nav__link-title">Styling & Wellness</a>
+                    <button class="button nav__dropdown-button">+</button> 
+                  </div>
+                  <!-- Dropdown menu -->
+                  <ul class="nav__dropdown is-not-visible">
+                    <li><a href="#">Björn Axén Tools</a></li>
+                    <li><a href="#">Håfönar</a></li>
+                    <li><a href="#">Locktänger</a></li>
+                    <li><a href="#">Hårklippare & Trimmers</a></li>
+                    <li><a href="#">Plattänger</a></li>
+                    <li><a href="#">Flera alternativ</a></li>
+                  </ul>
+                </li><!-- End of dropdown -->
 
-                <ul class="nav__dropdown is-not-visible">
-                  <li><a href="#">Airfryers & Fritöser</a></li>
-                  <li><a href="#">Blenders</a></li>
-                  <li><a href="#">Brödrostar</a></li>
-                  <li><a href="#">Kaffebryggare</a></li>
-                  <li><a href="#">Köksmaskiner</a></li>
-                  <li><a href="#">Flera alternativ</a></li>
-                </ul>
-              </li> <!-- End of dropdown -->
-              <li class="nav__link">
-                <div class="nav__link-details">
-                  <a href="#" class="nav__link-title">Styling & Wellness</a>
-                  <button class="button nav__dropdown-button">+</button> 
-                </div>
-                <ul class="nav__dropdown is-not-visible">
-                  <li><a href="#">Björn Axén Tools</a></li>
-                  <li><a href="#">Håfönar</a></li>
-                  <li><a href="#">Locktänger</a></li>
-                  <li><a href="#">Hårklippare & Trimmers</a></li>
-                  <li><a href="#">Plattänger</a></li>
-                  <li><a href="#">Flera alternativ</a></li>
-                </ul>
-              </li><!-- End of dropdown -->
-              <li class="nav__link"><a href="#">Retur & Reklamation</a></li>
-              <li class="nav__link"><a href="#">Kontakta oss</a></li>
-            </ul>
-          </nav>
+                <li class="nav__link"><a href="#">Retur & Reklamation</a></li>
+                <li class="nav__link"><a href="#">Kontakta oss</a></li>
+              </ul>
+            </nav>
+          </div> <!-- End of header navigation column -->
 
           <!-- Logo -->
-          <div class="logo">
-            <a href="#"><img src="images/logos/OBH_Nordica1 (2).png" alt="OBH Nordica logo"></a>
-          </div>
+          <div class="header__logo-column">
+            <div class="logo">
+              <a href="#"><img src="images/logos/OBH_Nordica1 (2).png" alt="OBH Nordica logo"></a>
+            </div>
+          </div> <!-- End of header logo column -->
 
-          <!-- Shopping cart outer-->
-          <div class="shopping-cart-outer"> 
-            <label for="shopping-cart-outer__button" class="label">
-              <button id="shopping-cart-outer__button" class="button shopping-cart-outer__button">
-              <img class ="icon shopping-cart-outer__icon" src="images/icons/shopping-cart.png" alt="shopping cart button icon">
+          <!-- Searchbar -->
+          <div id="header__searchbar" class="header__search-bar-column header__searchbar">
+            <div class="search-bar search-bar--header">
+
+              <!-- Input -->
+              <label for="search-bar__input"></label>
+              <input type="search" aria-label="search-bar" name="search-bar" id="search-bar__input" class="search-bar__input" aria-placeholder="Sök">
+              
+              <!-- Button -->
+              <label for="search-bar__button--header"></label>
+              <button class="button search-bar__button" id="search-bar__button--header" aria-label="search">
+                <img class="icon search-bar__icon" src="/images/icons/search_icon.png" alt="search bar magnification glass icon">
               </button>
-           
-              <span id="shopping-cart-outer__quantity-indicator" class="shopping-cart-outer__quantity-indicator">0</span>
+            </div>
+          </div> <!-- End of header searchbar column -->
+
+          <!-- Searchbar reveal button-->
+          <div class="header__shopping-cart-utility-column">
+            <label for="header__reveal-search-button">
+              <button id="header__reveal-search-button" class="button header__reveal-search-button is-not-visible" aria-label="Öppna sökfältet">
+                <img class="icon search-bar__icon" src="/images/icons/search_icon.png" alt="search bar magnification glass icon">
+              </button>
             </label>
-          </div>
+
+            <!-- Shopping cart outer-->
+            <div class="shopping-cart-outer"> 
+              <!-- Button -->
+              <label for="shopping-cart-outer__button" class="label">
+                <button id="shopping-cart-outer__button" class="button shopping-cart-outer__button">
+                <img class ="icon shopping-cart-outer__icon" src="images/icons/shopping-cart.png" alt="shopping cart button icon">
+                </button>
+                
+                <!-- Quantity indicator -->
+                <span id="shopping-cart-outer__quantity-indicator" class="shopping-cart-outer__quantity-indicator">0</span>
+              </label>
+            </div> <!-- End of shopping cart outer -->
+          </div> <!-- End of shopping cart / utility column -->
 
           <!-- Shopping cart inner-->
           <div id="shopping-cart-inner" class="shopping-cart-inner is-not-visible">
@@ -119,41 +154,29 @@
               </div>
               <button class="button shopping-cart-inner__checkout-button">Gå till kassan</button>
             </div>
-      
           </div> <!-- End of shopping cart -->
         </div><!-- End of row-1 -->
-      
-        <!-- Row 2 -->
-        <div class="header__row-2">
-          <!-- Search bar -->
-          <div class="search-bar search-bar--header">
-            <label for="search-bar__input"></label>
-            <input type="search" aria-label="search-bar" name="search-bar" id="search-bar__input" class="search-bar__input" aria-placeholder="Sök">
-            
-            <label for="search-bar__button--header"></label>
-            <button class="button search-bar__button" id="search-bar__button--header" aria-label="search">
-              <img class="icon search-bar__icon" src="/images/icons/search_icon.png" alt="search bar magnification glass icon">
-            </button>
-          </div>
-        </div> <!-- End of row 2 -->
 
-        <!-- Row 3 -->
-        <div class="header__row-3">
+        <!-- Row 2 -->
+        <div id="header__row-2" class="header__row-2">
           <!-- Information banner -->
           <div id="header__information-banner" class="header__information-banner">
             <p> Fri frakt över 500kr</p>
-            <p class="is-not-visible">30 dagar öppet köp</p> 
-            <p class="is-not-visible"> Prova hemma 100 dagar</p>
-            <p>Fria returer</p>
-          </div>
-        </div> <!-- End of row 3 -->
+            <p>30 dagar öppet köp</p> 
+            <p> Prova hemma 100 dagar</p>
+            <p aria-label="Telefonnummer till vår kundservice">08 100 20 20</p>
+          </div> <!-- End of information banner -->
+        </div> <!-- End of row 2 -->
       </div> <!-- End of header container -->
     </header>
 
     <main title="main">
       <div class="campaign-color-wrapper">
-  <!-- <h1 class="page-title">OBH Nordica</h1> -->
+        
+        <!-- Page title -->
+        <h1 class="page-title">OBH Nordica</h1>
 
+         <!-- Campaign section -->
         <section class="campaign-section">
           <h2 class="section-title">Februari-rea</h2>
           
@@ -165,41 +188,48 @@
           <!-- Campaign carousel -->
           <div class="carousel">
             <div id="carousel__container" class="carousel__container">
-              <!-- Content is generated with JS. -->
+              <!-- Content is generated with JS -->
               <!-- See campaign carousel in main.js for more information -->
             </div> <!-- End of carousel container-->
             
             <div class="carousel__indicator">
-              <label for="carousel__previous-button">
+              <label for="carousel__previous-button" class="carousel__previous-button-label">
                 <button id="carousel__previous-button" class="button carousel__previous-button" aria-label="Nästa produkt"></button>
               </label>
-              
-              <span id="carousel__indicator-number" class="carousel__indicator-number"> <!-- generated with JS --> </span>
 
-              <label for="carousel__next-button">
+              <label for="carousel__next-button" class="carousel__next-button-label">
                 <button id="carousel__next-button" class="button carousel__next-button" aria-label="Föregående product"></button>
               </label>
+              
+              <span id="carousel__indicator-number" class="carousel__indicator-number"> 
+                <!-- Content is generated with JS --> 
+              </span>
             </div> <!-- End of Carousel indicator -->
           </div> <!-- End of campaign carousel -->
         </section> <!-- End of campaign section -->
-      </div>
-
+      </div> <!-- End of campaign color wrapper -->
 
       <section class="popular-categories-section">
         <h2 class="section-title">Populära kategorier</h2>
 
         <div class="popular-categories__card-container">
+          <!-- Category card -->
           <div class="category-card">
-            <img src="images/pictures/products/beverages/2420/2420_Styling09.jpg" alt="Image description" class="category-card__image">
+            <a href="#" aria-label="Läs mer om våra kaffebryggare">
+              <img src="images/pictures/products/beverages/2420/2420_Styling09.jpg" alt="Image description" class="category-card__image">
+            </a>
 
-              <div class="category-card__details">
+            <div class="category-card__details">
               <h3 class="category-card__product-name">Kaffebryggare</h3>
               <p class="category-card__description">En helt ny kaffeupplevelse</p>
             </div>
           </div> <!-- End of category card -->
 
+           <!-- Category card -->
           <div class="category-card">
-            <img src="images/pictures/products/home_cleaning/VO6164NA_10_Styling02.jpg" alt="Image description" class="category-card__image">
+            <a href="#" aria-label="Läs mer om våra dammsugare">
+              <img src="images/pictures/products/home_cleaning/VO6164NA_10_Styling02.jpg" alt="Image description" class="category-card__image">
+            </a>
 
             <div class="category-card__details">
               <h3 class="category-card__product-name">Dammsugare</h3>
@@ -207,8 +237,11 @@
             </div>
           </div> <!-- End of category card -->
 
+           <!-- Category card -->
           <div class="category-card">
-            <img src="images/pictures/products/electrical_cooking/AG5018S0_Styling17.jpg" alt="Image description" class="category-card__image">
+            <a href="#" aria-label="Läs mer om våra Airfryers">
+              <img src="images/pictures/products/electrical_cooking/AG5018S0_Styling17.jpg" alt="Image description" class="category-card__image">
+            </a>
 
             <div class="category-card__details">
               <h3 class="category-card__product-name">Airfryers</h3>
@@ -216,8 +249,11 @@
             </div>
           </div> <!-- End of category card -->
 
+           <!-- Category card -->
           <div class="category-card">
-            <img src="images/pictures/products/electrical_cooking/GO722DS0_02_Styling01(2).jpg" alt="Image description" class="category-card__image">
+            <a href="#" aria-label="Läs mer om våra optigrillar">
+              <img src="images/pictures/products/electrical_cooking/GO722DS0_02_Styling01(2).jpg" alt="Image description" class="category-card__image">
+            </a>
 
             <div class="category-card__details">
               <h3 class="category-card__product-name">Optigrill</h3>
@@ -225,23 +261,26 @@
             </div>
           </div> <!-- End of category card -->
 
+           <!-- Category card -->
           <div class="category-card">
-            <img src="images/pictures/products/personal_care/3040_Product02.jpg" alt="Image description" class="category-card__image">
+            <a href="#" aria-label="Läs mer om våra plattänger">
+              <img src="images/pictures/products/personal_care/3040_Product02.jpg" alt="Image description" class="category-card__image">
+            </a>
 
-              <div class="category-card__details">
+            <div class="category-card__details">
               <h3 class="category-card__product-name">Plattång</h3>
               <p class="category-card__description">Noga utformade för att passa din hårtyp</p>
             </div>
           </div> <!-- End of category card -->
         </div> <!-- End of popular categories card container -->
-      </section> <!-- End of popular catergories section -->
+      </section> <!-- End of popular categories section -->
 
       <!-- Popular Product Section -->
       <section class="popular-products-section">
         <h2 class="section-title">Populära produkter</h2>
 
          <!-- Popular product cards -->
-        <div id="popular-products__card-container" class="product-cards__container">
+        <div id="popular-products__card-container" class="popular-products__card-container">
           <!-- Content generated with JS -->
         </div> <!-- End of product cards container -->
       </section> <!-- End of popular product section -->
@@ -250,8 +289,12 @@
       <section class="featured-section">
         <h2 class="section-title">Nyheter</h2> 
         <div class="featured__container">
+          <!-- Featured card -->
           <div class="featured-card">
-            <img src="images/pictures/products/home_cleaning/VO6164NA_Styling03.jpg" alt="Image description" class="featured-card__image" aria-label="Läs mer om Green Force Dammsugare">
+            <a href="#" aria-label="Läs mer om Green Force Dammsugare">
+              <img src="images/pictures/products/home_cleaning/VO6164NA_Styling03.jpg" alt="Image description" class="featured-card__image">
+            </a>
+
             <div class="featured-card__details">
               <h3 class="featured-card__product-name">
                 Green Force Dammsugare
@@ -260,16 +303,24 @@
             </div>
           </div> <!-- End of featured card -->
 
+          <!-- Featured card -->
           <div class="featured-card">
-            <img src="images/pictures/products/personal_care/NF8210N0_Styling05.jpg" alt="Image description" class="featured-card__image" aria-label="Läs mer om Ultimate experience">
+            <a href="#"  aria-label="Läs mer om Ultimate experience">
+              <img src="images/pictures/products/personal_care/NF8210N0_Styling05.jpg" alt="Image description" class="featured-card__image">
+            </a>
+
             <div class="featured-card__details">
               <h3 class="featured-card__product-name">Ultimate experience</h3>
               <p class="featured-card__description">Stylingverktyg framtagna i samarbete med professionella frisörer</p>
             </div>
           </div> <!-- End of featured card -->
 
+          <!-- Featured card -->
           <div class="featured-card">
-            <img src="images/pictures/products/food preparation/HN95HDS0_Styling04.jpg" alt="Image description" class="featured-card__image" aria-label="Läs mer om Powelix">
+            <a href="#" aria-label="Läs mer om Powelix">
+              <img src="images/pictures/products/food preparation/HN95HDS0_Styling04.jpg" alt="Image description" class="featured-card__image">
+            </a>
+
             <div class="featured-card__details">
               <h3 class="featured-card__product-name">Powelix - Smidigare, snabbare</h3>
               <p class="featured-card__description">Upplev skillnaden med våra Powelix-produkter</p>
@@ -286,8 +337,8 @@
             <div class="discover-card__details">
               <h3 class="discover-card__title">Godare, nyttigare, snabbare tillagning</h3>
               <p class="discover-card__copy">Turbo Cuisine & Fry multikokare är ett måste för dig som gillar att laga mat och vill göra det på ett nyttigare, godare och snabbare sätt. Turbo Cuisine & Fry kommer med ett Turbo Crisp lock så du även kan använda din multikokare som en air fryer med lite eller ingen olja. Spara upp till 80% energi* med elektriska tryckkokare från OBH Nordica. *jämfört med traditionell matlagning.</p>
-              <a href="#" class="discover-card__button" aria-label="Läs mer om Turbo Cuisine & Fry multikokare">Läs mer</a>
-            </div>
+              <a href="#" class="discover-card__link-button" aria-label="Läs mer om Turbo Cuisine & Fry multikokare">Läs mer</a>
+            </div> <!-- End of card details -->
           </div> <!-- End of discover card -->
 
           <div class="discover-card">
@@ -295,9 +346,9 @@
             <div class="discover-card__details">
               <h3 class="discover-card__title">Hitta nya, spännande recept</h3>
               <p class="discover-card__copy">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <a href="#" class="discover-card__button" aria-label="Läs mer om våra recept">Läs mer</a>
-            </div>  
-          </div><!-- End of discover card -->
+              <a href="#" class="discover-card__link-button" aria-label="Läs mer om våra recept">Läs mer</a>
+            </div> <!-- End of card details -->
+          </div> <!-- End of discover card -->
         </div> <!-- End of discover more container -->
       </section> <!-- End of discover more section -->
 
@@ -308,11 +359,12 @@
           <div class="services-card">
             <img src="images/pictures/services/LH811DS0_04_Styling03.jpeg" alt="Image description" class="services-card__image">
             <div class="services-card__details">
-              <h3 class="services-card__title">15 års åtagande för reperation</h3>
-              <p class="services-card__description">OBH Nordica satsar på produktreperationer</p>
-              <a href="#">Läs mer</a>
+              <h3 class="services-card__title">
+                15 års åtagande för reperation </h3>
+              <p class="services-card__description">OBH Nordica satsar på produktreperationer </p>
+              
+              <a href="#" class="services-card__link" aria-label="Läs mer om vårt 15 års åtagande för reperation">Läs mer</a>
             </div>
-        
           </div> <!-- End of services card -->
   
           <div class="services-card">
@@ -321,107 +373,110 @@
               <h3>Prova hemma hundra dagar</h3>
               <p class="services-card__description">Under en begränsad period så har du möjlighet att testa utvalda produkter hemma och lämna tillbaka produkten om du inte är nöjd.</p>
   
-              <a href="#">Läs mer</a>
+              <a href="#" class="services-card__link" aria-label="Läs mer om vårt prove hemma hundra dagar erbjudande">Läs mer</a>
             </div>
-  
           </div> <!-- End of services card -->
   
           <div class="services-card">
             <img src="images/pictures/services/2420_Product04.jpeg" alt="Image description" class="services-card__image">
             <div class="services-card__details">
               <h3 class="services-card__title">2 års garanti</h3>
-                <a href="#">Läs mer om vår tvåårs garanti</a>
+              
+              <a href="#" class="services-card__link">Läs mer om vår tvåårs garanti</a>
             </div>
           </div> <!-- End of services card -->
         </div> <!-- End of services card container -->
       </section> <!-- End of services section -->
 
-
-
       <!-- Product Search Section -->
       <section class="product-search-section">
         <div class="product-search__background-container">
-        <div class="product-search__details">
-          <h2>Sök, så ska ni hitta</h2> 
-          <p>Använd sökfältet för att hitta användarböcker, vanliga frågor, och programvaruuppdateringar för din produkt.</p>
-        </div>
+          <div class="product-search__details">
+            <h2 class="product-search__title">Sök, så ska ni hitta</h2> 
+            <p class="product-search__description">Använd sökfältet för att hitta användarböcker, vanliga frågor, och programvaruuppdateringar för din produkt.</p>
+          </div>
 
 
-        <div class="search-bar search-bar--product">
-          <label for="product-search-bar__input"></label>
-          <input type="search" name="" id="product-search-bar__input" class="search-bar__input search-bar__input--product" placeholder="Modellnummer" aria-label="Sök efter produkter med hjälp av produktnummer">
-          <button id="product-search-bar__button" class="button search-bar__button" type="submit" ><img src="images/icons/search_icon.png" alt="Image description" class="icon search-bar__icon"></button>
-        </div>
-          <a href="#" class="">Var kan jag hitta modellnumret?</a>
+          <div class="search-bar search-bar--product">
+            <label for="product-search-bar__input"></label>
+            <input type="search" name="" id="product-search-bar__input" class="search-bar__input search-bar__input--product" placeholder="Modellnummer" aria-label="Sök efter produkter med hjälp av produktnummer">
+            <button id="product-search-bar__button" class="button search-bar__button" type="submit" ><img src="images/icons/search_icon.png" alt="Image description" class="icon search-bar__icon"></button>
+          </div>
+          <a href="#" class="product-search__link">Var kan jag hitta modellnumret?</a>
         </div> <!-- End of searchbar container -->
 
       </section> <!-- End of product search section -->
     </main>
     
     <footer class="footer" title="footer">
-      <div class="footer__customer-suppport footer__category">
-        <h2 class="footer__header">Kundservice</h2>
-        <ul>
-          <li><a href="#" class="footer__link">Kontakta oss</a></li>
-          <li><a href="#" class="footer__link">Retur & Reklamation</a></li>
-          <li><a href="#" class="footer__link">Frakt & Leverans</a></li>
-          <li><a href="#" class="footer__link">Frågor & Svar</a></li>
-          <li><a href="#" class="footer__link">Köpvillkor</a></li>
-          <li><a href="#" class="footer__link">Hem</a></li>
-        </ul>
+      <div class="footer__category-container">
+        <div class="footer__customer-suppport footer__category">
+          <h2 class="footer__header">Kundservice</h2>
+          <ul>
+            <li><a href="#" class="footer__link">Kontakta oss</a></li>
+            <li><a href="#" class="footer__link">Retur & Reklamation</a></li>
+            <li><a href="#" class="footer__link">Frakt & Leverans</a></li>
+            <li><a href="#" class="footer__link">Frågor & Svar</a></li>
+            <li><a href="#" class="footer__link">Köpvillkor</a></li>
+            <li><a href="#" class="footer__link">Hem</a></li>
+          </ul>
+        </div>
+  
+        <div class="footer__about-us footer__category">
+          <h2 class="footer__header">Om oss</h2>
+          <ul>
+            <li><a href="#" class="footer__link">Om OBH Nordica</a></li>
+            <li><a href="#" class="footer__link">Återförsäljare</a></li>
+            <li><a href="#" class="footer__link">Mediabank</a></li>
+            <li><a href="#" class="footer__link">Jobba hos oss</a></li>
+            <li><a href="#" class="footer__link">Integritetspolicy</a></li>
+            <li><a href="#" class="footer__link">Produktåterkallelse</a></li>
+            <li><a href="#" class="footer__link">Välgörenhet</a></li>
+            <li><a href="#" class="footer__link">Press</a></li>
+            <li><a href="#" class="footer__link">Cookies</a></li>
+          </ul>
+        </div>
+  
+        <div class="footer__discover-more footer__category">
+          <h2 class="footer__header">Upptäck mer</h2>
+          <ul>
+            <li><a href="#" class="footer__link">Femton års åtagande för reperation</a></li>
+            <li><a href="#" class="footer__link">Prova 100 dagar</a></li>
+            <li><a href="#" class="footer__link">Recept</a></li>
+            <li><a href="#" class="footer__link">Ultimate Experience</a></li>
+            <li><a href="#" class="footer__link">Björn Axén Tools</a></li>
+            <li><a href="#" class="footer__link">Powelix</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__social-media footer__category">
+          <h2 class="footer__header">Följ oss</h2>
+          <ul>
+            <li>
+              <a href="#" class="footer__link" aria-label="Besök oss gärna på Facebook">
+                <i class="icon fa-brands fa-facebook social-media-icon"></i>
+             </a>
+            </li>
+            <li>
+              <a href="#" class="footer__link" aria-label="Besök oss gärna på Instagram">
+                <i class="icon fa-brands fa-instagram social-media-icon"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer__link" aria-label="Besök oss gärna på Youtube">
+                <i class="icon fa-brands fa-youtube social-media-icon"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer__link" aria-label="Besök oss gärna på LinkedIn"><i class="icon fa-brands fa-linkedin social-media-icon"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <div class="footer__about-us footer__category">
-        <h2 class="footer__header">Om oss</h2>
-        <ul>
-          <li><a href="#" class="footer__link">Om OBH Nordica</a></li>
-          <li><a href="#" class="footer__link">Återförsäljare</a></li>
-          <li><a href="#" class="footer__link">Mediabank</a></li>
-          <li><a href="#" class="footer__link">Jobba hos oss</a></li>
-          <li><a href="#" class="footer__link">Integritetspolicy</a></li>
-          <li><a href="#" class="footer__link">Produktåterkallelse</a></li>
-          <li><a href="#" class="footer__link">Välgörenhet</a></li>
-          <li><a href="#" class="footer__link">Press</a></li>
-          <li><a href="#" class="footer__link">Cookies</a></li>
-        </ul>
-      </div>
+      
 
-      <div class="footer__social-media footer__category">
-        <h2 class="footer__header">Följ oss</h2>
-        <ul>
-          <li>
-            <a href="#" class="footer__link" aria-label="Besök oss gärna på Facebook">
-              <i class="icon fa-brands fa-facebook social-media-icon"></i>
-           </a>
-          </li>
-          <li>
-            <a href="#" class="footer__link" aria-label="Besök oss gärna på Instagram">
-              <i class="icon fa-brands fa-instagram social-media-icon"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer__link" aria-label="Besök oss gärna på Youtube">
-              <i class="icon fa-brands fa-youtube social-media-icon"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="footer__link" aria-label="Besök oss gärna på LinkedIn"><i class="icon fa-brands fa-linkedin social-media-icon"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="footer__discover-more footer__category">
-        <h2 class="footer__header">Upptäck mer</h2>
-        <ul>
-          <li><a href="#" class="footer__link">Femton års åtagande för reperation</a></li>
-          <li><a href="#" class="footer__link">Prova 100 dagar</a></li>
-          <li><a href="#" class="footer__link">Recept</a></li>
-          <li><a href="#" class="footer__link">Ultimate Experience</a></li>
-          <li><a href="#" class="footer__link">Björn Axén Tools</a></li>
-          <li><a href="#" class="footer__link">Powelix</a></li>
-        </ul>
-      </div>
       
       <hr class="footer__hr">
       
