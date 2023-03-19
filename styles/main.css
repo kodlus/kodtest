@@ -156,28 +156,33 @@ Header
   font-size: 1.4rem;
 }
 
-.nav a {
+.nav__link-title,
+.nav__link {
   color: var(--black);
   text-decoration: none;
   font-size: 1.2rem;
   text-transform: uppercase;
 }
 
-.nav a:hover {
-  text-decoration: underline;
+.nav__link-title--dropdown {
+  color: var(--black);
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
-.nav__dropdown a {
-  font-size: 1rem;
+.nav__link-title:hover,
+.nav__link-title--dropdown:hover {
+  text-decoration: underline;
 }
 
 .nav__dropdown-button {
   font-size: 2rem;
 }
 
-.nav__dropdown li {
+/* .nav__dropdown li {
   font-size: 1rem;
-}
+} */
 
 /*====================================
 Shopping cart-outer
@@ -456,7 +461,7 @@ Logo
 }
 
 /*=======================
-Shopping cart
+Shopping cart / utility
 =======================*/
 .header__shopping-cart-utility-column {
   display: flex;
@@ -1083,10 +1088,10 @@ SMALL/MEDIUM SCREENS
   }
 
   /*=========================================================
-  Header
+  Header Small/Medium screens
   =========================================================*/
   /*====================================
-  header row 1
+  header row 1 s/m screens
   =====================================*/
   .header__row-1 {
     padding: 0.625em 0;
@@ -1094,7 +1099,7 @@ SMALL/MEDIUM SCREENS
   }
 
   /*=======================
-  navigation
+  navigation s/m screens
   =======================*/
   .header__navigation-column { 
     flex: 0 0 40%;
@@ -1136,7 +1141,7 @@ SMALL/MEDIUM SCREENS
   }
 
   /*=======================
-  logo
+  logo s/m screens
   =======================*/
   .header__logo-column {
     flex: 0 0 10%;
@@ -1149,7 +1154,7 @@ SMALL/MEDIUM SCREENS
   }
 
   /*=======================
-  shopping cart
+  shopping cart s/m screens
   =======================*/
   .header__shopping-cart-utility-column {
     justify-content: end;
@@ -1247,7 +1252,7 @@ SMALL/MEDIUM SCREENS
   }
 
   /*=======================
-  header search
+  header search s/m screens
   =======================*/
   .header__search-bar-column {
     background-color: orange; /* Debug */
@@ -1256,10 +1261,10 @@ SMALL/MEDIUM SCREENS
   }
 
   /*====================================
-  header row 2
+  header row 2 s/m screens
   =====================================*/
   /*=======================
-  information banner
+  information banner s/m screens
   =======================*/
   .header__information-banner {
     width: 100%;
@@ -1278,17 +1283,17 @@ SMALL/MEDIUM SCREENS
   }
 
   /*=========================================================
-  Main
+  Main s/m screens
   =========================================================*/
   /*====================================
-  campaign section
+  campaign section s/m screens
   =====================================*/
   .campaign-section {
     margin-bottom: var(--sectionMarginBottom)
   }
 
   /*=======================
-  campaign carousel
+  campaign carousel s/m screens
   =======================*/
   .carousel {
     max-width: 65%;
@@ -1321,7 +1326,7 @@ SMALL/MEDIUM SCREENS
   }
 
   /*====================================
-  popular categories section
+  popular categories section s/m screens
   =====================================*/
   .popular-categories-section {
     padding: var(--standardPadding);
@@ -1339,7 +1344,7 @@ SMALL/MEDIUM SCREENS
   }
 
   /*====================================
-  popular products section
+  popular products section s/m screens
   =====================================*/
   .popular-products-section {
   padding: var(--standardPadding);
@@ -1364,7 +1369,7 @@ SMALL/MEDIUM SCREENS
   }
 
   /*====================================
-  featured section
+  featured section s/m screens
   =====================================*/
   .featured-section {
     margin-bottom: var(--sectionMarginBottom);
@@ -1401,7 +1406,7 @@ SMALL/MEDIUM SCREENS
   }
 
   /*====================================
-  discover more section
+  discover more section s/m screens
   =====================================*/
   .discover-more-section {
     margin-bottom: var(--sectionMarginBottom);
@@ -1443,7 +1448,7 @@ SMALL/MEDIUM SCREENS
   }
 
   /*====================================
-  services section
+  services section s/m screens
   =====================================*/
   .services-section {
     margin-bottom: var(--sectionMarginBottom);
@@ -1475,7 +1480,7 @@ SMALL/MEDIUM SCREENS
   }
 
   /*====================================
-  product search section
+  product search section s/m screens
   =====================================*/
   .product-search-section {
     background: var(--gray);
@@ -1495,7 +1500,7 @@ SMALL/MEDIUM SCREENS
   }
 
   /*=========================================================
-  footer
+  footer s/m screens
   =========================================================*/
   .footer {
     padding: var(--standardPadding);
@@ -1561,21 +1566,22 @@ MEDIUM/LARGE SCREENS
   }
 
   /*=========================================================
-  Header
+  Header m/l screens
   =========================================================*/
   /*====================================
-  header row 1
+  header row 1 m/l screens
   =====================================*/
   .header__row-1 {
+    justify-content: space-around;
     padding: 0.625em 0;
     gap: 5px;
   }
 
   /*=======================
-  navigation
+  navigation m/l screens
   =======================*/
   .header__navigation-column { 
-    flex: 0 0 40%;
+    flex: 0 0 45%;
   }
 
   .nav-toggle-button {
@@ -1588,36 +1594,63 @@ MEDIUM/LARGE SCREENS
   }
 
   .nav {
-    width: 100%;
-    padding: 10px;
+    width: 40%;
+    padding: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
+
+
+
   .nav__links {
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0.2em;
+    align-content: space-between;
   }
 
   .nav__link {
-    margin-bottom: 1em;
+    width: 100%;
+    
   }
 
-  .nav__dropdown-button {
-    width: 50%;
+
+
+
+  .nav__link-title {
+    font-size: 1rem;
   }
+
+  .nav__link-details {
+
+    width: 100%;
+  }
+
+
 
   .nav__dropdown {
-    padding: 0.3em 0 0 0.8em;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    z-index: 9;
+    
   }
 
   .nav__dropdown li {
     margin-bottom: 0.5em;
   }
 
+
+
   /*=======================
-  logo
+  logo m/l screens
   =======================*/
   .header__logo-column {
-    flex: 0 0 10%;
+    flex: 0 0 auto;
   }
 
   .logo {
@@ -1627,18 +1660,17 @@ MEDIUM/LARGE SCREENS
   }
 
   /*=======================
-  shopping cart
+  shopping cart m/l screens
   =======================*/
   .header__shopping-cart-utility-column {
     justify-content: end;
     background-color: blueviolet; /* Debug */
-    flex: 0 0 40%;
+    flex: 0 0 5%;
+    order: 5;
   }
 
   .header__reveal-search-button {
-    width: 40px;
-    height: 40px;
-    padding: 10px;
+    display: none;
   }
 
   .shopping-cart-outer__button {
@@ -1654,7 +1686,7 @@ MEDIUM/LARGE SCREENS
   }
 
   .shopping-cart-inner {
-    width: 100%;
+    width: 45%;
     height: 100vh;
   }
 
@@ -1725,48 +1757,51 @@ MEDIUM/LARGE SCREENS
   }
 
   /*=======================
-  header search
+  header search m/l screens
   =======================*/
   .header__search-bar-column {
     background-color: orange; /* Debug */
     order: 5;
-    flex: 0 0 75%;
+    flex: 0 0 35%;
   }
 
   /*====================================
-  header row 2
+  header row 2 m/l screens
   =====================================*/
   /*=======================
-  information banner
+  information banner m/l screens
   =======================*/
+  .header__row-2 {
+    order: -1;
+  }
   .header__information-banner {
     width: 100%;
   }
 
   .header__information-banner p:nth-child(3),
   .header__information-banner p:nth-child(4) {
-    position: absolute; 
-    overflow: hidden; 
-    clip: rect(0 0 0 0); 
-    height: 1px; 
-    width: 1px; 
-    margin: -1px; 
+    position:unset; 
+    overflow: auto; 
+    clip: unset; 
+    height: unset; 
+    width: unset; 
+    margin: 0; 
     padding: 0; 
     border: 0; 
   }
 
   /*=========================================================
-  Main
+  Main m/l screens
   =========================================================*/
   /*====================================
-  campaign section
+  campaign section m/l screens
   =====================================*/
   .campaign-section {
-    margin-bottom: var(--sectionMarginBottom)
+    margin-bottom: var(--sectionMarginBottom);
   }
 
   /*=======================
-  campaign carousel
+  campaign carousel m/l screens
   =======================*/
   .carousel {
     max-width: 65%;
@@ -1798,7 +1833,7 @@ MEDIUM/LARGE SCREENS
   }
 
   /*====================================
-  popular categories section
+  popular categories section m/l screens
   =====================================*/
   .popular-categories-section {
     padding: var(--standardPadding);
@@ -1824,7 +1859,7 @@ MEDIUM/LARGE SCREENS
   }
 
   /*====================================
-  popular products section
+  popular products section m/l screens
   =====================================*/
   .popular-products-section {
   padding: var(--standardPadding);
@@ -1849,7 +1884,7 @@ MEDIUM/LARGE SCREENS
   }
 
   /*====================================
-  featured section
+  featured section m/l screens
   =====================================*/
   .featured-section {
     margin-bottom: var(--sectionMarginBottom);
@@ -1887,7 +1922,7 @@ MEDIUM/LARGE SCREENS
   }
 
   /*====================================
-  discover more section
+  discover more section m/l screens
   =====================================*/
   .discover-more-section {
     margin-bottom: var(--sectionMarginBottom);
@@ -1934,7 +1969,7 @@ MEDIUM/LARGE SCREENS
   }
 
   /*====================================
-  services section
+  services section m/l screens
   =====================================*/
   .services-section {
     margin-bottom: var(--sectionMarginBottom);
@@ -1966,7 +2001,7 @@ MEDIUM/LARGE SCREENS
   }
 
   /*====================================
-  product search section
+  product search section m/l screens
   =====================================*/
   .product-search-section {
     background: var(--gray);
@@ -1986,7 +2021,7 @@ MEDIUM/LARGE SCREENS
   }
 
   /*=========================================================
-  footer
+  footer m/l screens
   =========================================================*/
   .footer {
     padding: var(--standardPadding);

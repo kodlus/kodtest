@@ -120,26 +120,17 @@ const closeMenusWhenClickingOutside = (e) => {
       }
     }
 
-  // Close searchbar if user clicks outside it
-  if (isAChildOf(node, headerSearchBar) !== true && node.id !== "header__reveal-search-button") {
-    headerSearchBar.classList.add("is-not-visible");
-    searchButton.classList.remove("is-not-visible")
-
+  // Close searchbar if user clicks outside it, only for small screens
+  if(window.innerWidth <= 800) {
+      if (isAChildOf(node, headerSearchBar) !== true && node.id !== "header__reveal-search-button") {
+      headerSearchBar.classList.add("is-not-visible");
+      searchButton.classList.remove("is-not-visible")
+    }
   }
 }
 
 // Hook event listener to the document and invoke the function
 document.addEventListener("click", closeMenusWhenClickingOutside)
-
-
-
-
-
-
-
-
-
-
 
 // NAV DROPDOWN MENU 
 // Select the nav container
@@ -150,9 +141,10 @@ nav.addEventListener("click", (e) => {
   const targetButton = e.target.closest("button");
  
   // Remove warning messages if target button is null
-  if (targetButton === null) {
+  if (targetButton === null || targetButton.id === "nav__close-button") {
     return
   }
+
   
   // Check if the button has the right inner text and is of the right class. Toggling 
   if (targetButton.innerText === "+" && targetButton.classList.contains("nav__dropdown-button")) {
@@ -188,6 +180,10 @@ nav.addEventListener("click", (e) => {
     }
   })
 
+  // Close nav when button pushed
+  document.getElementById("nav__close-button").addEventListener("click", () => {
+    document.getElementById("nav").classList.add("is-not-visible")
+  })
 
 
 /*=========================================================
@@ -203,7 +199,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
 let informationBannerOffset = informationBanner.offsetTop;
 
 // Set the screen small screen width variable. The number represents pixels
-const smallScreenWidth = 1400;
+const smallScreenWidth = 800;
 
 // The function adds the "is-not-visible" utility class if the window's vertical offset is larger than the element's offset
 function hideBanner () {
@@ -213,6 +209,24 @@ function hideBanner () {
     informationBanner.classList.remove("is-not-visible")
   } 
 }
+
+// TODO: Fixa så att om klickar utanför och gömmer searchbar när offset är mindre, så sker inget
+function hideSearchBar () {
+  if (window.pageYOffset > headerSearchBarOffset){
+    searchButton.classList.remove("is-not-visible");
+    headerSearchBar.classList.add("is-not-visible");
+  } else {
+    searchButton.classList.add("is-not-visible")
+    headerSearchBar.classList.remove("is-not-visible");
+  } 
+}
+
+
+
+
+
+
+
 
 // The function takes in three parameters: screen size (integer), event type (string), and a function. If the screen width matches or is less to the size, an event listener defined by the event type and function will be hooked to the window object. If the screen size is larger than the size, the event listener gets removed
 function screenEvent (size, eventType, func) {
@@ -227,47 +241,98 @@ function screenEvent (size, eventType, func) {
 }
 
 // Call screenEvent at run time
-screenEvent(smallScreenWidth, "scroll", hideBanner)
+screenEvent(smallScreenWidth, "scroll", hideBanner);
+screenEvent(smallScreenWidth, "scroll", hideSearchBar)
+// TODO: Skapa en screen event för nav close button
+
 
 // Detect when the screen size changes, and call screenEvent
 window.addEventListener("resize", () => {
   screenEvent(smallScreenWidth, "scroll", hideBanner);
+  screenEvent(smallScreenWidth, "scroll", hideSearchBar)
 
   // Remove the is-not-visible class if the banner is hidden when transitioning from small screen to larger screen
-  informationBanner.classList.remove("is-not-visible")
+  informationBanner.classList.remove("is-not-visible");
+  
+  // Remove the is-not-visible class if the search bar is hidden when transitioning from small screen to larger screen
+  if (window.innerWidth >= 800 && document.getElementById("header__searchbar").classList.contains("is-not-visible")) {
+    document.getElementById("header__searchbar").classList.remove("is-not-visible")
+  }
+  
 })
+
+/* function hover(element, enter, leave) {
+  element.addEventListener("mouseenter", enter);
+  element.addEventListener("mouseleave", leave);
+} 
+
+
+  const links = document.querySelectorAll(".nav__link");
+
+// Hovering over nav links
+function hoverOverNavLinks() {
+
+  if (window.innerWidth > 800) {
+  for (let i = 0; i < links.length - 2; i++) {
+    let link = links[i];
+    
+    link.addEventListener("mouseenter", (e)=> {
+      link.style.height = "100%";
+      add(e);
+    });
+
+    link.addEventListener("mouseleave", (e) => {
+      remove(e);
+      link.style.height = "auto"
+    })
+    console.log(link.parentElement)
+    }
+      } else { //Get rid of unnecessary event listeners
+        for (let i = 0; i < links.length - 2; i++) {
+        let link = links[i];
+        link.removeEventListener("mouseenter", add);
+        link.removeEventListener("mouseleave", remove) 
+    }
+  } 
+}
+
+  
+
+function add(e) {
+
+  e.target.children[1].classList.remove("is-not-visible");
+
+}
+
+function remove(e) {
+
+  e.target.children[1].classList.add("is-not-visible");
+}
+
+hoverOverNavLinks() */
 
 
 // SEARCH BAR - mobile & tablet
 let headerSearchBarOffset = headerSearchBar.offsetTop;
-console.log(headerSearchBarOffset)
+
+
+
 
 // TODO: CALCULATE THE OFFSET ON LOAD
 // TODO: EXCEPTION WHEN CLICKING ON STUFF BUT THE PAGE HAS NOT SCROLLED
 
-function hideSearchBar () {
-  
-  if (window.pageYOffset > headerSearchBarOffset){
-    searchButton.classList.remove("is-not-visible");
-    headerSearchBar.classList.add("is-not-visible");
-    
-
-  } else {
-    searchButton.classList.add("is-not-visible")
-    headerSearchBar.classList.remove("is-not-visible");
-  } 
-}
-
-// Hide the search button when pressed
+  // Hide the search button when pressed
 searchButton.addEventListener("click", ()=> {
   console.log("clicked")
   headerSearchBar.classList.remove("is-not-visible");
   searchButton.classList.add("is-not-visible");
 })
 
-window.addEventListener("scroll", ()=> {
-  hideSearchBar();
-})
+
+
+
+
+
 /*==============================================================================
 MAIN
 ==============================================================================*/

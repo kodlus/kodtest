@@ -31,7 +31,10 @@
             </label>
             
             <!-- Menu -->
-            <nav id="nav" class="nav is-not-visible" name="header navigation" tabindex="0" aria-label="Navigationsmeny">
+            <nav id="nav" class="nav " name="header navigation" tabindex="0" aria-label="Navigationsmeny">
+              <!-- Only visible for medium / large screens -->
+              <label for="nav__close-button"></label>
+              <button id="nav__close-button" class="button shopping-cart-inner__close-button"><p>Stäng</p><span>X</span></button>
               <ul class="nav__links">
                 <li class="nav__link">
                   <div class="nav__link-details">
@@ -39,9 +42,9 @@
                     <button class="button nav__dropdown-button">+</button>
                   </div> 
                    <!-- Dropdown menu -->
-                  <ul class="nav__dropdown is-not-visible">
-                    <li><a href="#">Dammsugare med påse</a></li>
-                    <li><a href="#">Sladdlös skaftdammsugare</a></li>
+                  <ul class="nav__dropdown ">
+                    <li><a href="#" class="nav__link-title--dropdown">Dammsugare med påse</a></li>
+                    <li><a href="#" class="nav__link-title--dropdown">Sladdlös skaftdammsugare</a></li>
                   </ul>
                 </li> <!-- End of dropdown -->
                 
@@ -51,13 +54,13 @@
                     <button class="button nav__dropdown-button">+</button> 
                   </div>
                   <!-- Dropdown menu -->
-                  <ul class="nav__dropdown is-not-visible">
-                    <li><a href="#">Airfryers & Fritöser</a></li>
-                    <li><a href="#">Blenders</a></li>
-                    <li><a href="#">Brödrostar</a></li>
-                    <li><a href="#">Kaffebryggare</a></li>
-                    <li><a href="#">Köksmaskiner</a></li>
-                    <li><a href="#">Flera alternativ</a></li>
+                  <ul class="nav__dropdown ">
+                    <li><a href="#"class="nav__link-title--dropdown">Airfryers & Fritöser</a></li>
+                    <li><a href="#"class="nav__link-title--dropdown">Blenders</a></li>
+                    <li><a href="#"class="nav__link-title--dropdown">Brödrostar</a></li>
+                    <li><a href="#"class="nav__link-title--dropdown">Kaffebryggare</a></li>
+                    <li><a href="#"class="nav__link-title--dropdown">Köksmaskiner</a></li>
+                    <li><a href="#"class="nav__link-title--dropdown">Flera alternativ</a></li>
                   </ul>
                 </li> <!-- End of dropdown -->
                 
@@ -68,17 +71,17 @@
                   </div>
                   <!-- Dropdown menu -->
                   <ul class="nav__dropdown is-not-visible">
-                    <li><a href="#">Björn Axén Tools</a></li>
-                    <li><a href="#">Håfönar</a></li>
-                    <li><a href="#">Locktänger</a></li>
-                    <li><a href="#">Hårklippare & Trimmers</a></li>
-                    <li><a href="#">Plattänger</a></li>
-                    <li><a href="#">Flera alternativ</a></li>
+                    <li><a href="#"class="nav__link-title--dropdown">Björn Axén Tools</a></li>
+                    <li><a href="#"class="nav__link-title--dropdown">Håfönar</a></li>
+                    <li><a href="#"class="nav__link-title--dropdown">Locktänger</a></li>
+                    <li><a href="#"class="nav__link-title--dropdown">Hårklippare & Trimmers</a></li>
+                    <li><a href="#"class="nav__link-title--dropdown">Plattänger</a></li>
+                    <li><a href="#"class="nav__link-title--dropdown">Flera alternativ</a></li>
                   </ul>
                 </li><!-- End of dropdown -->
 
-                <li class="nav__link"><a href="#">Retur & Reklamation</a></li>
-                <li class="nav__link"><a href="#">Kontakta oss</a></li>
+                <li class="nav__link"><a href="#" class="nav__link-title">Retur & Reklamation</a></li>
+                <li class="nav__link"><a href="#" class="nav__link-title">Kontakta oss</a></li>
               </ul>
             </nav>
           </div> <!-- End of header navigation column -->
@@ -132,6 +135,7 @@
           <div id="shopping-cart-inner" class="shopping-cart-inner is-not-visible">
             <div class="shopping-cart-inner__header">
               <h3 class="shopping-cart-inner__title">Din varukorg</h3>
+              <label for="shopping-cart-inner__close-button"></label>
               <button id="shopping-cart-inner__close-button" class="button shopping-cart-inner__close-button"><p>Stäng</p><span>X</span></button>
             </div>
 
