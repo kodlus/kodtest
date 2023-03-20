@@ -1,3 +1,5 @@
+
+//SHOPPING CART CARDS
 function shoppingCartItemHtml (imageSrc, name, price, productIndex, productLink) {
   return `<img src="${imageSrc}" alt="" class="shopping-cart-item__image">
 
@@ -33,9 +35,10 @@ function shoppingCartItemHtml (imageSrc, name, price, productIndex, productLink)
   `
  }
 
+ //CAROUSEL CARDS
 function carouselCardHtml (data, property) {
   return `
-  <div id="carousel-card-${data[property].index}" class="product-card carousel__product-card">
+  <div id="carousel-card-${data[property].index}" class="product-card product-card--carousel">
     <a href="${data[property].link} 
     target="_blank" 
     class="product-card__link" 

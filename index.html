@@ -25,16 +25,22 @@
           <div class="header__navigation-column">
             <!-- Toggle button -->
             <label for="nav-toggle-button" class="label">
-              <button id="nav-toggle-button" class="button nav-toggle-button" name="nav-toggle-button" aria-label="open/close">
+              <button id="nav-toggle-button" class="button nav-toggle-button" name="nav-toggle-button" aria-label="öppnar och stänger navigationsmenyn">
                 <img src="/images/icons/hamburger.png" class="icon nav-toggle-button__icon" alt="hamburger menu"/>
               </button>  
             </label>
             
             <!-- Menu -->
-            <nav id="nav" class="nav " name="header navigation" tabindex="0" aria-label="Navigationsmeny">
+            <nav id="nav" class="nav is-not-visible" name="header navigation" tabindex="0" aria-label="Navigationsmeny">
               <!-- Only visible for medium / large screens -->
-              <label for="nav__close-button"></label>
-              <button id="nav__close-button" class="button shopping-cart-inner__close-button"><p>Stäng</p><span>X</span></button>
+              <div class="nav__menu-header">
+                <h3 class="nav__menu-title">Meny</h3>
+                <label for="nav__close-button"></label>
+                  <button id="nav__close-button" class="button nav__close-button" aria-label="Stänger navigationsmenyn">
+                    <p>X</p>
+                  </button> 
+              </div>
+
               <ul class="nav__links">
                 <li class="nav__link">
                   <div class="nav__link-details">
@@ -42,7 +48,7 @@
                     <button class="button nav__dropdown-button">+</button>
                   </div> 
                    <!-- Dropdown menu -->
-                  <ul class="nav__dropdown ">
+                  <ul class="nav__dropdown is-not-visible">
                     <li><a href="#" class="nav__link-title--dropdown">Dammsugare med påse</a></li>
                     <li><a href="#" class="nav__link-title--dropdown">Sladdlös skaftdammsugare</a></li>
                   </ul>
@@ -54,7 +60,7 @@
                     <button class="button nav__dropdown-button">+</button> 
                   </div>
                   <!-- Dropdown menu -->
-                  <ul class="nav__dropdown ">
+                  <ul class="nav__dropdown is-not-visible">
                     <li><a href="#"class="nav__link-title--dropdown">Airfryers & Fritöser</a></li>
                     <li><a href="#"class="nav__link-title--dropdown">Blenders</a></li>
                     <li><a href="#"class="nav__link-title--dropdown">Brödrostar</a></li>

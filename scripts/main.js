@@ -1,12 +1,24 @@
 "use strict";
 const v = "Hi! I'm a strict mode script!";
 
+
+// TODO: Skapa en massa funktioner från koden jag har
+// TODO: Ta bort eventlisteners vid resize
+// TODO: Ordna en tydlig struktur
+
+
  /*============================================================================
 IMPORTED DATA
 ==============================================================================*/
 import {updateCartTotal} from "/scripts/shopping_cart.js"
 updateCartTotal()
 
+import loadCarousel from "./carousel.js";
+loadCarousel()
+
+import loadPopularProducts from "./popular_products.js";
+import { deleteShoppingCartItem } from "./shopping_cart.js";
+loadPopularProducts()
 
 /*============================================================================
 HEADER
@@ -55,7 +67,6 @@ Toggle navigation
 =========================================================*/
 /* Toggle the navigation on or off */
 navButton.addEventListener("click", (e) => {
-  console.log(e)
   contentToggle(headerNav, shoppingCart);
 
 });
@@ -64,7 +75,12 @@ navButton.addEventListener("click", (e) => {
 Toggle shopping cart
 =========================================================*/
 shoppingCartButton.addEventListener("click", () => {
-  contentToggle(shoppingCart, headerNav);
+  if(window.innerWidth <= 1200) {
+      contentToggle(shoppingCart, headerNav);
+  } else {
+    shoppingCart.classList.remove("is-not-visible")
+  }
+
 
   // Stop the body element from scrolling
   document.body.classList.add("stop-scrolling")
@@ -102,9 +118,12 @@ const closeMenusWhenClickingOutside = (e) => {
 
   } 
   
-  // Closes the headerNav if the user clicks outside it. If the node is a child of headerNav, and contains the class button, nothing happens
-  if (isAChildOf(node, headerNav) !== true && e.target.classList.contains("nav-toggle-button") !== true ) {
+  // Closes the headerNav if the user clicks outside it. If the node is a child of headerNav, and contains the class button, nothing happens. Only if the screen meets certain criteria! 
+  if (window.innerWidth <= 1200) {
+     if (isAChildOf(node, headerNav) !== true && e.target.classList.contains("nav-toggle-button") !== true ) {
       headerNav.classList.add("is-not-visible") }
+  }
+
 
 
     // Resetting the nav
@@ -207,6 +226,7 @@ function hideBanner () {
     informationBanner.classList.add("is-not-visible");
   } else {
     informationBanner.classList.remove("is-not-visible")
+    nav.classList.remove("is-not-visible")
   } 
 }
 
@@ -258,34 +278,41 @@ window.addEventListener("resize", () => {
   if (window.innerWidth >= 800 && document.getElementById("header__searchbar").classList.contains("is-not-visible")) {
     document.getElementById("header__searchbar").classList.remove("is-not-visible")
   }
+
+  if (window.innerWidth > 1200) {
+    document.getElementById("nav").classList.remove("is-not-visible")
+  } else {
+    document.getElementById("nav").classList.add("is-not-visible")
+  }
   
 })
 
-/* function hover(element, enter, leave) {
+function hover(element, enter, leave) {
   element.addEventListener("mouseenter", enter);
   element.addEventListener("mouseleave", leave);
 } 
 
 
   const links = document.querySelectorAll(".nav__link");
+  console.log(links)
 
 // Hovering over nav links
-function hoverOverNavLinks() {
+/* function hoverOverNavLinks() {
 
   if (window.innerWidth > 800) {
-  for (let i = 0; i < links.length - 2; i++) {
-    let link = links[i];
-    
-    link.addEventListener("mouseenter", (e)=> {
-      link.style.height = "100%";
-      add(e);
-    });
+    for (let i = 0; i < links.length - 2; i++) {
+      let link = links[i];
+      
+      link.addEventListener("mouseenter", (e)=> {
+        link.style.height = "100%";
+        add(e);
+      });
 
-    link.addEventListener("mouseleave", (e) => {
-      remove(e);
-      link.style.height = "auto"
-    })
-    console.log(link.parentElement)
+      link.addEventListener("mouseleave", (e) => {
+        remove(e);
+        link.style.height = "auto"
+      })
+      console.log(link.parentElement)
     }
       } else { //Get rid of unnecessary event listeners
         for (let i = 0; i < links.length - 2; i++) {
@@ -294,9 +321,64 @@ function hoverOverNavLinks() {
         link.removeEventListener("mouseleave", remove) 
     }
   } 
+} */
+
+if (window.innerWidth > 1200) {
+  // Make the nav visible
+  document.getElementById("nav").classList.remove("is-not-visible");
+      // Get hold on the dropDowns...
+      const linkDropDowns = document.querySelectorAll(".nav__dropdown");
+      console.log(linkDropDowns)
+
+  // Loop through the nav and nav links
+  for (let i = 0; i < links.length; i++) {
+    let link = links[i];
+
+
+
+      // Hook event listeners to the nav
+      document.getElementById("nav").addEventListener("mouseenter", ()=> {
+        console.log("Entered nav")
+        
+      })
+      // When mouse leaves the nav, remove remaining open nav link drop downs
+      document.getElementById("nav").addEventListener("mouseleave", ()=> {
+        for(let dropdown of linkDropDowns) {
+           dropdown.classList.add("is-not-visible")
+        }
+      })
+      
+      // Add event listers to the links
+      link.addEventListener("mouseenter", (e)=>{
+        console.log("Hover")
+        link.children[1].classList.remove("is-not-visible");
+  
+        switch (link) {
+          case links[0]: 
+            console.log("This is link 1");
+            links[1].children[1].classList.add("is-not-visible");
+            links[2].children[1].classList.add("is-not-visible");
+            //TODO: remove eventlisteners? Maybe not necessary
+            break;
+          case links[1]:
+            console.log("This is link 2");
+            links[2].children[1].classList.add("is-not-visible");
+            links[0].children[1].classList.add("is-not-visible");
+            break;
+          case links[2]:
+            console.log("This is link 3");
+            links[0].children[1].classList.add("is-not-visible");
+            links[1].children[1].classList.add("is-not-visible");
+          default:
+            break;
+        }   
+    })
+    // Hide the last links, since the information is already visible. For those with screen readers, the information remains 
+    links[3].classList.add("is-not-visible");
+    links[4].classList.add("is-not-visible");
+  } // For loop  
 }
 
-  
 
 function add(e) {
 
@@ -309,7 +391,7 @@ function remove(e) {
   e.target.children[1].classList.add("is-not-visible");
 }
 
-hoverOverNavLinks() */
+/* hoverOverNavLinks() */
 
 
 // SEARCH BAR - mobile & tablet
@@ -343,12 +425,10 @@ CAMPAIGN CAROUSEL
 Load cards for the carousel cards &
 make the carousel interactive
 =====================================*/
-import loadCarousel from "./carousel.js";
-loadCarousel()
+
 
 /*=========================================================
 POPULAR CATEGORIES
 =========================================================*/
-import loadPopularProducts from "./popular_products.js";
-import { deleteShoppingCartItem } from "./shopping_cart.js";
-loadPopularProducts()
+
+
