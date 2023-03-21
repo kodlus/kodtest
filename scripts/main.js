@@ -1,53 +1,58 @@
 "use strict";
 const v = "Hi! I'm a strict mode script!";
-
-
+ /*============================================================================
+TODO
+==============================================================================*/
 // TODO: Skapa en massa funktioner från koden jag har
 // TODO: Ta bort eventlisteners vid resize
 // TODO: Ordna en tydlig struktur
 
-
- /*============================================================================
+/*=============================================================================
 IMPORTED DATA
 ==============================================================================*/
 import {updateCartTotal} from "/scripts/shopping_cart.js"
-updateCartTotal()
-
 import loadCarousel from "./carousel.js";
-loadCarousel()
-
 import loadPopularProducts from "./popular_products.js";
 import { deleteShoppingCartItem } from "./shopping_cart.js";
-loadPopularProducts()
 
-/*============================================================================
-HEADER
+/*=============================================================================
+GLOBAL
 ==============================================================================*/
 /*=========================================================
-TOGGLE MENUS
-=========================================================*/
-/*=========================================================
-Global variables
+DOM
 =========================================================*/
 const navButton = document.getElementById("nav-toggle-button");
-
 const headerNav = document.querySelector("#nav");
-
 const shoppingCartButton = document.querySelector("#shopping-cart-outer__button");
-
 const shoppingCart = document.querySelector("#shopping-cart-inner");
-
-
-const closeButton = document.querySelector("#shopping-cart-inner__close-button")
-
+const shoppingCartCloseButton = document.querySelector("#shopping-cart-inner__close-button")
 const headerSearchBar = document.getElementById("header__searchbar");
+const revealSearchFieldButton = document.getElementById("header__reveal-search-button");
+const dropDownButtons = document.getElementsByClassName("nav__dropdown-button");
+const screenWidth = document.documentElement.clientWidth || window.innerWidth;
+const informationBanner = document.getElementById("header__row-2");
 
-const searchButton = document.getElementById("header__reveal-search-button");
+
 /*=========================================================
-Functions
+Measurements
 =========================================================*/
-const contentToggle= (element1, element2) => {
-  // if the the element contains the class "is-not-visible", remove it, else add it
+const smallScreenSize = 350;
+const smallMediumScreenSize = 501;
+const mediumLargeScreenSize = 801;
+const largeScreenSize = 1201;
+let informationBannerOffset = informationBanner.offsetTop;
+let headerSearchBarOffset = headerSearchBar.offsetTop;
+
+
+
+/*=============================================================================
+INTERACTIONS
+==============================================================================*/
+/*=========================================================
+Utility functions
+=========================================================*/
+function contentToggle(element1, element2) {
+  // If element1 contains the class "is-not-visible", remove it, and add it to element2. If element1 does not contain "is-not-visible", add it to element1
   if (element1.classList.contains("is-not-visible")) {
       element1.classList.remove("is-not-visible");
       element2.classList.add("is-not-visible");
@@ -56,123 +61,148 @@ const contentToggle= (element1, element2) => {
   }
 }
 
-/* Checks if a node is a child of a parent element. Returns true or false */
-/* https://developer.mozilla.org/en-US/docs/Web/API/Node/contains */
-function isAChildOf(node, parent) {
+// Checks if a node is a child of an element. Returns true or false
+// https://developer.mozilla.org/en-US/docs/Web/API/Node/contains
+function isAChildOf (node, parent) {
   return (node === parent) ? false: parent.contains(node)
 }
 
+// The function adds the "is-not-visible" utility class if the window's vertical offset is larger than the element's offset
+function hideBanner() {
+  if (window.pageYOffset > informationBannerOffset){
+    informationBanner.classList.add("is-not-visible");
+  } else {
+    informationBanner.classList.remove("is-not-visible")
+  } 
+}
+
+function hideSearchBar() {
+  if (window.pageYOffset > headerSearchBarOffset){
+    revealSearchFieldButton.classList.remove("is-not-visible");
+    headerSearchBar.classList.add("is-not-visible");
+  } else {
+    revealSearchFieldButton.classList.add("is-not-visible")
+    headerSearchBar.classList.remove("is-not-visible");
+  } 
+}
+
+// The function takes in three parameters: screen size (integer), event type (string), and a function. If the screen width matches or is less to the size, an event listener defined by the event type and function will be hooked to the window object. If the screen size is larger than the size, the event listener gets removed
+function screenEvent (size, eventType, func) {
+  // Get the screen width
+  let width = document.documentElement.clientWidth || window.innerWidth;
+
+  if (width <= size) {
+    window.addEventListener(eventType, func, true)
+  } else if (width > size) {
+    window.removeEventListener(eventType, func, true);
+  }
+}
 /*=========================================================
-Toggle navigation
+Menu toggling
 =========================================================*/
-/* Toggle the navigation on or off */
+/*===================================
+Toggle navigation
+====================================*/
 navButton.addEventListener("click", (e) => {
   contentToggle(headerNav, shoppingCart);
-
 });
 
-/*=========================================================
-Toggle shopping cart
-=========================================================*/
+/*===================================
+Toggle and close shopping cart
+====================================*/
+// Toggle the shopping cart when clicking on the shopping cart button
 shoppingCartButton.addEventListener("click", () => {
-  if(window.innerWidth <= 1200) {
+  // If the screen size is smaller than large screen sizes, toggle the shopping cart
+  if(window.innerWidth < largeScreenSize) { //TODO: se över förklaring
       contentToggle(shoppingCart, headerNav);
+      // If the screen size is large, remove the "is-not-visible" utility class from the shopping cart
   } else {
     shoppingCart.classList.remove("is-not-visible")
   }
 
-
-  // Stop the body element from scrolling
+  // Stop the body element from scrolling when the shopping cart is visible
   document.body.classList.add("stop-scrolling")
-
+  // Make the overlay visible
   document.getElementsByClassName("overlay")[0].style.display = "block";
 });
 
-/*=========================================================
-Close/ open menus
-=========================================================*/
-closeButton.addEventListener("click", () => {
+// Close shopping cart when the close button is clicked
+shoppingCartCloseButton.addEventListener("click", () => {
   shoppingCart.classList.add("is-not-visible");
-
   // Enable the body to scroll
   document.body.classList.remove("stop-scrolling");
-
   // Remove overlay
   document.getElementsByClassName("overlay")[0].style.display = "none";
 })
 
+/*===================================
+Close menus on click
+====================================*/
 const closeMenusWhenClickingOutside = (e) => {
   let node = e.target;
   
-  // Closes the shopping cart if the users clicks outside it. If the node is a child of shoppingCart, and contains the class shopping-cart-inner__close-button, nothing happens 
+  // Closes the shopping cart if the users clicks outside it. If the node is a child of shoppingCart, and contains the class shopping-cart-outer__button, nothing happens (otherwise the shopping-cart-outer__button would not work)
   if (isAChildOf(node, shoppingCart) !== true && node.classList.contains("shopping-cart-outer__button") !== true){
+    // Hide shopping cart when clicking outside the shopping cart
+    shoppingCart.classList.add("is-not-visible")
 
-   shoppingCart.classList.add("is-not-visible")
-
-    // Enable the body to scroll
+    // Enable the body to scroll, if unable
     document.body.classList.remove("stop-scrolling")
 
-    // Remove overlay
+    // Remove overlay, if enabled
     document.getElementsByClassName("overlay")[0].style.display = "none";
     console.log("Close")
-
-  } 
-  
-  // Closes the headerNav if the user clicks outside it. If the node is a child of headerNav, and contains the class button, nothing happens. Only if the screen meets certain criteria! 
-  if (window.innerWidth <= 1200) {
-     if (isAChildOf(node, headerNav) !== true && e.target.classList.contains("nav-toggle-button") !== true ) {
-      headerNav.classList.add("is-not-visible") }
   }
 
-
-
-    // Resetting the nav
-    const dropDownButtons = document.getElementsByClassName("nav__dropdown-button");
-
-    if(headerNav.classList.contains("is-not-visible")) {
-      for (let i = 0; i < dropDownButtons.length; i++) {
-        dropDownButtons[i]. innerText ="+";
-        dropDownButtons[i]
-        .parentElement
-        .nextElementSibling
-        .classList.add("is-not-visible");
-      }
+  // Closes the headerNav if the user clicks outside it. If the node is a child of headerNav, and contains the class button, nothing happens. Only works for large screens 
+  if (window.innerWidth <= largeScreenSize) {
+    if (isAChildOf(node, headerNav) !== true && e.target.classList.contains("nav-toggle-button") !== true ) {
+    headerNav.classList.add("is-not-visible") }
+  }
+    
+  // Resetting the nav
+  if(headerNav.classList.contains("is-not-visible")) {
+    for (let i = 0; i < dropDownButtons.length; i++) {
+      dropDownButtons[i]. innerText ="+";
+      dropDownButtons[i]
+      .parentElement
+      .nextElementSibling
+      .classList.add("is-not-visible");
     }
+  }
 
-  // Close searchbar if user clicks outside it, only for small screens
-  if(window.innerWidth <= 800) {
-      if (isAChildOf(node, headerSearchBar) !== true && node.id !== "header__reveal-search-button") {
+  // Close searchbar if user clicks outside it, only works for medium/large screens and smaller
+  if(window.innerWidth <= mediumLargeScreenSize) {
+    if (isAChildOf(node, headerSearchBar) !== true && node.id !== "header__reveal-search-button") {
       headerSearchBar.classList.add("is-not-visible");
-      searchButton.classList.remove("is-not-visible")
+      revealSearchFieldButton.classList.remove("is-not-visible")
     }
   }
-}
+} 
 
-// Hook event listener to the document and invoke the function
-document.addEventListener("click", closeMenusWhenClickingOutside)
+// Hook event listener to the document, with the above function ready to go
+document.addEventListener("click", closeMenusWhenClickingOutside);
 
-// NAV DROPDOWN MENU 
-// Select the nav container
-const nav = document.querySelector(".nav");
-// Add event listener to the nav element
-nav.addEventListener("click", (e) => {
-  // Capture when the event
+/*===================================
+Toggling nav-dropdown menus and
+closing the nav
+====================================*/
+// Hook one eventlistener to the whole nav element
+headerNav.addEventListener("click", (e) => {
   const targetButton = e.target.closest("button");
  
   // Remove warning messages if target button is null
   if (targetButton === null || targetButton.id === "nav__close-button") {
-    return
+    return;
   }
 
-  
-  // Check if the button has the right inner text and is of the right class. Toggling 
+  // Check if target button has the plus sign and is of the right class. If true open the dropdown, else close the dropdown
   if (targetButton.innerText === "+" && targetButton.classList.contains("nav__dropdown-button")) {
     targetButton.innerText = "-";
     targetButton
       .parentElement
       .nextElementSibling
       .classList.remove("is-not-visible");
-
 
   } else {
     targetButton.innerText = "+";
@@ -182,10 +212,7 @@ nav.addEventListener("click", (e) => {
       .classList.add("is-not-visible");
   }
 
-
-  // Toggle dropdown menus
-  const dropDownButtons = document.getElementsByClassName("nav__dropdown-button");
-
+  // Close open dropdown when opening a new (toggle)
   if (targetButton) {
     for (let i = 0; i < dropDownButtons.length; i++) {
       if (dropDownButtons[i] !== targetButton) {
@@ -196,239 +223,144 @@ nav.addEventListener("click", (e) => {
         .classList.add("is-not-visible");
       }
     }
-    }
-  })
+  }
+}) // End of header nav eventlistener
 
-  // Close nav when button pushed
-  document.getElementById("nav__close-button").addEventListener("click", () => {
-    document.getElementById("nav").classList.add("is-not-visible")
-  })
-
+// Close nav when button pushed
+document.getElementById("nav__close-button").addEventListener("click", () => {
+  headerNav.classList.add("is-not-visible");
+})
 
 /*=========================================================
-Hide information banner on scroll, only on small screens
-https://www.w3schools.com/howto/howto_js_sticky_header.asp
-https://www.satollo.net/execute-conditional-javascript-by-screen-size
-https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
+Window resize events
 =========================================================*/
-// Get the information banner
- const informationBanner = document.getElementById("header__row-2");
-
-// Get the offset of the information banner
-let informationBannerOffset = informationBanner.offsetTop;
-
-// Set the screen small screen width variable. The number represents pixels
-const smallScreenWidth = 800;
-
-// The function adds the "is-not-visible" utility class if the window's vertical offset is larger than the element's offset
-function hideBanner () {
-  if (window.pageYOffset > informationBannerOffset){
-    informationBanner.classList.add("is-not-visible");
-  } else {
-    informationBanner.classList.remove("is-not-visible")
-    nav.classList.remove("is-not-visible")
-  } 
-}
-
-// TODO: Fixa så att om klickar utanför och gömmer searchbar när offset är mindre, så sker inget
-function hideSearchBar () {
-  if (window.pageYOffset > headerSearchBarOffset){
-    searchButton.classList.remove("is-not-visible");
-    headerSearchBar.classList.add("is-not-visible");
-  } else {
-    searchButton.classList.add("is-not-visible")
-    headerSearchBar.classList.remove("is-not-visible");
-  } 
-}
-
-
-
-
-
-
-
-
-// The function takes in three parameters: screen size (integer), event type (string), and a function. If the screen width matches or is less to the size, an event listener defined by the event type and function will be hooked to the window object. If the screen size is larger than the size, the event listener gets removed
-function screenEvent (size, eventType, func) {
-  // Get the screen width
-  let width = document.documentElement.clientWidth || window.innerWidth
-
-  if (width <= size) {
-    window.addEventListener(eventType, func, true)
-  } else  {
-    window.removeEventListener(eventType, func, true);
-  }
-}
-
-// Call screenEvent at run time
-screenEvent(smallScreenWidth, "scroll", hideBanner);
-screenEvent(smallScreenWidth, "scroll", hideSearchBar)
-// TODO: Skapa en screen event för nav close button
-
-
-// Detect when the screen size changes, and call screenEvent
+// Hook event listener to the window which detects screen size changes
 window.addEventListener("resize", () => {
-  screenEvent(smallScreenWidth, "scroll", hideBanner);
-  screenEvent(smallScreenWidth, "scroll", hideSearchBar)
+  // Hide information banner when scrolling, only for medium / large screens and smaller
+  screenEvent(mediumLargeScreenSize , "scroll", hideBanner);
+  // Hide searchbar when scrolling, only for medium / large screens and smaller
+  screenEvent(mediumLargeScreenSize , "scroll", hideSearchBar)
 
-  // Remove the is-not-visible class if the banner is hidden when transitioning from small screen to larger screen
+  // Remove the is-not-visible class if the information banner is hidden when transitioning from small screen to larger screen
   informationBanner.classList.remove("is-not-visible");
   
-  // Remove the is-not-visible class if the search bar is hidden when transitioning from small screen to larger screen
-  if (window.innerWidth >= 800 && document.getElementById("header__searchbar").classList.contains("is-not-visible")) {
+  // Remove the is-not-visible class if the searchbar is hidden when transitioning from small screen to larger screen
+  if (window.innerWidth >= mediumLargeScreenSize && document.getElementById("header__searchbar").classList.contains("is-not-visible")) {
     document.getElementById("header__searchbar").classList.remove("is-not-visible")
   }
 
-  if (window.innerWidth > 1200) {
-    document.getElementById("nav").classList.remove("is-not-visible")
+  // Make the nav visible by default on large screens
+  if (window.innerWidth >= largeScreenSize) {
+    document.getElementById("nav").classList.remove("is-not-visible");
   } else {
-    document.getElementById("nav").classList.add("is-not-visible")
+    document.getElementById("nav").classList.add("is-not-visible");
   }
-  
+
+  // Make the nav-links interactive ("hover"-effect) on large screens
+  hoverOverNavLinks();
 })
 
-function hover(element, enter, leave) {
-  element.addEventListener("mouseenter", enter);
-  element.addEventListener("mouseleave", leave);
-} 
+/*=========================================================
+Nav-link hover (only large screens)
+=========================================================*/
+function hoverOverNavLinks() {
+  // Make the nav visible on load
+  nav.classList.remove("is-not-visible")
+  
+  // Select all nav-links
+  const links = document.querySelectorAll(".nav__link");  
+  
+  // Make the function only trigger on large screens
+  if (window.innerWidth >= largeScreenSize) {
 
+    // Select all nav-link dropdowns
+    const linkDropDowns = document.querySelectorAll(".nav__dropdown");
 
-  const links = document.querySelectorAll(".nav__link");
-  console.log(links)
+    // Function with eventlistener removal. When mouse leaves the nav, make all dropdowns invisible
+    function myLeave() {
+      for(let dropdown of linkDropDowns) {
+        dropdown.classList.add("is-not-visible");
+      } 
+      
+      if (window.innerWidth < largeScreenSize) {
+        nav.removeEventListener("mouseleave", myLeave);
+      }
+    }
+    // Hook eventlistener to the nav with the function above ready to go
+    nav.addEventListener("mouseleave", myLeave);
 
-// Hovering over nav links
-/* function hoverOverNavLinks() {
-
-  if (window.innerWidth > 800) {
-    for (let i = 0; i < links.length - 2; i++) {
+    // Hook eventlisteners to the nav links:
+    // Loop through the nav links
+    for (let i = 0; i < links.length; i++) {
       let link = links[i];
-      
-      link.addEventListener("mouseenter", (e)=> {
-        link.style.height = "100%";
-        add(e);
-      });
-
-      link.addEventListener("mouseleave", (e) => {
-        remove(e);
-        link.style.height = "auto"
-      })
-      console.log(link.parentElement)
-    }
-      } else { //Get rid of unnecessary event listeners
-        for (let i = 0; i < links.length - 2; i++) {
-        let link = links[i];
-        link.removeEventListener("mouseenter", add);
-        link.removeEventListener("mouseleave", remove) 
-    }
-  } 
-} */
-
-if (window.innerWidth > 1200) {
-  // Make the nav visible
-  document.getElementById("nav").classList.remove("is-not-visible");
-      // Get hold on the dropDowns...
-      const linkDropDowns = document.querySelectorAll(".nav__dropdown");
-      console.log(linkDropDowns)
-
-  // Loop through the nav and nav links
-  for (let i = 0; i < links.length; i++) {
-    let link = links[i];
-
-
-
-      // Hook event listeners to the nav
-      document.getElementById("nav").addEventListener("mouseenter", ()=> {
-        console.log("Entered nav")
-        
-      })
-      // When mouse leaves the nav, remove remaining open nav link drop downs
-      document.getElementById("nav").addEventListener("mouseleave", ()=> {
-        for(let dropdown of linkDropDowns) {
-           dropdown.classList.add("is-not-visible")
-        }
-      })
-      
-      // Add event listers to the links
-      link.addEventListener("mouseenter", (e)=>{
-        console.log("Hover")
+      // Hook event listers to each nav-link
+      link.addEventListener("mouseenter",  function listenerFunction() {
+        // If the screen size is smaller than large screen sizes, remove eventlisteners. Else, add eventlisteners
+        if (window.innerWidth < largeScreenSize) {
+          nav.removeEventListener("mouseleave", listenerFunction)
+        } else {
+        // Hovering over nav-link reveals its related dropdown-menu
         link.children[1].classList.remove("is-not-visible");
   
+        // Hovering over a nav-link will hide other nav-link dropdowns
         switch (link) {
+          // When hovering over the first link:
           case links[0]: 
-            console.log("This is link 1");
             links[1].children[1].classList.add("is-not-visible");
             links[2].children[1].classList.add("is-not-visible");
-            //TODO: remove eventlisteners? Maybe not necessary
             break;
+            // When hovering over the second link:
           case links[1]:
-            console.log("This is link 2");
             links[2].children[1].classList.add("is-not-visible");
             links[0].children[1].classList.add("is-not-visible");
             break;
+            // When hovering over the third link:
           case links[2]:
-            console.log("This is link 3");
             links[0].children[1].classList.add("is-not-visible");
             links[1].children[1].classList.add("is-not-visible");
           default:
             break;
-        }   
-    })
-    // Hide the last links, since the information is already visible. For those with screen readers, the information remains 
-    links[3].classList.add("is-not-visible");
-    links[4].classList.add("is-not-visible");
-  } // For loop  
-}
+          } 
+        }
+      });
+    } // End of For loop  
+  } // End of if-statement  
+} // End of function
 
-
-function add(e) {
-
-  e.target.children[1].classList.remove("is-not-visible");
-
-}
-
-function remove(e) {
-
-  e.target.children[1].classList.add("is-not-visible");
-}
-
-/* hoverOverNavLinks() */
-
-
-// SEARCH BAR - mobile & tablet
-let headerSearchBarOffset = headerSearchBar.offsetTop;
-
-
-
-
-// TODO: CALCULATE THE OFFSET ON LOAD
-// TODO: EXCEPTION WHEN CLICKING ON STUFF BUT THE PAGE HAS NOT SCROLLED
-
-  // Hide the search button when pressed
-searchButton.addEventListener("click", ()=> {
-  console.log("clicked")
+/*=========================================================
+Hide searchbar on click
+(only on screens smaller than medium / large)
+=========================================================*/
+revealSearchFieldButton.addEventListener("click", ()=> {
   headerSearchBar.classList.remove("is-not-visible");
-  searchButton.classList.add("is-not-visible");
+  revealSearchFieldButton.classList.add("is-not-visible");
 })
 
+/*=========================================================
+Call functions at run time
+=========================================================*/
+const onload = () => {
+  updateCartTotal();
+  loadCarousel();
+  loadPopularProducts();
+  screenEvent(mediumLargeScreenSize, "scroll", hideBanner);
+  screenEvent(mediumLargeScreenSize, "scroll", hideSearchBar);
+  hoverOverNavLinks();
+}
+
+onload();
 
 
-
-
-
-/*==============================================================================
-MAIN
+/*=============================================================================
+REFERENCES
 ==============================================================================*/
-/*=========================================================
-CAMPAIGN CAROUSEL 
-=========================================================*/
-/*====================================
-Load cards for the carousel cards &
-make the carousel interactive
-=====================================*/
+/* Hide information banner on scroll, only on small screens
+https://www.w3schools.com/howto/howto_js_sticky_header.asp
+https://www.satollo.net/execute-conditional-javascript-by-screen-size
+https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener */
 
 
-/*=========================================================
-POPULAR CATEGORIES
-=========================================================*/
-
+/*=============================================================================
+JUNK
+==============================================================================*/
 

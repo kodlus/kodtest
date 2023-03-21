@@ -2173,7 +2173,7 @@ LARGE SCREENS
     grid-template-columns: repeat(11, 1fr);
     padding: 0.625em 0;
     gap: 0px;
-    padding: 2.5%;
+    padding: 0.625em 2.5%; /* The percentage relates to the width of the :after pseudo element */
   }
 
   .header__navigation-column{
@@ -2254,6 +2254,11 @@ LARGE SCREENS
   .nav__link:nth-child(2),
   .nav__link:nth-child(3) {
     margin-left: 1em;
+  }
+
+  .nav__link:nth-child(4),
+  .nav__link:nth-child(5) {
+    display: none;
   }
 
   .nav__link-title {
