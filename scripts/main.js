@@ -1,11 +1,5 @@
 "use strict";
 const v = "Hi! I'm a strict mode script!";
- /*============================================================================
-TODO
-==============================================================================*/
-// TODO: Skapa en massa funktioner från koden jag har
-// TODO: Ta bort eventlisteners vid resize
-// TODO: Ordna en tydlig struktur
 
 /*=============================================================================
 IMPORTED DATA
@@ -29,24 +23,20 @@ const shoppingCartCloseButton = document.querySelector("#shopping-cart-inner__cl
 const headerSearchBar = document.getElementById("header__searchbar");
 const revealSearchFieldButton = document.getElementById("header__reveal-search-button");
 const dropDownButtons = document.getElementsByClassName("nav__dropdown-button");
-const screenWidth = document.documentElement.clientWidth || window.innerWidth;
 const informationBanner = document.getElementById("header__row-2");
-
 
 /*=========================================================
 Measurements
 =========================================================*/
-const smallScreenSize = 350;
-const smallMediumScreenSize = 501;
+/* const smallScreenSize = 350;
+const smallMediumScreenSize = 501; */
 const mediumLargeScreenSize = 801;
 const largeScreenSize = 1201;
 let informationBannerOffset = informationBanner.offsetTop;
 let headerSearchBarOffset = headerSearchBar.offsetTop;
 
-
-
 /*=============================================================================
-INTERACTIONS
+INTERACTIVITY
 ==============================================================================*/
 /*=========================================================
 Utility functions
@@ -256,7 +246,7 @@ window.addEventListener("resize", () => {
     document.getElementById("nav").classList.add("is-not-visible");
   }
 
-  // Make the nav-links interactive ("hover"-effect) on large screens
+  // Make the nav-links interactive (dropdowns visible on hover) on large screens
   hoverOverNavLinks();
 })
 
@@ -321,8 +311,8 @@ function hoverOverNavLinks() {
           default:
             break;
           } 
-        }
-      });
+        } // End of if / else statement
+      }); // End of link eventlistener
     } // End of For loop  
   } // End of if-statement  
 } // End of function
