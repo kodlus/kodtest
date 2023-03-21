@@ -239,7 +239,12 @@ window.addEventListener("resize", () => {
     document.getElementById("header__searchbar").classList.remove("is-not-visible")
   }
 
-  // Make the nav visible by default on large screens
+  // Remove the reveal bar button when transitioning from larger screen to smaller
+  if (revealSearchFieldButton.classList.contains("is-not-visible") !== true && headerSearchBar.classList.contains("is-not-visible") !== true) {
+    revealSearchFieldButton.classList.add("is-not-visible")
+  }
+
+  // Make the nav visible by default when transitioning to large screens
   if (window.innerWidth >= largeScreenSize) {
     document.getElementById("nav").classList.remove("is-not-visible");
   } else {
@@ -254,14 +259,13 @@ window.addEventListener("resize", () => {
 Nav-link hover (only large screens)
 =========================================================*/
 function hoverOverNavLinks() {
-  // Make the nav visible on load
-  nav.classList.remove("is-not-visible")
-  
-  // Select all nav-links
-  const links = document.querySelectorAll(".nav__link");  
-  
   // Make the function only trigger on large screens
   if (window.innerWidth >= largeScreenSize) {
+    // Make the nav visible on load
+    nav.classList.remove("is-not-visible")
+
+    // Select all nav-links
+    const links = document.querySelectorAll(".nav__link");
 
     // Select all nav-link dropdowns
     const linkDropDowns = document.querySelectorAll(".nav__dropdown");
