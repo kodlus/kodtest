@@ -1,74 +1,74 @@
 {
   "0": {
     "index": 0,
-    "product": "Silence Force +",
+    "product": "Blooming",
     "link": "#",
-    "description": "Tystlåten dammsugare med påse",
+    "description": "Unik bloomingfunktion: rikare arom och fylligare karaktär",
     "image": "images/pictures/products/beverages/2420/2420_Webformat.jpg",
-    "alt-text":"",
+    "alt-text":"alt-text",
     "price": 4999,
     "rating": 4.1,
     "stars": "⭐⭐⭐⭐",
-    "reviews": 15
+    "reviews": 109
   },
   "1": {
     "index": 1,
-    "product": "GeForce, baibee",
-    "description": "Tystlåten dammsugare med påse",
+    "product": "X-Force 15.60",
+    "description": "Sladdlös med uppladdningsbart batteri",
     "link": "#",
-    "image": "images/pictures/products/beverages/2329/2329_Webformat.jpg",
-    "alt-text":"",
-    "price": 50000,
-    "rating": 4.1,
+    "image": "images/pictures/products/home_cleaning/EO99F1NO_Web.jpg",
+    "alt-text":"alt-text",
+    "price": 6499,
+    "rating": 4.6,
     "stars": "⭐⭐⭐⭐",
-    "reviews": 15
+    "reviews": 13
   },
   "2": {
     "index": 2,
-    "product": "Born to run",
-    "description": "Tystlåten dammsugare med påse",
+    "product": "First Deli 600W",
+    "description": "Perfekt för dina bakverk och delikatesser",
     "link": "#",
-    "image": "images/pictures/products/beverages/2420/2420_Webformat.jpg",
-    "alt-text":"",
+    "image": "images/pictures/products/food_preparation/6800_Webformat.jpg",
+    "alt-text":"alt-text",
     "price": 4999,
-    "rating": 4.1,
-    "stars": "⭐⭐⭐⭐",
-    "reviews": 15
+    "rating": 5,
+    "stars": "⭐⭐⭐⭐⭐",
+    "reviews": 66
   },
   "3": {
     "index": 3,
-    "product": "Where is my mind",
-    "description": "Tystlåten dammsugare med påse",
+    "product": "Emiozone Risotteria",
+    "description": "Förstklassig kvalitet",
     "link": "#",
-    "image": "images/pictures/products/beverages/2329/2329_Webformat.jpg",
-    "alt-text":"",
-    "price": 50000,
-    "rating": 4.1,
+    "image": "images/pictures/products/food_preparation/011204032424_Product03.jpg",
+    "alt-text":"alt-text",
+    "price": 799,
+    "rating": 4.7,
     "stars": "⭐⭐⭐⭐",
-    "reviews": 15
+    "reviews": 10
   },
   "4": {
     "index": 4,
-    "product": "La grange",
-    "description": "Tystlåten dammsugare med påse",
+    "product": "Cozy Hug",
+    "description": "Värm upp dig med en mysig värmefilt",
     "link": "#",
-    "image": "images/pictures/products/beverages/2329/2329_Webformat.jpg",
-    "alt-text":"",
-    "price": 50000,
+    "image": "images/pictures/products/personal_care/4099_Webformat.jpg",
+    "alt-text":"alt-text",
+    "price": 1200,
     "rating": 4.1,
     "stars": "⭐⭐⭐⭐",
-    "reviews": 15
+    "reviews": 24
   },
   "5": {
     "index": 5,
-    "product": "Dreams",
-    "description": "Tystlåten dammsugare med påse",
+    "product": "Attraxion Groomer",
+    "description": "För ansiktbehåring, skägg, öron och näsa",
     "link": "#",
-    "image": "images/pictures/products/beverages/2329/2329_Webformat.jpg",
-    "alt-text":"",
-    "price": 50000,
+    "image": "images/pictures/products/personal_care/5594_Webformat.jpg",
+    "alt-text":"alt-text",
+    "price": 899,
     "rating": 4.1,
     "stars": "⭐⭐⭐⭐",
-    "reviews": 15
+    "reviews": 89
   }
 }

@@ -6,15 +6,12 @@ IMPORTED DATA, VARIABLES, ETC.
 import { shoppingCartItemHtml } from "./cards_html.js";
 
 /*============================================================================
-CONTENT
+THE SHOPPING CART
 ==============================================================================*/
 /*=========================================================
-DELETE ITEMS FROM THE SHOPPING CART
+Delete items from the shopping cart
 =========================================================*/
-
-
-
-const deleteShoppingCartItem = (e) => {
+function deleteShoppingCartItem (e) {
   const buttonClicked = e.target.closest("button");
   // Find the correct parent item (shopping-cart-item) and remove it
  buttonClicked // shopping-cart-item__delete-button
@@ -25,19 +22,17 @@ const deleteShoppingCartItem = (e) => {
   // Update the shopping cart total
   updateCartTotal();
 
-  // Stop deleteShoppingCartItem from being captured by closeMenusWhenClickingOutside 
+  // Stop deleteShoppingCartItem from being captured by closeMenusWhenClickingOutside. Otherwise, deleting shopping cart items causes the shopping cart to close 
   e.stopPropagation();
-} // End of function
+}
 
 /*=========================================================
-REDUCE THE QUANTITY OF A SHOPPING CART PRODUCT
+Reduce the quantity of a shopping cart product
 =========================================================*/
-// Used for increasing the quantity of a shopping cart item created with addItemToCart
-const subtractQuantity = (e) => {
+function subtractQuantity(e) {
   const buttonClicked = e.target;
   // Get access to the quantity input
-  let quantity = buttonClicked.
-  nextElementSibling;
+  let quantity = buttonClicked.nextElementSibling;
 
  // Subtract by one
   quantity.value --;
@@ -49,14 +44,12 @@ const subtractQuantity = (e) => {
 
   //Update cart
   updateCartTotal();
-} // End of function
+}
 
 /*=========================================================
-INCREASE THE QUANTITY OF A SHOPPING CART PRODUCT 
-INSIDE THE SHOPPING CART
+Increase the quantity of a shopping cart product
 =========================================================*/
-// Used for decreasing the quantity of a shopping cart item created with addItemToCart
-const increaseQuantity = (e) => {
+function increaseQuantity(e) {
   const buttonClicked = e.target;
   // Get access to the quantity input
   let quantity = buttonClicked
@@ -68,18 +61,16 @@ const increaseQuantity = (e) => {
   
   // Update cart
   updateCartTotal();
-
-} // End of function
+}
 
 /*=========================================================
-UPDATE THE SHOPPING CART
+Update the shopping cart
 =========================================================*/
-// Used for updating the entire shopping cart
 const updateCartTotal = () => {
-  // Get the container for the cart items (shopping cart container), could also work with get element by id. Adding [0] after getElementsByClassName does the same thing, basically. 
+  // Get the container for the cart items (shopping cart container)
   const cartItemContainer = document.getElementById("shopping-cart-inner__item-container")
  
-  // Get all of the shopping cart items inside the container
+  // Get access to all of the shopping cart items inside the container
   let cartItems = cartItemContainer.getElementsByClassName("shopping-cart-item");
 
   // Initialize the total price of the shopping cart items
@@ -106,12 +97,12 @@ const updateCartTotal = () => {
 
     // Update the total
     total = total + (price * quantity);
-  } 
+  }  // End of for-loop
 
   // Round the total to nearest two decimal points
   total = Math.round(total * 100) / 100;
 
-  // Get the shopping cart discount element and update it...........
+  // TODO: Get the shopping cart discount element and update it
 
   // Get the shopping cart content cost element and update it
   document.getElementsByClassName("shopping-cart-inner__items-sum")[0].children[1].innerText = `${total} SEK`;
@@ -122,14 +113,11 @@ const updateCartTotal = () => {
   // Get the shopping cart indicator and update it
   const shoppingCartIndicator = document.getElementById("shopping-cart-outer__quantity-indicator");
 
-  console.log(cartItemContainer)
-
   // Check if the shopping cart is empty 
   if(cartItemContainer.childElementCount === 0) {
     shoppingCartIndicator.innerText = "0";
-  
   } else {
-    // Initialize an empty array holding quantity data for each shopping item
+    // Initialize an empty array holding the quantity data for each shopping item
     let totalQuant = [];
 
     // check each item inside the container
@@ -138,7 +126,7 @@ const updateCartTotal = () => {
       // Get the item
       let cartItem = cartItems[i];
       
-      // Get its value
+      // Get the cart item's value
       let value =cartItem.getElementsByClassName("shopping-cart-item__quantity")[0].value;
       console.log(value)
 
@@ -154,7 +142,8 @@ const updateCartTotal = () => {
       const initialValue = 0;
       let sumWithInitial = totalQuant.reduce (
       (accumulator, currentValue) => accumulator + currentValue, initialValue);
-
+      
+      // Update the shopping cart indicator
       shoppingCartIndicator.innerText = sumWithInitial;
     }
 
@@ -164,10 +153,10 @@ const updateCartTotal = () => {
   } else if (cartItemContainer.childElementCount > 0) {
     removeMessage("shopping-cart-message");
   }
-} // End of function
+}
 
 /*=========================================================
-CREATE AND REMOVE SHOPPING CART MESSAGE
+Create and remove shopping cart message
 =========================================================*/
 const createMessage = (id, className) => {
   const message = document.createElement("p");
@@ -186,23 +175,20 @@ const removeMessage = (id) => {
  }
 
 /*=========================================================
-CLICK ON PRODUCT BUY BUTTON AND GET PRODUCT DATA
+Click on add to cart button and get product information
 =========================================================*/
-// Used for collecting relevant data from items when buy button is clicked, and passes that information to addToCart
+// Is used for collecting relevant data from items, when their add to cart button is clicked. Collected information is then passed to addToCart
 const addToCartClicked = (e) => {
   const button = e.target;
-  // Get the parent element
+  // Get the parent element of the clicked button
   const shopItem = button.parentElement;
  
   // Get the name of the product
   const name = shopItem.getElementsByClassName("product-card__product-name")[0].innerText;
   
-  // Get the ID of the product and keep the number at the end, which is related to the product's index
+  // Get the ID of the product and keep the number at the end, which is related to the product's index (in this scenario)
   const productIndex = Number(shopItem.id.slice(-1));
   
-  console.log("This is productIndex")
-  console.log(productIndex)
-
   // Get the product link and remove the characters "target=" from the string
   const productLink = shopItem.getElementsByClassName("product-card__link")[0].getAttribute("href").slice(0, -8);
 
@@ -217,12 +203,13 @@ const addToCartClicked = (e) => {
 
   // Update the cart total
   updateCartTotal();
-} // End of function
+} 
 
 /*=========================================================
-GENERATE A SHOPPING CART PRODUCT CARD INSIDE SHOPPING CART
+Generate a shopping cart product card 
+inside the shopping cart
 =========================================================*/
-// This function is triggered when buy buttons are clicked, and creates an item element with the information from addToCartClicked. The item is placed in the shopping cart
+// This function is triggered when an add to cart button is clicked- It creates an item element with the information from addToCartClicked. The item is placed in the shopping cart
 const addItemToCart = (name, price, imageSrc, productIndex, productLink) => {
   // Create a shopping cart item
   const shoppingCartItem = document.createElement("div");
@@ -234,10 +221,10 @@ const addItemToCart = (name, price, imageSrc, productIndex, productLink) => {
   // Get the names of all shopping cart items
   let shoppingCartItemNames = shoppingCartContainer.getElementsByClassName("shopping-cart-item__name");
 
-  // Check if the item already exists inside the shopping cart with loop
+  // Loop the shopping cart to check if the created item shares name with items inside the shopping cart
   for (let item of shoppingCartItemNames) {
     if (item.innerText === name) {
-      // If the item exists, update its value by 1. This long line represents the path to an item's quantity  indicator, which increments every time item duplicates are added to the shopping cart 
+      // If the item shares name with an item inside the shopping cart, update its value by 1. This long line represents the path to an item's quantity  indicator, which increments every time item duplicates are added to the shopping cart 
       item
         .nextElementSibling // shopping-cart-inner__item-container
         .children[2] // shopping-cart-item__quantity-input
@@ -249,14 +236,14 @@ const addItemToCart = (name, price, imageSrc, productIndex, productLink) => {
     }
   }
 
-  // Add the parameters to the imported utility function, generating shopping cart HTML
+  // Add the parameters to the imported function, and generate shopping cart item HTML
   const shoppingCartHtml = shoppingCartItemHtml(imageSrc, name, price, productIndex, productLink);
   // Apply the newly created shopping cart HTML to the shopping cart item div
   shoppingCartItem.innerHTML = shoppingCartHtml;
   // Append the new shopping cart item to the end of the cart container
   shoppingCartContainer.append(shoppingCartItem);
 
-  // Add event listeners to the newly created shopping cart items
+  // Add event listeners to the newly created shopping cart items:
   // Delete button
   shoppingCartItem.getElementsByClassName("shopping-cart-item__delete-button")[0].addEventListener("click", deleteShoppingCartItem);
 

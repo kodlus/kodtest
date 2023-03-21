@@ -7,7 +7,7 @@ IMPORTED DATA
 import {updateCartTotal} from "/scripts/shopping_cart.js"
 import loadCarousel from "./carousel.js";
 import loadPopularProducts from "./popular_products.js";
-import { deleteShoppingCartItem } from "./shopping_cart.js";
+/* import { deleteShoppingCartItem } from "./shopping_cart.js"; */
 
 /*=============================================================================
 GLOBAL
