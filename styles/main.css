@@ -58,13 +58,15 @@ li {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 
-    repeat(2, auto) 
-    minmax(auto, 70px) 
+    auto
+    auto
+    minmax(auto, 120px) 
     repeat(3, auto);
   text-align: center;
   padding: 1em;
   margin: 0 auto;
-  max-width: 70%;
+  width: 100%;
+ 
 }
 
 .product-card__image {
@@ -757,17 +759,15 @@ Campaign carousel
 
 .carousel__container {
   display: flex;
-  min-width: 70%;
-  max-width: 90%;
   margin: 0 auto;
 }
 
-.carousel__product-card {
+.product-card--carousel {
   background-color: var(--white);
   margin: 0 auto;
   text-align: center;
   padding: 1em;
-  max-width: 70%;
+  width: 70%;
   margin: 0 auto;
   margin-bottom: 0.4em;
   flex: 0 0 auto;
@@ -791,7 +791,6 @@ Campaign carousel
   right: 0.3em;
   top: 50%;
   transform: translateY(-50%);
-  order: 3;
 }
 
 .carousel__next-button::before { /* https://codepen.io/reacraf/pen/ZPqRKV/ */
@@ -815,7 +814,6 @@ Campaign carousel
   left: 0.3em;
   top: 50%;
   transform: translateY(-50%);
-  order: 0;
 }
 
 .carousel__previous-button::before {
@@ -840,9 +838,6 @@ Campaign carousel
   background-color: var(--focus);
 }
 
-.carousel__indicator-number {
-  order: 0;
-}
 /*====================================
 POPULAR CATEGORIES SECTION
 =====================================*/
@@ -1337,11 +1332,10 @@ SMALL/MEDIUM SCREENS
   }
 
   .carousel__container {
-    min-width: 70%;
-    max-width: 90%;
+    width: 100%;
   }
 
-  .carousel__product-card {
+  .product-card--carousel {
     margin: 0 auto;
     padding: 1em;
     max-width: 70%;
@@ -1717,7 +1711,6 @@ MEDIUM/LARGE SCREENS
   .header__logo-column {
     flex: 0 0 auto;
     margin: 0 auto;
-
   }
 
   .logo {
@@ -1866,7 +1859,6 @@ MEDIUM/LARGE SCREENS
   =====================================*/
   .campaign-section {
     margin-bottom: var(--sectionMarginBottom);
-    
   }
 
   .campaign-section__description {
@@ -1897,6 +1889,14 @@ MEDIUM/LARGE SCREENS
   .carousel__previous-button {
     padding: 5%;
     border-radius: 50%;
+  }
+
+  .carousel__next-button {
+    right: -4em;
+  }
+
+  .carousel__previous-button {
+    left: -4em;
   }
 
   .carousel__next-button::before,
@@ -2490,6 +2490,14 @@ LARGE SCREENS
   .carousel__previous-button::before {
     width: 20px;
     height: 20px;
+  }
+
+  .carousel__next-button {
+    right: -4em;
+  }
+
+  .carousel__previous-button {
+    left: -4em;
   }
 
   /*====================================
