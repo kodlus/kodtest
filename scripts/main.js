@@ -241,7 +241,13 @@ window.addEventListener("resize", () => {
 
   // Remove the reveal bar button when transitioning from larger screen to smaller
   if (revealSearchFieldButton.classList.contains("is-not-visible") !== true && headerSearchBar.classList.contains("is-not-visible") !== true) {
-    revealSearchFieldButton.classList.add("is-not-visible")
+    revealSearchFieldButton.classList.add("is-not-visible");
+  }
+
+  // Hide searchbar when resizing window
+  if (window.innerWidth > mediumLargeScreenSize) {
+    headerSearchBar.classList.add("is-not-visible");
+    revealSearchFieldButton.classList.remove("is-not-visible");
   }
 
   // Make the nav visible by default when transitioning to large screens
