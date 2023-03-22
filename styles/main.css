@@ -362,9 +362,9 @@ HEADER
   top: 100%;
 
   margin-left: auto;
-margin-right: auto;
-left: 0;
-right: 0;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 .header__container {
@@ -391,7 +391,6 @@ Header row 1
 Navigation
 =======================*/
 .header__navigation-column { 
-  background-color: brown; /* Debug */
   flex: 0 0 40%;
 }
 
@@ -487,7 +486,6 @@ Logo
 .header__logo-column {
   /* flex: 0 0 10%; */
   align-self: center;
-  background-color: bisque; /* Debug */
 }
 
 .logo {
@@ -503,7 +501,6 @@ Shopping cart / utility
   display: flex;
   align-items: center;
   justify-content: end;
-  background-color: blueviolet; /* Debug */
   flex: 0 0 40%;
 }
 
@@ -539,7 +536,7 @@ Shopping cart / utility
   display: block;
   position: absolute;
   top: 0;
-  z-index: 999;
+  z-index: 9999;
   right: 0;
   width: 100%;
   height: 100vh;
@@ -579,7 +576,7 @@ Shopping cart / utility
 .shopping-cart-inner__item-container {
   padding: 1em;
   overflow: auto;
-  height: 100%;/* See Close / open menus in main.js for more information */
+  height: 100%;
 }
 
 .shopping-cart-item {
@@ -683,7 +680,6 @@ Shopping cart / utility
 Header search
 =======================*/
 .header__search-bar-column {
-  background-color: orange;
   order: 5;
   flex: 0 0 75%;
 }
@@ -1113,9 +1109,6 @@ SMALL/MEDIUM SCREENS
   :root {
     --standardPadding: 1.5em;
   }
-  .header__row-1 {
-    background-color: aqua;
-  }
 
   /*=========================================================
   Header Small/Medium screens
@@ -1189,7 +1182,6 @@ SMALL/MEDIUM SCREENS
   =======================*/
   .header__shopping-cart-utility-column {
     justify-content: end;
-    background-color: blueviolet; /* Debug */
     flex: 0 0 40%;
   }
 
@@ -1286,7 +1278,6 @@ SMALL/MEDIUM SCREENS
   header search s/m screens
   =======================*/
   .header__search-bar-column {
-    background-color: orange; /* Debug */
     order: 5;
     flex: 0 0 75%;
   }
@@ -1592,9 +1583,6 @@ MEDIUM/LARGE SCREENS
     --standardPadding: 1.5em;
     --largeScreenMargin: 0 auto var(--sectionMarginBottom);
   }
-  .header__row-1 {
-    background-color: burlywood; /* Debug */
-  }
 
   /*=========================================================
   Header m/l screens
@@ -1724,7 +1712,6 @@ MEDIUM/LARGE SCREENS
   =======================*/
   .header__shopping-cart-utility-column {
     justify-content: end;
-    background-color: blueviolet; /* Debug */
     flex: 0 0 5%;
     order: 5;
     padding-right: 2.5%;
@@ -1821,7 +1808,6 @@ MEDIUM/LARGE SCREENS
   header search m/l screens
   =======================*/
   .header__search-bar-column {
-    background-color: orange; /* Debug */
     order: 5;
     flex: 0 0 35%;
   }
@@ -1940,15 +1926,16 @@ MEDIUM/LARGE SCREENS
   }
 
   .popular-products__card-container {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
   }
 
   .product-card--popular {
-    max-width: 200px;
+    width: 100%;
+    max-width: 250px;
     padding: 0.7em;
   }
 
@@ -2000,7 +1987,7 @@ MEDIUM/LARGE SCREENS
   .discover-more-section {
     padding: var(--standardPadding);
     margin: var(--largeScreenMargin);
-    width: 70%;
+    width: 100%;
   }
 
   .discover-more__cards-container {
@@ -2144,8 +2131,8 @@ MEDIUM/LARGE SCREENS
 
   .footer__category-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 100px;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: unset;
   }
 }
 
@@ -2157,9 +2144,6 @@ LARGE SCREENS
     --standardPadding: 2em;
     --sectionMarginBottom: 1em;
     --largeScreenMargin: 0 auto var(--sectionMarginBottom);
-  }
-  .header__row-1 {
-    background-color: olivedrab /* Debug */
   }
 
   /*=========================================================
@@ -2173,7 +2157,7 @@ LARGE SCREENS
     grid-template-columns: repeat(11, 1fr);
     padding: 0.625em 0;
     gap: 0px;
-    padding: 0.625em 2.5%; /* The percentage relates to the width of the :after pseudo element */
+    padding: 0.625em 2.5%; /* The percentage relates to the width of the .header::after pseudo element */
   }
 
   .header__navigation-column{
@@ -2315,7 +2299,6 @@ LARGE SCREENS
   =======================*/
   .header__shopping-cart-utility-column {
     justify-content: end;
-    background-color: blueviolet; /* Debug */
     flex: 0 0 5%;
     order: 5;
     padding-right: 2.5%;
@@ -2412,7 +2395,6 @@ LARGE SCREENS
   header search large screens
   =======================*/
   .header__search-bar-column {
-    background-color: orange; /* Debug */
     order: 5;
     flex: 0 0 30%;
   }
@@ -2450,7 +2432,6 @@ LARGE SCREENS
   =====================================*/
   .campaign-section {
     margin-bottom: var(--sectionMarginBottom);
-
   }
 
   .campaign-color-wrapper {
@@ -2533,19 +2514,20 @@ LARGE SCREENS
   .popular-products-section {
     padding: var(--standardPadding);
     margin: var(--largeScreenMargin);
-    width: 70%;
+    width: 60%;
   }
 
   .popular-products__card-container {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
   }
 
   .product-card--popular {
-    max-width: 200px;
+    width: 100%;
+    max-width: unset;
     padding: 0.7em;
   }
 
@@ -2598,7 +2580,7 @@ LARGE SCREENS
   .discover-more-section {
     padding: var(--standardPadding);
     margin: var(--largeScreenMargin);
-    width: 70%;
+    width: 100%;
   }
 
   .discover-more__cards-container {
@@ -2613,13 +2595,12 @@ LARGE SCREENS
     justify-content: space-between;
     padding: var(--standardPadding);
     width: 100%;
-    max-width: 750px;
+    max-width: 1100px;
     margin-bottom: 2em;
   }
 
   .discover-card__image {
     width: 40%;
-    
     aspect-ratio: 1 / 1;
     margin-bottom: 0;
     align-self: flex-start;
@@ -2745,14 +2726,10 @@ LARGE SCREENS
 
   .footer__category-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 100px;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: unset;
   }
 }
-
-
-
-
 
 /*==============================================================================
 UTILITY
@@ -2782,7 +2759,6 @@ UTILITY
   margin-right: 6px;
 }
 
-
 /* https://www.w3schools.com/howto/howto_css_overlay.asp */
 .overlay {
   position: fixed; /* Sit on top of the page content */
@@ -2794,7 +2770,7 @@ UTILITY
   right: 0;
   bottom: 0;
   background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-  z-index: 9; /* Specify a stack order in case you're using a different order for other elements */
+  z-index: 99; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
 

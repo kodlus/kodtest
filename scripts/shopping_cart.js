@@ -128,7 +128,7 @@ const updateCartTotal = () => {
       
       // Get the cart item's value
       let value =cartItem.getElementsByClassName("shopping-cart-item__quantity")[0].value;
-      console.log(value)
+      
 
       // Convert value from string to integer
       value = parseInt(value, 10);

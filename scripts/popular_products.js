@@ -33,7 +33,6 @@ export default async function loadPopularProducts() {
   
   } catch(error) {
     alert(`Error: ${error}`)
-    console.log(`Error: ${error}`)
   }
 }
 

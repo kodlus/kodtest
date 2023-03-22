@@ -7,7 +7,6 @@ IMPORTED DATA
 import {updateCartTotal} from "/scripts/shopping_cart.js"
 import loadCarousel from "./carousel.js";
 import loadPopularProducts from "./popular_products.js";
-/* import { deleteShoppingCartItem } from "./shopping_cart.js"; */
 
 /*=============================================================================
 GLOBAL
@@ -38,6 +37,19 @@ let headerSearchBarOffset = headerSearchBar.offsetTop;
 /*=============================================================================
 INTERACTIVITY
 ==============================================================================*/
+/*=========================================================
+Call functions at run time
+=========================================================*/
+const onload = () => {
+  updateCartTotal();
+  loadCarousel();
+  loadPopularProducts();
+  screenEvent(mediumLargeScreenSize, "scroll", hideBanner);
+  screenEvent(mediumLargeScreenSize, "scroll", hideSearchBar);
+  hoverOverNavLinks();
+}
+
+onload();
 /*=========================================================
 Utility functions
 =========================================================*/
@@ -95,6 +107,10 @@ Toggle navigation
 ====================================*/
 navButton.addEventListener("click", (e) => {
   contentToggle(headerNav, shoppingCart);
+  // Hide the searchbar if the nav is opened, but the page has not scrolled. 
+  if (window.pageYOffset === 0 && window.innerWidth <= mediumLargeScreenSize && headerSearchBar.classList.contains("is-not-visible") !== true) {
+    contentToggle(headerSearchBar, headerNav)
+  }  
 });
 
 /*===================================
@@ -103,7 +119,7 @@ Toggle and close shopping cart
 // Toggle the shopping cart when clicking on the shopping cart button
 shoppingCartButton.addEventListener("click", () => {
   // If the screen size is smaller than large screen sizes, toggle the shopping cart
-  if(window.innerWidth < largeScreenSize) { //TODO: se över förklaring
+  if(window.innerWidth < largeScreenSize) {
       contentToggle(shoppingCart, headerNav);
       // If the screen size is large, remove the "is-not-visible" utility class from the shopping cart
   } else {
@@ -141,7 +157,6 @@ const closeMenusWhenClickingOutside = (e) => {
 
     // Remove overlay, if enabled
     document.getElementsByClassName("overlay")[0].style.display = "none";
-    console.log("Close")
   }
 
   // Closes the headerNav if the user clicks outside it. If the node is a child of headerNav, and contains the class button, nothing happens. Only works for large screens 
@@ -161,11 +176,11 @@ const closeMenusWhenClickingOutside = (e) => {
     }
   }
 
-  // Close searchbar if user clicks outside it, only works for medium/large screens and smaller
+  // Close searchbar if user clicks outside it, if the user has scrolled only works for medium/large screens and smaller
   if(window.innerWidth <= mediumLargeScreenSize) {
-    if (isAChildOf(node, headerSearchBar) !== true && node.id !== "header__reveal-search-button") {
+    if (isAChildOf(node, headerSearchBar) !== true && node.id !== "header__reveal-search-button" && window.pageYOffset !== 0) {
       headerSearchBar.classList.add("is-not-visible");
-      revealSearchFieldButton.classList.remove("is-not-visible")
+      revealSearchFieldButton.classList.remove("is-not-visible");
     }
   }
 } 
@@ -245,12 +260,12 @@ window.addEventListener("resize", () => {
   }
 
   // Hide searchbar when resizing window
-  if (window.innerWidth > mediumLargeScreenSize) {
+  if (window.innerWidth < mediumLargeScreenSize) {
     headerSearchBar.classList.add("is-not-visible");
     revealSearchFieldButton.classList.remove("is-not-visible");
   }
 
-  // Make the nav visible by default when transitioning to large screens
+  // Make the nav visible by default when transitioning to large screens, and invisible when transitioning from large to small
   if (window.innerWidth >= largeScreenSize) {
     document.getElementById("nav").classList.remove("is-not-visible");
   } else {
@@ -259,6 +274,11 @@ window.addEventListener("resize", () => {
 
   // Make the nav-links interactive (dropdowns visible on hover) on large screens
   hoverOverNavLinks();
+
+  // Hide the information banner when resizing small screens
+  if(window.innerWidth <= mediumLargeScreenSize && window.pageYOffset !== 0) {
+    informationBanner.classList.add("is-not-visible");
+  } 
 })
 
 /*=========================================================
@@ -336,21 +356,6 @@ revealSearchFieldButton.addEventListener("click", ()=> {
   revealSearchFieldButton.classList.add("is-not-visible");
 })
 
-/*=========================================================
-Call functions at run time
-=========================================================*/
-const onload = () => {
-  updateCartTotal();
-  loadCarousel();
-  loadPopularProducts();
-  screenEvent(mediumLargeScreenSize, "scroll", hideBanner);
-  screenEvent(mediumLargeScreenSize, "scroll", hideSearchBar);
-  hoverOverNavLinks();
-}
-
-onload();
-
-
 /*=============================================================================
 REFERENCES
 ==============================================================================*/
@@ -358,9 +363,4 @@ REFERENCES
 https://www.w3schools.com/howto/howto_js_sticky_header.asp
 https://www.satollo.net/execute-conditional-javascript-by-screen-size
 https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener */
-
-
-/*=============================================================================
-JUNK
-==============================================================================*/
 

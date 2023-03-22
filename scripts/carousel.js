@@ -76,7 +76,6 @@ export default async function loadCarousel() {
     }
   } catch (error) {
     alert(`Error: ${error}`)
-    console.log(`Error: ${error}`)
   }
 }
 
